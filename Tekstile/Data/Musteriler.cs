@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace Tekstile.Data;
+
+public partial class Musteriler
+{
+    public int Id { get; set; }
+
+    public string FirmaAdi { get; set; } = null!;
+
+    public string? YetkiliAdSoyad { get; set; }
+
+    public string? Telefon { get; set; }
+
+    public string? Adres { get; set; }
+
+    public virtual List<Desenler> Desenlers { get; set; } 
+
+    public virtual List<Siparisler> Siparislers { get; set; } 
+}
