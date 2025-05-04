@@ -12,10 +12,10 @@ using Tekstile.Data;
 
 namespace Tekstile
 {
-    public partial class FormBoya : Form
+    public partial class FRMBoya : Form
     {
         MyDbContext _db = new MyDbContext();
-        public FormBoya()
+        public FRMBoya()
         {
             InitializeComponent();
         }
@@ -23,6 +23,10 @@ namespace Tekstile
 
         private void FormBoya_Load(object sender, EventArgs e)
         {
+            dgvBoyalar.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvBoyalar.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvBoyalar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            
             cmbKovaDurum.Items.AddRange(new[] { "Gelen", "Açılan", "Biten" });
             cmbBoyaTipi.Items.AddRange(new string[] { "Normal", "Şeffaf", "Tiner", "Yapışkan" });
             Listele();
@@ -30,6 +34,7 @@ namespace Tekstile
         private void Listele()
         {
             dgvBoyalar.DataSource = _db.Boyalar.ToList();
+            dgvBoyalar.Columns["ID"].Visible = false;
 
         }
         private void Temizle()
@@ -62,6 +67,7 @@ namespace Tekstile
                 RenkAdi = txtBoyaAdi.Text,
                 BoyaTipi = cmbBoyaTipi.SelectedItem.ToString(),
                 BoyaFiyat = Convert.ToDecimal(nudFiyat.Text),
+                
             };
 
             // Önce Boyalar nesnesini kaydet
@@ -75,6 +81,7 @@ namespace Tekstile
                 IslemTarihi = DateTime.Now,
                 IslemTuru = cmbKovaDurum.SelectedItem.ToString(),
                 Adet = Convert.ToInt32(nudKovaAdet.Text),
+                Aciklama = txtAciklama.Text
             };
 
             // Stok durumunu güncelle
@@ -232,7 +239,7 @@ namespace Tekstile
 
         private void button1_Click(object sender, EventArgs e)
         {
-            BoyaStoğu boya = new BoyaStoğu();
+            FRMBoyaStogu boya = new FRMBoyaStogu();
             boya.Show();
 
         }

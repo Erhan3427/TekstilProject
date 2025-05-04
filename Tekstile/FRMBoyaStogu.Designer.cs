@@ -1,0 +1,105 @@
+﻿namespace Tekstile.Data
+{
+    partial class FRMBoyaStogu
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            dgvBoyaStok = new DataGridView();
+            cmbİslemler = new ComboBox();
+            btnFiltrele = new Button();
+            dtpBaslangic = new DateTimePicker();
+            dtpBitis = new DateTimePicker();
+            ((System.ComponentModel.ISupportInitialize)dgvBoyaStok).BeginInit();
+            SuspendLayout();
+            // 
+            // dgvBoyaStok
+            // 
+            dgvBoyaStok.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvBoyaStok.Location = new Point(12, 87);
+            dgvBoyaStok.Name = "dgvBoyaStok";
+            dgvBoyaStok.RowHeadersWidth = 51;
+            dgvBoyaStok.Size = new Size(776, 351);
+            dgvBoyaStok.TabIndex = 0;
+            // 
+            // cmbİslemler
+            // 
+            cmbİslemler.FormattingEnabled = true;
+            cmbİslemler.Location = new Point(285, 14);
+            cmbİslemler.Name = "cmbİslemler";
+            cmbİslemler.Size = new Size(151, 28);
+            cmbİslemler.TabIndex = 1;
+            // 
+            // btnFiltrele
+            // 
+            btnFiltrele.Location = new Point(512, 45);
+            btnFiltrele.Name = "btnFiltrele";
+            btnFiltrele.Size = new Size(135, 36);
+            btnFiltrele.TabIndex = 2;
+            btnFiltrele.Text = "Filtrele";
+            btnFiltrele.UseVisualStyleBackColor = true;
+            btnFiltrele.Click += btnFiltrele_Click;
+            // 
+            // dtpBaslangic
+            // 
+            dtpBaslangic.Location = new Point(12, 12);
+            dtpBaslangic.Name = "dtpBaslangic";
+            dtpBaslangic.Size = new Size(250, 27);
+            dtpBaslangic.TabIndex = 3;
+            // 
+            // dtpBitis
+            // 
+            dtpBitis.Location = new Point(12, 45);
+            dtpBitis.Name = "dtpBitis";
+            dtpBitis.Size = new Size(250, 27);
+            dtpBitis.TabIndex = 3;
+            // 
+            // FRMBoyaStogu
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(dtpBitis);
+            Controls.Add(dtpBaslangic);
+            Controls.Add(btnFiltrele);
+            Controls.Add(cmbİslemler);
+            Controls.Add(dgvBoyaStok);
+            Name = "FRMBoyaStogu";
+            Text = "BoyaStoğu";
+            Load += BoyaStoğu_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvBoyaStok).EndInit();
+            ResumeLayout(false);
+        }
+
+        #endregion
+
+        private DataGridView dgvBoyaStok;
+        private ComboBox cmbİslemler;
+        private Button btnFiltrele;
+        private DateTimePicker dtpBaslangic;
+        private DateTimePicker dtpBitis;
+    }
+}

@@ -12,10 +12,10 @@ using Tekstile.Data;
 
 namespace Tekstile
 {
-    public partial class FormMusteri : Form
+    public partial class FRMMusteri : Form
     {
         private MyDbContext _dbContext = new MyDbContext();
-        public FormMusteri()
+        public FRMMusteri()
         {
             InitializeComponent();
             Listele();
@@ -25,10 +25,20 @@ namespace Tekstile
         {
 
         }
+        public bool KontrolEt()
+        {
+            if (string.IsNullOrEmpty(txtFirmaAdi.Text) || string.IsNullOrEmpty(txtFirmaYetkili.Text) || string.IsNullOrEmpty(mtbTelefon.Text) || string.IsNullOrEmpty(txtIsAdresi.Text))
+            {
+                MessageBox.Show("Lütfen tüm alanları doldurunuz.");
+                return false;
+            }
+            return true;
+        }
         private void Listele()
         {
             var musteriler = _dbContext.Musteriler.ToList();
             dgvMüsteriler.DataSource = musteriler;
+            dgvMüsteriler.Columns[0].Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -37,7 +47,7 @@ namespace Tekstile
             {
                 FirmaAdi = txtFirmaAdi.Text,
                 YetkiliAdSoyad = txtFirmaYetkili.Text,
-                Telefon = txtTelefon.Text,
+                Telefon = mtbTelefon.Text,
                 Adres = txtIsAdresi.Text
 
             };

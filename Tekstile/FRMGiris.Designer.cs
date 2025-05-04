@@ -1,6 +1,6 @@
 ﻿namespace Tekstile
 {
-    partial class Form1
+    partial class FRMGiris
     {
         /// <summary>
         ///  Required designer variable.
@@ -55,6 +55,7 @@
             btnDesenYonetimi.TabIndex = 0;
             btnDesenYonetimi.Text = "Desen Yönetimi";
             btnDesenYonetimi.UseVisualStyleBackColor = true;
+            btnDesenYonetimi.Click += btnDesenYonetimi_Click;
             // 
             // btnSiparisYonetim
             // 
@@ -103,7 +104,7 @@
             label1.TabIndex = 1;
             label1.Text = "Tekstil Takip Sistemi";
             // 
-            // Form1
+            // FRMGiris
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -115,7 +116,7 @@
             Controls.Add(btnMakineYonetim);
             Controls.Add(btnDesenYonetimi);
             Controls.Add(btnMüsteriYonetim);
-            Name = "Form1";
+            Name = "FRMGiris";
             Text = "Form1";
             Load += Form1_Load;
             ResumeLayout(false);

@@ -1,6 +1,6 @@
 ﻿namespace Tekstile
 {
-    partial class FormMusteri
+    partial class FRMMusteri
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,6 @@
             txtFirmaYetkili = new TextBox();
             txtIsAdresi = new TextBox();
             dgvMüsteriler = new DataGridView();
-            txtTelefon = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -40,6 +39,7 @@
             button1 = new Button();
             btnSil = new Button();
             btnGuncell = new Button();
+            mtbTelefon = new MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)dgvMüsteriler).BeginInit();
             SuspendLayout();
             // 
@@ -47,38 +47,32 @@
             // 
             txtFirmaAdi.Location = new Point(159, 30);
             txtFirmaAdi.Name = "txtFirmaAdi";
-            txtFirmaAdi.Size = new Size(125, 27);
+            txtFirmaAdi.Size = new Size(166, 27);
             txtFirmaAdi.TabIndex = 0;
             // 
             // txtFirmaYetkili
             // 
             txtFirmaYetkili.Location = new Point(159, 63);
             txtFirmaYetkili.Name = "txtFirmaYetkili";
-            txtFirmaYetkili.Size = new Size(125, 27);
+            txtFirmaYetkili.Size = new Size(166, 27);
             txtFirmaYetkili.TabIndex = 0;
             // 
             // txtIsAdresi
             // 
             txtIsAdresi.Location = new Point(159, 129);
+            txtIsAdresi.Multiline = true;
             txtIsAdresi.Name = "txtIsAdresi";
-            txtIsAdresi.Size = new Size(125, 27);
+            txtIsAdresi.Size = new Size(202, 72);
             txtIsAdresi.TabIndex = 0;
             // 
             // dgvMüsteriler
             // 
             dgvMüsteriler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMüsteriler.Location = new Point(30, 250);
+            dgvMüsteriler.Location = new Point(20, 259);
             dgvMüsteriler.Name = "dgvMüsteriler";
             dgvMüsteriler.RowHeadersWidth = 51;
-            dgvMüsteriler.Size = new Size(742, 188);
+            dgvMüsteriler.Size = new Size(967, 188);
             dgvMüsteriler.TabIndex = 2;
-            // 
-            // txtTelefon
-            // 
-            txtTelefon.Location = new Point(159, 96);
-            txtTelefon.Name = "txtTelefon";
-            txtTelefon.Size = new Size(125, 27);
-            txtTelefon.TabIndex = 0;
             // 
             // label1
             // 
@@ -118,7 +112,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(280, 194);
+            button1.Location = new Point(483, 203);
             button1.Name = "button1";
             button1.Size = new Size(153, 50);
             button1.TabIndex = 1;
@@ -128,7 +122,7 @@
             // 
             // btnSil
             // 
-            btnSil.Location = new Point(596, 194);
+            btnSil.Location = new Point(799, 203);
             btnSil.Name = "btnSil";
             btnSil.Size = new Size(143, 50);
             btnSil.TabIndex = 4;
@@ -137,18 +131,27 @@
             // 
             // btnGuncell
             // 
-            btnGuncell.Location = new Point(439, 194);
+            btnGuncell.Location = new Point(642, 203);
             btnGuncell.Name = "btnGuncell";
             btnGuncell.Size = new Size(151, 50);
             btnGuncell.TabIndex = 4;
             btnGuncell.Text = "Güncelle";
             btnGuncell.UseVisualStyleBackColor = true;
             // 
-            // FormMusteri
+            // mtbTelefon
+            // 
+            mtbTelefon.Location = new Point(159, 100);
+            mtbTelefon.Mask = "(999) 000-0000";
+            mtbTelefon.Name = "mtbTelefon";
+            mtbTelefon.Size = new Size(166, 27);
+            mtbTelefon.TabIndex = 5;
+            // 
+            // FRMMusteri
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(999, 459);
+            Controls.Add(mtbTelefon);
             Controls.Add(btnGuncell);
             Controls.Add(btnSil);
             Controls.Add(label4);
@@ -157,11 +160,10 @@
             Controls.Add(label1);
             Controls.Add(dgvMüsteriler);
             Controls.Add(button1);
-            Controls.Add(txtTelefon);
             Controls.Add(txtIsAdresi);
             Controls.Add(txtFirmaYetkili);
             Controls.Add(txtFirmaAdi);
-            Name = "FormMusteri";
+            Name = "FRMMusteri";
             Text = "FormMusteri";
             Load += FormMusteri_Load;
             ((System.ComponentModel.ISupportInitialize)dgvMüsteriler).EndInit();
@@ -175,7 +177,6 @@
         private TextBox txtFirmaYetkili;
         private TextBox txtIsAdresi;
         private DataGridView dgvMüsteriler;
-        private TextBox txtTelefon;
         private Label label1;
         private Label label2;
         private Label label3;
@@ -183,5 +184,6 @@
         private Button button1;
         private Button btnSil;
         private Button btnGuncell;
+        private MaskedTextBox mtbTelefon;
     }
 }

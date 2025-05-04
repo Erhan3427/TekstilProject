@@ -1,6 +1,6 @@
 ﻿namespace Tekstile
 {
-    partial class FormBoya
+    partial class FRMBoya
     {
         /// <summary>
         /// Required designer variable.
@@ -47,6 +47,8 @@
             Ara = new Label();
             txtFiltrele = new TextBox();
             button1 = new Button();
+            txtAciklama = new TextBox();
+            label6 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvBoyalar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudFiyat).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudKovaAdet).BeginInit();
@@ -54,14 +56,14 @@
             // 
             // txtBoyaAdi
             // 
-            txtBoyaAdi.Location = new Point(116, 78);
+            txtBoyaAdi.Location = new Point(253, 77);
             txtBoyaAdi.Name = "txtBoyaAdi";
             txtBoyaAdi.Size = new Size(132, 27);
             txtBoyaAdi.TabIndex = 1;
             // 
             // txtBoyaKod
             // 
-            txtBoyaKod.Location = new Point(116, 35);
+            txtBoyaKod.Location = new Point(253, 34);
             txtBoyaKod.Name = "txtBoyaKod";
             txtBoyaKod.Size = new Size(132, 27);
             txtBoyaKod.TabIndex = 1;
@@ -69,7 +71,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(22, 81);
+            label1.Location = new Point(159, 80);
             label1.Name = "label1";
             label1.Size = new Size(69, 20);
             label1.TabIndex = 2;
@@ -78,7 +80,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(10, 38);
+            label2.Location = new Point(147, 37);
             label2.Name = "label2";
             label2.Size = new Size(81, 20);
             label2.TabIndex = 2;
@@ -87,7 +89,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(302, 75);
+            label4.Location = new Point(439, 74);
             label4.Name = "label4";
             label4.Size = new Size(86, 20);
             label4.TabIndex = 2;
@@ -100,13 +102,13 @@
             dgvBoyalar.Name = "dgvBoyalar";
             dgvBoyalar.RowHeadersWidth = 51;
             dgvBoyalar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvBoyalar.Size = new Size(810, 176);
+            dgvBoyalar.Size = new Size(1304, 176);
             dgvBoyalar.TabIndex = 4;
             dgvBoyalar.CellClick += dgvBoyalar_CellClick;
             // 
             // btnSil
             // 
-            btnSil.Location = new Point(581, 207);
+            btnSil.Location = new Point(687, 207);
             btnSil.Name = "btnSil";
             btnSil.Size = new Size(136, 49);
             btnSil.TabIndex = 5;
@@ -117,7 +119,7 @@
             // cmbBoyaTipi
             // 
             cmbBoyaTipi.FormattingEnabled = true;
-            cmbBoyaTipi.Location = new Point(116, 125);
+            cmbBoyaTipi.Location = new Point(253, 124);
             cmbBoyaTipi.Name = "cmbBoyaTipi";
             cmbBoyaTipi.Size = new Size(132, 28);
             cmbBoyaTipi.TabIndex = 7;
@@ -125,7 +127,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(22, 129);
+            label5.Location = new Point(159, 128);
             label5.Name = "label5";
             label5.Size = new Size(71, 20);
             label5.TabIndex = 2;
@@ -134,7 +136,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(289, 127);
+            label8.Location = new Point(426, 126);
             label8.Name = "label8";
             label8.Size = new Size(99, 20);
             label8.TabIndex = 2;
@@ -143,7 +145,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(338, 35);
+            label3.Location = new Point(475, 34);
             label3.Name = "label3";
             label3.Size = new Size(40, 20);
             label3.TabIndex = 9;
@@ -151,7 +153,7 @@
             // 
             // btnGuncelle
             // 
-            btnGuncelle.Location = new Point(439, 207);
+            btnGuncelle.Location = new Point(545, 207);
             btnGuncelle.Name = "btnGuncelle";
             btnGuncelle.Size = new Size(136, 49);
             btnGuncelle.TabIndex = 5;
@@ -161,7 +163,7 @@
             // 
             // btnKaydet
             // 
-            btnKaydet.Location = new Point(297, 207);
+            btnKaydet.Location = new Point(403, 207);
             btnKaydet.Name = "btnKaydet";
             btnKaydet.Size = new Size(136, 49);
             btnKaydet.TabIndex = 5;
@@ -172,14 +174,14 @@
             // cmbKovaDurum
             // 
             cmbKovaDurum.FormattingEnabled = true;
-            cmbKovaDurum.Location = new Point(394, 124);
+            cmbKovaDurum.Location = new Point(531, 123);
             cmbKovaDurum.Name = "cmbKovaDurum";
             cmbKovaDurum.Size = new Size(150, 28);
             cmbKovaDurum.TabIndex = 7;
             // 
             // nudFiyat
             // 
-            nudFiyat.Location = new Point(394, 38);
+            nudFiyat.Location = new Point(531, 37);
             nudFiyat.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             nudFiyat.Name = "nudFiyat";
             nudFiyat.Size = new Size(150, 27);
@@ -187,7 +189,7 @@
             // 
             // nudKovaAdet
             // 
-            nudKovaAdet.Location = new Point(394, 78);
+            nudKovaAdet.Location = new Point(531, 77);
             nudKovaAdet.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             nudKovaAdet.Name = "nudKovaAdet";
             nudKovaAdet.Size = new Size(150, 27);
@@ -196,15 +198,15 @@
             // Ara
             // 
             Ara.AutoSize = true;
-            Ara.Location = new Point(637, 32);
+            Ara.Location = new Point(1125, 19);
             Ara.Name = "Ara";
-            Ara.Size = new Size(32, 20);
+            Ara.Size = new Size(58, 20);
             Ara.TabIndex = 11;
-            Ara.Text = "Ara";
+            Ara.Text = " Filtrele";
             // 
             // txtFiltrele
             // 
-            txtFiltrele.Location = new Point(675, 28);
+            txtFiltrele.Location = new Point(1189, 12);
             txtFiltrele.Name = "txtFiltrele";
             txtFiltrele.Size = new Size(125, 27);
             txtFiltrele.TabIndex = 12;
@@ -212,7 +214,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(675, 81);
+            button1.Location = new Point(1189, 114);
             button1.Name = "button1";
             button1.Size = new Size(125, 44);
             button1.TabIndex = 13;
@@ -220,11 +222,29 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // FormBoya
+            // txtAciklama
+            // 
+            txtAciklama.Location = new Point(788, 37);
+            txtAciklama.Multiline = true;
+            txtAciklama.Name = "txtAciklama";
+            txtAciklama.Size = new Size(167, 70);
+            txtAciklama.TabIndex = 14;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(712, 44);
+            label6.Name = "label6";
+            label6.Size = new Size(70, 20);
+            label6.TabIndex = 2;
+            label6.Text = "Açıklama";
+            // 
+            // FRMBoya
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(832, 453);
+            ClientSize = new Size(1326, 453);
+            Controls.Add(txtAciklama);
             Controls.Add(button1);
             Controls.Add(txtFiltrele);
             Controls.Add(Ara);
@@ -232,6 +252,7 @@
             Controls.Add(nudFiyat);
             Controls.Add(label3);
             Controls.Add(cmbKovaDurum);
+            Controls.Add(label6);
             Controls.Add(label8);
             Controls.Add(label5);
             Controls.Add(cmbBoyaTipi);
@@ -244,7 +265,7 @@
             Controls.Add(label1);
             Controls.Add(txtBoyaKod);
             Controls.Add(txtBoyaAdi);
-            Name = "FormBoya";
+            Name = "FRMBoya";
             Text = "Boya";
             Load += FormBoya_Load;
             ((System.ComponentModel.ISupportInitialize)dgvBoyalar).EndInit();
@@ -274,5 +295,7 @@
         private Label Ara;
         private TextBox txtFiltrele;
         private Button button1;
+        private TextBox txtAciklama;
+        private Label label6;
     }
 }
