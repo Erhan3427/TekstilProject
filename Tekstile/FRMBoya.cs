@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tekstile.Context;
 using Tekstile.Data;
+using Tekstile.UI.Helpers;
 
 namespace Tekstile
 {
@@ -29,37 +30,17 @@ namespace Tekstile
             
             cmbKovaDurum.Items.AddRange(new[] { "Gelen", "Açılan", "Biten" });
             cmbBoyaTipi.Items.AddRange(new string[] { "Normal", "Şeffaf", "Tiner", "Yapışkan" });
-            Listele();
+            BoyaListeHelper.Listele(dgvBoyalar, _db);
         }
-        private void Listele()
-        {
-            dgvBoyalar.DataSource = _db.Boyalar.ToList();
-            dgvBoyalar.Columns["ID"].Visible = false;
-
-        }
-        private void Temizle()
-        {
-            txtBoyaAdi.Text = txtBoyaKod.Text = nudFiyat.Text = nudKovaAdet.Text = string.Empty;
-        }
-        private bool VeriGecerliMi()
-        {
-            if (string.IsNullOrWhiteSpace(txtBoyaKod.Text) ||
-                string.IsNullOrWhiteSpace(txtBoyaAdi.Text) ||
-                string.IsNullOrWhiteSpace(nudKovaAdet.Text) ||
-                string.IsNullOrWhiteSpace(nudFiyat.Text) ||
-                cmbBoyaTipi.SelectedItem == null ||
-                cmbKovaDurum.SelectedItem == null)
-            {
-                MessageBox.Show("Lütfen tüm alanları doldurun.");
-                return false;
-            }
-
-            return true;
-        }
+       
+      
+       
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {
-            if (!VeriGecerliMi()) return;
+            if (!BoyaValidator.BoyaVerisiGecerliMi(txtBoyaKod.Text, txtBoyaAdi.Text, nudKovaAdet.Text, nudFiyat.Text, cmbBoyaTipi.SelectedItem, cmbKovaDurum.SelectedItem))
+                return;
+
 
             var Boyalar = new Boyalar
             {
@@ -123,8 +104,8 @@ namespace Tekstile
             _db.SaveChanges();
 
             MessageBox.Show("Boyanız eklenmiştir");
-            Listele();
-            Temizle();
+            BoyaListeHelper.Listele(dgvBoyalar, _db);
+            FormTemizleyici.Temizle(txtBoyaKod, txtBoyaAdi, nudKovaAdet, nudFiyat, cmbBoyaTipi, cmbKovaDurum);
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)
@@ -136,7 +117,9 @@ namespace Tekstile
                 MessageBox.Show("Güncellenecek kayıt bulunamadı.");
                 return;
             }
-            if (!VeriGecerliMi()) return;
+            if (!BoyaValidator.BoyaVerisiGecerliMi(txtBoyaKod.Text, txtBoyaAdi.Text, nudKovaAdet.Text, nudFiyat.Text, cmbBoyaTipi.SelectedItem, cmbKovaDurum.SelectedItem))
+                return;
+
 
             // Eski değerleri sakla
             var eskiKovaAdedi = boyalar.KovaAdedi;
@@ -195,8 +178,8 @@ namespace Tekstile
 
             _db.SaveChanges();
             MessageBox.Show("Güncellendi");
-            Listele();
-            Temizle();
+            BoyaListeHelper.Listele(dgvBoyalar, _db);
+            FormTemizleyici.Temizle(txtBoyaKod, txtBoyaAdi, nudKovaAdet, nudFiyat, cmbBoyaTipi, cmbKovaDurum);
         }
 
         private void btnSil_Click(object sender, EventArgs e)
@@ -208,8 +191,8 @@ namespace Tekstile
                 _db.Boyalar.Remove(boyalar);
                 _db.SaveChanges();
                 MessageBox.Show("Silindi");
-                Listele();
-                Temizle();
+                BoyaListeHelper.Listele(dgvBoyalar, _db);
+                FormTemizleyici.Temizle(txtBoyaKod, txtBoyaAdi, nudKovaAdet, nudFiyat, cmbBoyaTipi, cmbKovaDurum);
             }
             else
             {
