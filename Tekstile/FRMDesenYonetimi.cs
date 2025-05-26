@@ -25,27 +25,22 @@ namespace Tekstile
             cmbBoyalar.DataSource = _db.Boyalar.ToList();
             cmbBoyalar.DisplayMember = "RenkAdi";
             cmbBoyalar.ValueMember = "Id";
-            cmbMusteri.DataSource = _db.Musteriler.Select(x =>    x.FirmaAdi ).ToList();
+            cmbMusteri.DataSource = _db.Musteriler.Select(x => x.FirmaAdi).ToList();
 
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
 
-            Desenler desenler = new Desenler()
+        private void btnKaydet_Click(object sender, EventArgs e)
+        {
+            DesenBoyalar desenBoyalar = new DesenBoyalar()
             {
-                DesenAdi = textBox1.Text,
-                FotoYolu = pictureBox1.ImageLocation,
-                Boyasayisi = (int)nudBoyaSayisi.Value ,
-                Aciklama = textBox2.Text,
+                BoyaId = (cmbBoyalar.SelectedValue as DesenBoyalar).BoyaId,
+                MusteriId=((DesenBoyalar)(cmbMusteri.SelectedValue)).MusteriId,
                 
 
-            };
-            DesenBoyalar desenBoyalar = new DesenBoyalar() 
-            {
 
-                GramMiktari = nudGram.Value
+
             };
 
 

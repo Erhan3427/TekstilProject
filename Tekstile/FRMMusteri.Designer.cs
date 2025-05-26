@@ -40,6 +40,7 @@
             btnSil = new Button();
             btnGuncell = new Button();
             mtbTelefon = new MaskedTextBox();
+            btnCikis = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvMüsteriler).BeginInit();
             SuspendLayout();
             // 
@@ -128,6 +129,7 @@
             btnSil.TabIndex = 4;
             btnSil.Text = "Sil";
             btnSil.UseVisualStyleBackColor = true;
+            btnSil.Click += btnSil_Click;
             // 
             // btnGuncell
             // 
@@ -137,6 +139,7 @@
             btnGuncell.TabIndex = 4;
             btnGuncell.Text = "Güncelle";
             btnGuncell.UseVisualStyleBackColor = true;
+            btnGuncell.Click += btnGuncell_Click;
             // 
             // mtbTelefon
             // 
@@ -146,11 +149,22 @@
             mtbTelefon.Size = new Size(166, 27);
             mtbTelefon.TabIndex = 5;
             // 
+            // btnCikis
+            // 
+            btnCikis.Location = new Point(863, 12);
+            btnCikis.Name = "btnCikis";
+            btnCikis.Size = new Size(124, 45);
+            btnCikis.TabIndex = 6;
+            btnCikis.Text = "Çıkış";
+            btnCikis.UseVisualStyleBackColor = true;
+            btnCikis.Click += btnCikis_Click;
+            // 
             // FRMMusteri
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(999, 459);
+            Controls.Add(btnCikis);
             Controls.Add(mtbTelefon);
             Controls.Add(btnGuncell);
             Controls.Add(btnSil);
@@ -185,5 +199,6 @@
         private Button btnSil;
         private Button btnGuncell;
         private MaskedTextBox mtbTelefon;
+        private Button btnCikis;
     }
 }

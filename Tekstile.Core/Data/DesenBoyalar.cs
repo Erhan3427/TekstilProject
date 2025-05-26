@@ -10,10 +10,12 @@ public partial class DesenBoyalar
     public int DesenId { get; set; }
 
     public int BoyaId { get; set; }
+    public int MusteriId { get; set; }
 
     public decimal? GramMiktari { get; set; }
 
     public virtual Boyalar Boya { get; set; } = null!;
 
     public virtual Desenler Desen { get; set; } = null!;
+    public virtual Musteriler Musteri { get; set; } = null!;
 }

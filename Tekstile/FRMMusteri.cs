@@ -14,7 +14,7 @@ namespace Tekstile
 {
     public partial class FRMMusteri : Form
     {
-        private MyDbContext _dbContext = new MyDbContext();
+        private MyDbContext _db = new MyDbContext();
         public FRMMusteri()
         {
             InitializeComponent();
@@ -36,13 +36,17 @@ namespace Tekstile
         }
         private void Listele()
         {
-            var musteriler = _dbContext.Musteriler.ToList();
+            var musteriler = _db.Musteriler.ToList();
             dgvMüsteriler.DataSource = musteriler;
             dgvMüsteriler.Columns[0].Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (!KontrolEt())
+            {
+                return;
+            }
             Musteriler musteri = new Musteriler()
             {
                 FirmaAdi = txtFirmaAdi.Text,
@@ -51,10 +55,50 @@ namespace Tekstile
                 Adres = txtIsAdresi.Text
 
             };
-            _dbContext.Musteriler.Add(musteri);
-            _dbContext.SaveChanges();
+            _db.Musteriler.Add(musteri);
+            _db.SaveChanges();
             Listele();
-            MessageBox.Show("Müşteri Eklendi"); 
+            MessageBox.Show("Müşteri Eklendi");
+        }
+
+        private void btnGuncell_Click(object sender, EventArgs e)
+        {
+            if (!KontrolEt())
+                return;
+
+            int id = Convert.ToInt32(dgvMüsteriler.CurrentRow.Cells[0].Value);
+            var musteriler = _db.Musteriler.Find(id);
+
+            musteriler.FirmaAdi = txtFirmaAdi.Text;
+            musteriler.YetkiliAdSoyad = txtFirmaYetkili.Text;
+            musteriler.Telefon = mtbTelefon.Text;
+            musteriler.Adres = txtIsAdresi.Text;
+            _db.SaveChanges();
+            MessageBox.Show("Güncellendi");
+            Listele();
+        }
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+
+            int id = Convert.ToInt32(dgvMüsteriler.CurrentRow.Cells[0].Value);
+            var musteriler = _db.Musteriler.Find(id);
+            if (musteriler == null)
+            {
+                MessageBox.Show("Müşteri yok");
+                return;
+            }
+            _db.Remove(musteriler);
+            _db.SaveChanges();
+            MessageBox.Show("Silindi");
+            Listele();
+
+        }
+
+        private void btnCikis_Click(object sender, EventArgs e)
+        {
+            FRMGiris fRMGiris = new FRMGiris();
+            fRMGiris.Show();
+            this.Close();
         }
     }
 }
