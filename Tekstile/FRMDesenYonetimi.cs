@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tekstile.Context;
-using Tekstile.Data;
+using Tekstile.Entities.Data;
 
 namespace Tekstile
 {
@@ -36,14 +36,44 @@ namespace Tekstile
             DesenBoyalar desenBoyalar = new DesenBoyalar()
             {
                 BoyaId = (cmbBoyalar.SelectedValue as DesenBoyalar).BoyaId,
-                MusteriId=((DesenBoyalar)(cmbMusteri.SelectedValue)).MusteriId,
-                
-
-
-
+                MusteriId = ((DesenBoyalar)(cmbMusteri.SelectedValue)).MusteriId,
+                GramMiktari = (double)nudGram.Value,
+                BoyaSayisi =(int) nudBoyaSayisi.Value,
+                Desen = new Desenler()
+                {
+                    DesenAdi = txtDesenAdi.Text,
+                    FotoYolu = Convert.ToBase64String(ResmiByteArrayaCevir(pbDesen.Image)), 
+                    Aciklama = txtAciklama.Text,
+                },
             };
 
+            _db.DesenBoyalari.Add(desenBoyalar);
+            _db.SaveChanges();
+            MessageBox.Show("Desen başarıyla kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private byte[] ResmiByteArrayaCevir(Image img)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                img.Save(ms, img.RawFormat);
+                return ms.ToArray();
+            }
+        }
 
+
+        private void btnDesenEkle_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Title = "Bir resim seçin";
+                openFileDialog.Filter = "Resim Dosyaları|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    pbDesen.Image = System.Drawing.Image.FromFile(openFileDialog.FileName);
+                    pbDesen.SizeMode = PictureBoxSizeMode.StretchImage; // Resmi PictureBox'a sığdır
+                }
+            }
         }
     }
 }

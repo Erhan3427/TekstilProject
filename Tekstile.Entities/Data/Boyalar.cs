@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Tekstile.Data;
+namespace Tekstile.Entities.Data;
 
 public partial class Boyalar
 {

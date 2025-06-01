@@ -15,4 +15,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Tekstile.Entities\Tekstile.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

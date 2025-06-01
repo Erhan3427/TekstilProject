@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tekstile.Context;
-using Tekstile.Data;
+using Tekstile.Entities.Data;
 
 namespace Tekstile
 {

@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tekstile.Data
-{
+namespace Tekstile.Entities.Data;
+
+
    
         public class StokHareket
         {
@@ -19,4 +20,4 @@ namespace Tekstile.Data
         }
 
     
-}
+

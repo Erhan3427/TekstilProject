@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tekstile.UI.Helpers
 {
-    public static class FormTemizleyici
+    public class FormTemizleyici
     {
         public static void Temizle(TextBox boyaKodu, TextBox renkAdi, NumericUpDown kovaAdet, NumericUpDown fiyat, ComboBox boyaTipi, ComboBox kovaDurum)
         {

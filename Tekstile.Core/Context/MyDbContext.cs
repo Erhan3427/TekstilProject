@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tekstile.Data;
+using Tekstile.Entities.Data;
+
 
 namespace Tekstile.Context
 {
@@ -22,6 +23,13 @@ namespace Tekstile.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=ERHANLAPTOP\\SQLEXPRESS;Database=TekstileDB;TrustServerCertificate=True;Trusted_Connection=True;");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+          
+
+
         }
 
 

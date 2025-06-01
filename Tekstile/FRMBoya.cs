@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tekstile.Context;
 using Tekstile.Data;
+using Tekstile.Entities.Data;
 using Tekstile.UI.Helpers;
 
 namespace Tekstile
@@ -27,14 +28,14 @@ namespace Tekstile
             dgvBoyalar.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvBoyalar.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvBoyalar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            
+            CmbRenkler.Items.AddRange(new[] {"Kırmızı", "Mavi", "Yeşil", "Sarı", "Turuncu","Mor", "Pembe", "Lacivert", "Kahverengi", "Siyah", "Beyaz", "Gri", "Füme", "Bej", "Altın","Gümüş", "Açık Mavi", "Koyu Yeşil", "Açık Pembe", "Bordo", "Haki", "Krem", "Hardal", "Mint", "Lila"});
             cmbKovaDurum.Items.AddRange(new[] { "Gelen", "Açılan", "Biten" });
             cmbBoyaTipi.Items.AddRange(new string[] { "Normal", "Şeffaf", "Tiner", "Yapışkan" });
             BoyaListeHelper.Listele(dgvBoyalar, _db);
         }
-       
-      
-       
+
+
+
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {
@@ -48,7 +49,7 @@ namespace Tekstile
                 RenkAdi = txtBoyaAdi.Text,
                 BoyaTipi = cmbBoyaTipi.SelectedItem.ToString(),
                 BoyaFiyat = Convert.ToDecimal(nudFiyat.Text),
-                
+
             };
 
             // Önce Boyalar nesnesini kaydet
@@ -222,7 +223,7 @@ namespace Tekstile
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FRMBoyaStogu boya = new FRMBoyaStogu();
+           FRMBoyaStogu boya = new FRMBoyaStogu();
             boya.Show();
 
         }
