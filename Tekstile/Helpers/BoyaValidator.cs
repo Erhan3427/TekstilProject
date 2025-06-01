@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tekstile.UI.Helpers
 {
-    public static class BoyaValidator
+    public class BoyaValidator
     {
         public static bool BoyaVerisiGecerliMi(string boyaKodu, string renkAdi, string kovaAdet, string fiyat, object boyaTipi, object kovaDurum)
         {
@@ -24,5 +24,4 @@ namespace Tekstile.UI.Helpers
             return true;
         }
     }
-
 }

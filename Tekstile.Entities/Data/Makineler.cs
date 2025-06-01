@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+namespace Tekstile.Entities.Data;
 
-namespace Tekstile.Data;
+
 
 public partial class Makineler
 {

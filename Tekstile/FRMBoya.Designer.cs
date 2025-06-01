@@ -49,6 +49,7 @@
             button1 = new Button();
             txtAciklama = new TextBox();
             label6 = new Label();
+            CmbRenkler = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvBoyalar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudFiyat).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudKovaAdet).BeginInit();
@@ -239,11 +240,20 @@
             label6.TabIndex = 2;
             label6.Text = "Açıklama";
             // 
+            // CmbRenkler
+            // 
+            CmbRenkler.FormattingEnabled = true;
+            CmbRenkler.Location = new Point(391, 77);
+            CmbRenkler.Name = "CmbRenkler";
+            CmbRenkler.Size = new Size(21, 28);
+            CmbRenkler.TabIndex = 15;
+            // 
             // FRMBoya
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1326, 453);
+            Controls.Add(CmbRenkler);
             Controls.Add(txtAciklama);
             Controls.Add(button1);
             Controls.Add(txtFiltrele);
@@ -297,5 +307,6 @@
         private Button button1;
         private TextBox txtAciklama;
         private Label label6;
+        private ComboBox CmbRenkler;
     }
 }

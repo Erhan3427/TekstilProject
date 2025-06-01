@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tekstile.UI", "Tekstile\Tek
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tekstile.Core", "Tekstile.Core\Tekstile.Core.csproj", "{B2C41F89-0998-4505-A369-E916C39043EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tekstile.Entities", "Tekstile.Entities\Tekstile.Entities.csproj", "{A7A14D4C-A353-43F3-94E3-77BD60133E1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tekstile.BLL", "Tekstile.BLL\Tekstile.BLL.csproj", "{AD56C359-16CC-44AC-8F2E-4F96B4E3C48A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{B2C41F89-0998-4505-A369-E916C39043EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2C41F89-0998-4505-A369-E916C39043EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2C41F89-0998-4505-A369-E916C39043EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7A14D4C-A353-43F3-94E3-77BD60133E1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7A14D4C-A353-43F3-94E3-77BD60133E1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7A14D4C-A353-43F3-94E3-77BD60133E1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7A14D4C-A353-43F3-94E3-77BD60133E1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD56C359-16CC-44AC-8F2E-4F96B4E3C48A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD56C359-16CC-44AC-8F2E-4F96B4E3C48A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD56C359-16CC-44AC-8F2E-4F96B4E3C48A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD56C359-16CC-44AC-8F2E-4F96B4E3C48A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

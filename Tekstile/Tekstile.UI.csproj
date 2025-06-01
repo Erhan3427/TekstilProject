@@ -16,7 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Tekstile.BLL\Tekstile.BLL.csproj" />
     <ProjectReference Include="..\Tekstile.Core\Tekstile.Core.csproj" />
+    <ProjectReference Include="..\Tekstile.Entities\Tekstile.Entities.csproj" />
   </ItemGroup>
 
 </Project>

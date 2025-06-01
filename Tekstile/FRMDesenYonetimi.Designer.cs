@@ -32,20 +32,21 @@
             cmbMusteri = new ComboBox();
             nudGram = new NumericUpDown();
             btnKaydet = new Button();
-            textBox1 = new TextBox();
+            txtDesenAdi = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            pictureBox1 = new PictureBox();
-            textBox2 = new TextBox();
+            pbDesen = new PictureBox();
+            txtAciklama = new TextBox();
             label7 = new Label();
             nudBoyaSayisi = new NumericUpDown();
             label6 = new Label();
             dgvDesenler = new DataGridView();
+            btnDesenEkle = new Button();
             ((System.ComponentModel.ISupportInitialize)nudGram).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbDesen).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudBoyaSayisi).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvDesenler).BeginInit();
             SuspendLayout();
@@ -83,12 +84,12 @@
             btnKaydet.UseVisualStyleBackColor = true;
             btnKaydet.Click += btnKaydet_Click;
             // 
-            // textBox1
+            // txtDesenAdi
             // 
-            textBox1.Location = new Point(96, 39);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(210, 27);
-            textBox1.TabIndex = 3;
+            txtDesenAdi.Location = new Point(96, 39);
+            txtDesenAdi.Name = "txtDesenAdi";
+            txtDesenAdi.Size = new Size(210, 27);
+            txtDesenAdi.TabIndex = 3;
             // 
             // label1
             // 
@@ -135,21 +136,21 @@
             label5.TabIndex = 4;
             label5.Text = "Açıklama";
             // 
-            // pictureBox1
+            // pbDesen
             // 
-            pictureBox1.Location = new Point(96, 84);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(257, 193);
-            pictureBox1.TabIndex = 5;
-            pictureBox1.TabStop = false;
+            pbDesen.Location = new Point(96, 84);
+            pbDesen.Name = "pbDesen";
+            pbDesen.Size = new Size(257, 193);
+            pbDesen.TabIndex = 5;
+            pbDesen.TabStop = false;
             // 
-            // textBox2
+            // txtAciklama
             // 
-            textBox2.Location = new Point(96, 283);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(257, 145);
-            textBox2.TabIndex = 6;
+            txtAciklama.Location = new Point(96, 283);
+            txtAciklama.Multiline = true;
+            txtAciklama.Name = "txtAciklama";
+            txtAciklama.Size = new Size(257, 145);
+            txtAciklama.TabIndex = 6;
             // 
             // label7
             // 
@@ -185,14 +186,25 @@
             dgvDesenler.Size = new Size(643, 166);
             dgvDesenler.TabIndex = 7;
             // 
+            // btnDesenEkle
+            // 
+            btnDesenEkle.Location = new Point(359, 228);
+            btnDesenEkle.Name = "btnDesenEkle";
+            btnDesenEkle.Size = new Size(72, 49);
+            btnDesenEkle.TabIndex = 8;
+            btnDesenEkle.Text = "Desen Ekle";
+            btnDesenEkle.UseVisualStyleBackColor = true;
+            btnDesenEkle.Click += btnDesenEkle_Click;
+            // 
             // FRMDesenYonetimi
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1107, 450);
+            Controls.Add(btnDesenEkle);
             Controls.Add(dgvDesenler);
-            Controls.Add(textBox2);
-            Controls.Add(pictureBox1);
+            Controls.Add(txtAciklama);
+            Controls.Add(pbDesen);
             Controls.Add(label5);
             Controls.Add(label6);
             Controls.Add(label7);
@@ -200,7 +212,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(textBox1);
+            Controls.Add(txtDesenAdi);
             Controls.Add(btnKaydet);
             Controls.Add(nudBoyaSayisi);
             Controls.Add(nudGram);
@@ -210,7 +222,7 @@
             Text = "DesenYonetim";
             Load += FRMDesenYonetimi_Load;
             ((System.ComponentModel.ISupportInitialize)nudGram).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbDesen).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudBoyaSayisi).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvDesenler).EndInit();
             ResumeLayout(false);
@@ -223,17 +235,18 @@
         private ComboBox cmbMusteri;
         private NumericUpDown nudGram;
         private Button btnKaydet;
-        private TextBox textBox1;
+        private TextBox txtDesenAdi;
         private Label label1;
         private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;
-        private PictureBox pictureBox1;
-        private TextBox textBox2;
+        private PictureBox pbDesen;
+        private TextBox txtAciklama;
         private Label label7;
         private NumericUpDown nudBoyaSayisi;
         private Label label6;
         private DataGridView dgvDesenler;
+        private Button btnDesenEkle;
     }
 }
