@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tekstile.BLL.Interfaces;
 using Tekstile.BLL.MusteriService;
 using Tekstile.Context;
 using Tekstile.Entities.Data;
@@ -16,10 +17,12 @@ namespace Tekstile
     public partial class FRMMusteri : Form
     {
         private MyDbContext _db;
-        MusteriService _musteriService;
-        public FRMMusteri(MyDbContext db)
+        IMusteriService _musteriService;
+        public FRMMusteri(MyDbContext db,IMusteriService musteriService)
         {
             _db = db;
+            _musteriService=musteriService;
+
             InitializeComponent();
             Listele();
         }

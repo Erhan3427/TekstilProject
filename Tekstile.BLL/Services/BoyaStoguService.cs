@@ -1,0 +1,32 @@
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Tekstile.BLL.Interfaces;
+using Tekstile.Context;
+using Tekstile.Entities.Data;
+
+namespace Tekstile.BLL.Services
+{
+    public class BoyaStoguService : IStokService
+    {
+        MyDbContext _db;
+        public BoyaStoguService(MyDbContext db)
+        {
+            _db = db;
+        }
+        public List<StokHareket> StokListele()
+        {
+            var list = _db.StokHareket.ToList();
+                
+            return list;    
+        }
+        public void Ekle(StokHareket hareket)
+        {
+            _db.StokHareket.Add(hareket);
+            _db.SaveChanges();
+        }
+    }
+}

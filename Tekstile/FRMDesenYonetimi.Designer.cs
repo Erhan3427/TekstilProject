@@ -47,8 +47,6 @@
             btnDesenEkle = new Button();
             btnBoyaEkle = new Button();
             colorDialog1 = new ColorDialog();
-            btnRenkSec = new Button();
-            pnlRenk = new Panel();
             ((System.ComponentModel.ISupportInitialize)nudGram).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbDesen).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudBoyaSayisi).BeginInit();
@@ -217,30 +215,11 @@
             btnBoyaEkle.UseVisualStyleBackColor = true;
             btnBoyaEkle.Click += btnBoyaEkle_Click;
             // 
-            // btnRenkSec
-            // 
-            btnRenkSec.Location = new Point(979, 177);
-            btnRenkSec.Name = "btnRenkSec";
-            btnRenkSec.Size = new Size(94, 29);
-            btnRenkSec.TabIndex = 10;
-            btnRenkSec.Text = "button1";
-            btnRenkSec.UseVisualStyleBackColor = true;
-            btnRenkSec.Click += btnRenkSec_Click;
-            // 
-            // pnlRenk
-            // 
-            pnlRenk.Location = new Point(1131, 199);
-            pnlRenk.Name = "pnlRenk";
-            pnlRenk.Size = new Size(50, 31);
-            pnlRenk.TabIndex = 11;
-            // 
             // FRMDesenYonetimi
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1227, 450);
-            Controls.Add(pnlRenk);
-            Controls.Add(btnRenkSec);
             Controls.Add(btnBoyaEkle);
             Controls.Add(btnDesenEkle);
             Controls.Add(dgvDesenler);
@@ -291,7 +270,5 @@
         private Button btnDesenEkle;
         private Button btnBoyaEkle;
         private ColorDialog colorDialog1;
-        private Button btnRenkSec;
-        private Panel pnlRenk;
     }
 }

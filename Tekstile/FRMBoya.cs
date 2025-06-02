@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tekstile.BLL.Interfaces;
 using Tekstile.Context;
 using Tekstile.Data;
 using Tekstile.Entities.Data;
@@ -16,10 +17,17 @@ namespace Tekstile
 {
     public partial class FRMBoya : Form
     {
-        MyDbContext _db = new MyDbContext();
-        public FRMBoya()
+        MyDbContext _db;
+        IBoyaService _boyaService;
+        IStokService _stokService;
+        FRMBoyaStogu _boyaStogu;
+        public FRMBoya(FRMBoyaStogu boyaStogu,MyDbContext context, IBoyaService boyaService,IStokService stokService)
         {
             InitializeComponent();
+            _boyaStogu = boyaStogu;
+            _db = context;
+            _boyaService = boyaService;
+            _stokService = stokService;
         }
 
 
@@ -53,8 +61,7 @@ namespace Tekstile
             };
 
             // Önce Boyalar nesnesini kaydet
-            _db.Boyalar.Add(Boyalar);
-            _db.SaveChanges();
+            _boyaService.Ekle(Boyalar);
 
             // Stok hareketi oluştur
             StokHareket stokHareket = new StokHareket
@@ -101,9 +108,7 @@ namespace Tekstile
             Boyalar.ToplamFiyat = Boyalar.BoyaFiyat * Boyalar.KovaAdedi;
 
             // Stok hareketini kaydet
-            _db.StokHareket.Add(stokHareket);
-            _db.SaveChanges();
-
+            _stokService.Ekle(stokHareket);
             MessageBox.Show("Boyanız eklenmiştir");
             BoyaListeHelper.Listele(dgvBoyalar, _db);
             FormTemizleyici.Temizle(txtBoyaKod, txtBoyaAdi, nudKovaAdet, nudFiyat, cmbBoyaTipi, cmbKovaDurum);
@@ -133,8 +138,8 @@ namespace Tekstile
             boyalar.BoyaFiyat = Convert.ToDecimal(nudFiyat.Text);
             boyalar.StokDurum = cmbKovaDurum.SelectedItem.ToString();
 
-            // Stok hareketi oluştur
             int yeniAdet = Convert.ToInt32(nudKovaAdet.Text);
+            // Stok hareketi oluştur
             if (eskiDurum != cmbKovaDurum.SelectedItem.ToString() || eskiKovaAdedi != yeniAdet)
             {
                 StokHareket stokHareket = new StokHareket
@@ -186,19 +191,12 @@ namespace Tekstile
         private void btnSil_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dgvBoyalar.CurrentRow.Cells[0].Value);
-            var boyalar = _db.Boyalar.Find(id);
-            if (boyalar != null)
-            {
-                _db.Boyalar.Remove(boyalar);
-                _db.SaveChanges();
+            
+                _boyaService.Sil(id);
                 MessageBox.Show("Silindi");
                 BoyaListeHelper.Listele(dgvBoyalar, _db);
                 FormTemizleyici.Temizle(txtBoyaKod, txtBoyaAdi, nudKovaAdet, nudFiyat, cmbBoyaTipi, cmbKovaDurum);
-            }
-            else
-            {
-                MessageBox.Show("Silinecek kayıt bulunamadı.");
-            }
+          
 
         }
 
@@ -223,8 +221,7 @@ namespace Tekstile
 
         private void button1_Click(object sender, EventArgs e)
         {
-           FRMBoyaStogu boya = new FRMBoyaStogu();
-            boya.Show();
+            _boyaStogu.Show();
 
         }
 

@@ -9,17 +9,17 @@ namespace Tekstile
         FRMBoya boyaForm;
         FRMDesenYonetimi desenYonetimiForm;
 
-        public FRMGiris()
-        {
-            InitializeComponent();
-
-        }
         public FRMGiris(FRMMusteri frmMusteri,FRMBoya frmBoya,FRMDesenYonetimi frmDesen)
         {
             InitializeComponent();
             musteriForm = frmMusteri;
             boyaForm = frmBoya;
             desenYonetimiForm = frmDesen;
+        }
+        public FRMGiris()
+        {
+            InitializeComponent();
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
