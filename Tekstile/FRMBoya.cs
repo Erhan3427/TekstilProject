@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Tekstile.Context;
 using Tekstile.Data;
 using Tekstile.Entities.Data;
-using Tekstile.UI.Helpers;
+using Tekstile.UI.Helpers.FRMBoya;
 
 namespace Tekstile
 {

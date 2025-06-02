@@ -45,6 +45,10 @@
             label6 = new Label();
             dgvDesenler = new DataGridView();
             btnDesenEkle = new Button();
+            btnBoyaEkle = new Button();
+            colorDialog1 = new ColorDialog();
+            btnRenkSec = new Button();
+            pnlRenk = new Panel();
             ((System.ComponentModel.ISupportInitialize)nudGram).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbDesen).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudBoyaSayisi).BeginInit();
@@ -53,8 +57,9 @@
             // 
             // cmbBoyalar
             // 
+            cmbBoyalar.Enabled = false;
             cmbBoyalar.FormattingEnabled = true;
-            cmbBoyalar.Location = new Point(542, 38);
+            cmbBoyalar.Location = new Point(944, 23);
             cmbBoyalar.Name = "cmbBoyalar";
             cmbBoyalar.Size = new Size(151, 28);
             cmbBoyalar.TabIndex = 0;
@@ -62,21 +67,26 @@
             // cmbMusteri
             // 
             cmbMusteri.FormattingEnabled = true;
-            cmbMusteri.Location = new Point(542, 72);
+            cmbMusteri.Location = new Point(545, 84);
             cmbMusteri.Name = "cmbMusteri";
             cmbMusteri.Size = new Size(151, 28);
             cmbMusteri.TabIndex = 0;
+            cmbMusteri.SelectedIndexChanged += cmbMusteri_SelectedIndexChanged;
             // 
             // nudGram
             // 
-            nudGram.Location = new Point(543, 106);
+            nudGram.DecimalPlaces = 2;
+            nudGram.Enabled = false;
+            nudGram.Increment = new decimal(new int[] { 5, 0, 0, 65536 });
+            nudGram.Location = new Point(945, 72);
             nudGram.Name = "nudGram";
             nudGram.Size = new Size(150, 27);
             nudGram.TabIndex = 1;
             // 
             // btnKaydet
             // 
-            btnKaydet.Location = new Point(747, 127);
+            btnKaydet.Enabled = false;
+            btnKaydet.Location = new Point(706, 199);
             btnKaydet.Name = "btnKaydet";
             btnKaydet.Size = new Size(126, 49);
             btnKaydet.TabIndex = 2;
@@ -112,7 +122,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(452, 46);
+            label3.Location = new Point(853, 31);
             label3.Name = "label3";
             label3.Size = new Size(59, 20);
             label3.TabIndex = 4;
@@ -121,7 +131,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(453, 84);
+            label4.Location = new Point(455, 92);
             label4.Name = "label4";
             label4.Size = new Size(58, 20);
             label4.TabIndex = 4;
@@ -155,7 +165,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(453, 117);
+            label7.Location = new Point(867, 75);
             label7.Name = "label7";
             label7.Size = new Size(45, 20);
             label7.TabIndex = 4;
@@ -163,15 +173,16 @@
             // 
             // nudBoyaSayisi
             // 
-            nudBoyaSayisi.Location = new Point(543, 139);
+            nudBoyaSayisi.Location = new Point(545, 118);
             nudBoyaSayisi.Name = "nudBoyaSayisi";
             nudBoyaSayisi.Size = new Size(150, 27);
             nudBoyaSayisi.TabIndex = 1;
+            nudBoyaSayisi.ValueChanged += nudBoyaSayisi_ValueChanged;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(453, 146);
+            label6.Location = new Point(455, 125);
             label6.Name = "label6";
             label6.Size = new Size(83, 20);
             label6.TabIndex = 4;
@@ -196,11 +207,41 @@
             btnDesenEkle.UseVisualStyleBackColor = true;
             btnDesenEkle.Click += btnDesenEkle_Click;
             // 
+            // btnBoyaEkle
+            // 
+            btnBoyaEkle.Location = new Point(1121, 45);
+            btnBoyaEkle.Name = "btnBoyaEkle";
+            btnBoyaEkle.Size = new Size(94, 54);
+            btnBoyaEkle.TabIndex = 9;
+            btnBoyaEkle.Text = "Boya Ekle";
+            btnBoyaEkle.UseVisualStyleBackColor = true;
+            btnBoyaEkle.Click += btnBoyaEkle_Click;
+            // 
+            // btnRenkSec
+            // 
+            btnRenkSec.Location = new Point(979, 177);
+            btnRenkSec.Name = "btnRenkSec";
+            btnRenkSec.Size = new Size(94, 29);
+            btnRenkSec.TabIndex = 10;
+            btnRenkSec.Text = "button1";
+            btnRenkSec.UseVisualStyleBackColor = true;
+            btnRenkSec.Click += btnRenkSec_Click;
+            // 
+            // pnlRenk
+            // 
+            pnlRenk.Location = new Point(1131, 199);
+            pnlRenk.Name = "pnlRenk";
+            pnlRenk.Size = new Size(50, 31);
+            pnlRenk.TabIndex = 11;
+            // 
             // FRMDesenYonetimi
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1107, 450);
+            ClientSize = new Size(1227, 450);
+            Controls.Add(pnlRenk);
+            Controls.Add(btnRenkSec);
+            Controls.Add(btnBoyaEkle);
             Controls.Add(btnDesenEkle);
             Controls.Add(dgvDesenler);
             Controls.Add(txtAciklama);
@@ -248,5 +289,9 @@
         private Label label6;
         private DataGridView dgvDesenler;
         private Button btnDesenEkle;
+        private Button btnBoyaEkle;
+        private ColorDialog colorDialog1;
+        private Button btnRenkSec;
+        private Panel pnlRenk;
     }
 }
