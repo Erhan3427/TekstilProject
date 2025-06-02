@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tekstile.UI.Helpers
+namespace Tekstile.UI.Helpers.FRMBoya
 {
     public class BoyaValidator
     {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tekstile.Context;
 
-namespace Tekstile.UI.Helpers
+namespace Tekstile.UI.Helpers.FRMBoya
 {
     public  class BoyaListeHelper
     {

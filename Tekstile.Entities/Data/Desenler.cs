@@ -13,15 +13,11 @@ public partial class Desenler
 
     public string? FotoYolu { get; set; }
 
-    public int? Boyasayisi { get; set; }
 
     public string? Aciklama { get; set; }
 
-    public int? MusteriId { get; set; }
-
     public virtual List<DesenBoyalar> DesenBoyalars { get; set; } 
 
-    public virtual Musteriler? Musteri { get; set; }
 
     public virtual List<Siparisler> Siparislers { get; set; } 
 }

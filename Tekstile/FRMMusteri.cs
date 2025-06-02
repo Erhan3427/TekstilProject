@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tekstile.BLL.MusteriService;
 using Tekstile.Context;
 using Tekstile.Entities.Data;
 
@@ -14,9 +15,11 @@ namespace Tekstile
 {
     public partial class FRMMusteri : Form
     {
-        private MyDbContext _db = new MyDbContext();
-        public FRMMusteri()
+        private MyDbContext _db;
+        MusteriService _musteriService;
+        public FRMMusteri(MyDbContext db)
         {
+            _db = db;
             InitializeComponent();
             Listele();
         }
@@ -36,8 +39,8 @@ namespace Tekstile
         }
         private void Listele()
         {
-            var musteriler = _db.Musteriler.ToList();
-            dgvMüsteriler.DataSource = musteriler;
+
+            dgvMüsteriler.DataSource = _musteriService.MusteriListele();
             dgvMüsteriler.Columns[0].Visible = false;
         }
 
@@ -55,8 +58,7 @@ namespace Tekstile
                 Adres = txtIsAdresi.Text
 
             };
-            _db.Musteriler.Add(musteri);
-            _db.SaveChanges();
+            _musteriService.MusteriEkle(musteri);
             Listele();
             MessageBox.Show("Müşteri Eklendi");
         }
@@ -81,14 +83,12 @@ namespace Tekstile
         {
 
             int id = Convert.ToInt32(dgvMüsteriler.CurrentRow.Cells[0].Value);
-            var musteriler = _db.Musteriler.Find(id);
-            if (musteriler == null)
+            if (id == null)
             {
                 MessageBox.Show("Müşteri yok");
                 return;
             }
-            _db.Remove(musteriler);
-            _db.SaveChanges();
+            _musteriService.MusteriSil(id);
             MessageBox.Show("Silindi");
             Listele();
 
@@ -96,8 +96,8 @@ namespace Tekstile
 
         private void btnCikis_Click(object sender, EventArgs e)
         {
-            FRMGiris fRMGiris = new FRMGiris();
-            fRMGiris.Show();
+            var girisForm = new FRMGiris();
+            girisForm.Show();
             this.Close();
         }
     }

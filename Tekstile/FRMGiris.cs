@@ -1,12 +1,26 @@
+using Tekstile.Context;
+
 namespace Tekstile
 {
     public partial class FRMGiris : Form
     {
+        MyDbContext _context;
+        FRMMusteri musteriForm;
+        FRMBoya boyaForm;
+        FRMDesenYonetimi desenYonetimiForm;
+
         public FRMGiris()
         {
             InitializeComponent();
-        }
 
+        }
+        public FRMGiris(FRMMusteri frmMusteri,FRMBoya frmBoya,FRMDesenYonetimi frmDesen)
+        {
+            InitializeComponent();
+            musteriForm = frmMusteri;
+            boyaForm = frmBoya;
+            desenYonetimiForm = frmDesen;
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -14,14 +28,12 @@ namespace Tekstile
 
         private void btnMüsteriYonetim_Click(object sender, EventArgs e)
         {
-            FRMMusteri musteriForm = new FRMMusteri();
             musteriForm.ShowDialog();
             this.Hide();
         }
 
         private void btnBoyaYonetim_Click(object sender, EventArgs e)
         {
-            FRMBoya boyaForm = new FRMBoya();
             boyaForm.ShowDialog();
             this.Hide();
 
@@ -29,7 +41,6 @@ namespace Tekstile
 
         private void btnDesenYonetimi_Click(object sender, EventArgs e)
         {
-            FRMDesenYonetimi desenYonetimiForm = new();
             desenYonetimiForm.ShowDialog();
             this.Hide();
         }

@@ -14,7 +14,7 @@ public partial class DesenBoyalar
     public int BoyaId { get; set; }
     public int MusteriId { get; set; }
 
-    public double? GramMiktari { get; set; }
+    public double Gram { get; set; }
     public int BoyaSayisi { get; set; }
     public virtual Boyalar Boya { get; set; } = null!;
 
