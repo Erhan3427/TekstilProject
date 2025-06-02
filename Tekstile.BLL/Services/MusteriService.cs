@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tekstile.BLL.Interfaces;
 using Tekstile.Context;
 using Tekstile.Entities.Data;
 
 namespace Tekstile.BLL.MusteriService
 {
     
-    public class MusteriService
+    public class MusteriService:IMusteriService
     {
         MyDbContext _db;
         public MusteriService(MyDbContext context)

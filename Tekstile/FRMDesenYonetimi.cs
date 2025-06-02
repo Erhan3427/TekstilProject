@@ -162,7 +162,6 @@ namespace Tekstile
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                pnlRenk.BackColor = colorDialog1.Color;
             }
         }
     }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tekstile.BLL.Interfaces;
 using Tekstile.Context;
 
 namespace Tekstile.Data
@@ -15,10 +16,16 @@ namespace Tekstile.Data
     public partial class FRMBoyaStogu : Form
     {
         MyDbContext _db = new MyDbContext();
-        public FRMBoyaStogu()
+        IStokService _stokService;
+        public FRMBoyaStogu(MyDbContext context,IStokService stokService)
         {
+            _db = context;
+            _stokService = stokService;
+
             InitializeComponent();
         }
+
+       
 
         private void BoyaStoğu_Load(object sender, EventArgs e)
         {
@@ -29,7 +36,7 @@ namespace Tekstile.Data
 
         private void listele()
         {
-            dgvBoyaStok.DataSource = _db.StokHareket.Select(selector => new
+            dgvBoyaStok.DataSource = _stokService.StokListele().Select(selector => new
             {
                 selector.Id,
                 selector.BoyaId,
@@ -39,6 +46,7 @@ namespace Tekstile.Data
                 selector.Adet,
                 selector.Aciklama
             }).ToList();
+
             dgvBoyaStok.Columns[0].Visible = false;
 
 
@@ -49,7 +57,7 @@ namespace Tekstile.Data
             var Baslangictarihi = dtpBaslangic.Value;
             var Bitistarihi = dtpBitis.Value;
             var filtreli = _db.StokHareket
-                .Where(x => x.IslemTarihi >= Baslangictarihi && x.IslemTarihi <= Bitistarihi).Include(x =>x.Boya).ToList();
+                .Where(x => x.IslemTarihi >= Baslangictarihi.AddDays(-1) && x.IslemTarihi <= Bitistarihi).Include(x =>x.Boya).ToList();
 
             if (cmbİslemler.SelectedItem != null && cmbİslemler.SelectedItem.ToString() != "Hepsi")
             {

@@ -1,5 +1,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Tekstile.BLL.Interfaces;
+using Tekstile.BLL.MusteriService;
+using Tekstile.BLL.Services;
 using Tekstile.Context;
 using Tekstile.Data;
 
@@ -17,18 +20,27 @@ namespace Tekstile
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             var host = Host.CreateDefaultBuilder()
-                .ConfigureServices(services =>
-                {
-                    services.AddDbContext<MyDbContext>();
+             .ConfigureServices(services =>
+             {
+                     services.AddDbContext<MyDbContext>();
 
-                    services.AddTransient<FRMGiris>();
-                    services.AddTransient<FRMBoya>();
-                    services.AddTransient<FRMMusteri>(); 
-                    services.AddTransient<FRMDesenYonetimi>();
-                    services.AddTransient<FRMBoyaStogu>();
+                     // Servis katmaný
+                     services.AddScoped<IMusteriService, MusteriService>();
+                     services.AddScoped<IBoyaService, BoyaService>();
+                     services.AddScoped<IStokService, BoyaStoguService>();
+                     services.AddScoped<MakineService>();
 
-                })
-                .Build();
+
+                 // Formlar
+                     services.AddTransient<FRMGiris>();
+                     services.AddTransient<FRMBoya>();
+                     services.AddTransient<FRMMusteri>();
+                     services.AddTransient<FRMDesenYonetimi>();
+                     services.AddTransient<FRMBoyaStogu>();
+                     services.AddTransient<FRMMakineYonetimi>();
+                 })
+                 .Build();
+
 
             var girisFormu = host.Services.GetRequiredService<FRMGiris>();
 
