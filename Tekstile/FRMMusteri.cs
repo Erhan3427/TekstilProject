@@ -16,12 +16,11 @@ namespace Tekstile
 {
     public partial class FRMMusteri : Form
     {
-        private MyDbContext _db;
-        IMusteriService _musteriService;
-        public FRMMusteri(MyDbContext db,IMusteriService musteriService)
+         MyDbContext _db;
+        MusteriService _musteriService = new MusteriService();
+        public FRMMusteri()
         {
-            _db = db;
-            _musteriService=musteriService;
+            _db = new MyDbContext();
 
             InitializeComponent();
             Listele();
@@ -29,6 +28,9 @@ namespace Tekstile
 
         private void FormMusteri_Load(object sender, EventArgs e)
         {
+            dgvMüsteriler.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvMüsteriler.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvMüsteriler.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
         }
         public bool KontrolEt()
@@ -97,11 +99,6 @@ namespace Tekstile
 
         }
 
-        private void btnCikis_Click(object sender, EventArgs e)
-        {
-            var girisForm = new FRMGiris();
-            girisForm.Show();
-            this.Close();
-        }
+      
     }
 }

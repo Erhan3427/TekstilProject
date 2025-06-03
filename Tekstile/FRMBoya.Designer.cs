@@ -103,7 +103,7 @@
             dgvBoyalar.Name = "dgvBoyalar";
             dgvBoyalar.RowHeadersWidth = 51;
             dgvBoyalar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvBoyalar.Size = new Size(1304, 176);
+            dgvBoyalar.Size = new Size(1304, 185);
             dgvBoyalar.TabIndex = 4;
             dgvBoyalar.CellClick += dgvBoyalar_CellClick;
             // 
@@ -119,6 +119,7 @@
             // 
             // cmbBoyaTipi
             // 
+            cmbBoyaTipi.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbBoyaTipi.FormattingEnabled = true;
             cmbBoyaTipi.Location = new Point(253, 124);
             cmbBoyaTipi.Name = "cmbBoyaTipi";
@@ -174,6 +175,7 @@
             // 
             // cmbKovaDurum
             // 
+            cmbKovaDurum.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbKovaDurum.FormattingEnabled = true;
             cmbKovaDurum.Location = new Point(531, 123);
             cmbKovaDurum.Name = "cmbKovaDurum";
@@ -242,17 +244,20 @@
             // 
             // CmbRenkler
             // 
+            CmbRenkler.DropDownStyle = ComboBoxStyle.DropDownList;
             CmbRenkler.FormattingEnabled = true;
             CmbRenkler.Location = new Point(391, 77);
             CmbRenkler.Name = "CmbRenkler";
-            CmbRenkler.Size = new Size(21, 28);
+            CmbRenkler.Size = new Size(20, 28);
             CmbRenkler.TabIndex = 15;
+            CmbRenkler.DropDown += CmbRenkler_DropDown;
+            CmbRenkler.DropDownClosed += CmbRenkler_DropDownClosed;
             // 
             // FRMBoya
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1326, 453);
+            ClientSize = new Size(1327, 453);
             Controls.Add(CmbRenkler);
             Controls.Add(txtAciklama);
             Controls.Add(button1);

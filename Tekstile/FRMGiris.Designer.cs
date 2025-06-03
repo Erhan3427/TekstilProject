@@ -35,11 +35,12 @@
             btnCikis = new Button();
             btnMakineYonetim = new Button();
             label1 = new Label();
+            pnlYonetim = new Panel();
             SuspendLayout();
             // 
             // btnMüsteriYonetim
             // 
-            btnMüsteriYonetim.Location = new Point(161, 163);
+            btnMüsteriYonetim.Location = new Point(12, 74);
             btnMüsteriYonetim.Name = "btnMüsteriYonetim";
             btnMüsteriYonetim.Size = new Size(134, 63);
             btnMüsteriYonetim.TabIndex = 0;
@@ -49,7 +50,7 @@
             // 
             // btnDesenYonetimi
             // 
-            btnDesenYonetimi.Location = new Point(161, 232);
+            btnDesenYonetimi.Location = new Point(12, 212);
             btnDesenYonetimi.Name = "btnDesenYonetimi";
             btnDesenYonetimi.Size = new Size(134, 63);
             btnDesenYonetimi.TabIndex = 0;
@@ -59,16 +60,17 @@
             // 
             // btnSiparisYonetim
             // 
-            btnSiparisYonetim.Location = new Point(161, 301);
+            btnSiparisYonetim.Location = new Point(12, 350);
             btnSiparisYonetim.Name = "btnSiparisYonetim";
             btnSiparisYonetim.Size = new Size(134, 63);
             btnSiparisYonetim.TabIndex = 0;
             btnSiparisYonetim.Text = "Sipariş Yönetimi";
             btnSiparisYonetim.UseVisualStyleBackColor = true;
+            btnSiparisYonetim.Click += btnSiparisYonetim_Click;
             // 
             // btnBoyaYonetim
             // 
-            btnBoyaYonetim.Location = new Point(390, 163);
+            btnBoyaYonetim.Location = new Point(12, 143);
             btnBoyaYonetim.Name = "btnBoyaYonetim";
             btnBoyaYonetim.Size = new Size(134, 63);
             btnBoyaYonetim.TabIndex = 0;
@@ -78,37 +80,47 @@
             // 
             // btnCikis
             // 
-            btnCikis.Location = new Point(390, 301);
+            btnCikis.Location = new Point(12, 441);
             btnCikis.Name = "btnCikis";
             btnCikis.Size = new Size(134, 63);
             btnCikis.TabIndex = 0;
             btnCikis.Text = "Çıkış";
             btnCikis.UseVisualStyleBackColor = true;
+            btnCikis.Click += btnCikis_Click;
             // 
             // btnMakineYonetim
             // 
-            btnMakineYonetim.Location = new Point(390, 232);
+            btnMakineYonetim.Location = new Point(12, 281);
             btnMakineYonetim.Name = "btnMakineYonetim";
             btnMakineYonetim.Size = new Size(134, 63);
             btnMakineYonetim.TabIndex = 0;
             btnMakineYonetim.Text = "Makine Yönetimi";
             btnMakineYonetim.UseVisualStyleBackColor = true;
+            btnMakineYonetim.Click += btnMakineYonetim_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 17F);
-            label1.Location = new Point(216, 59);
+            label1.Location = new Point(152, 9);
             label1.Name = "label1";
             label1.Size = new Size(266, 40);
             label1.TabIndex = 1;
             label1.Text = "Tekstil Takip Sistemi";
             // 
+            // pnlYonetim
+            // 
+            pnlYonetim.Location = new Point(152, 9);
+            pnlYonetim.Name = "pnlYonetim";
+            pnlYonetim.Size = new Size(1317, 500);
+            pnlYonetim.TabIndex = 2;
+            // 
             // FRMGiris
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(785, 459);
+            ClientSize = new Size(1481, 516);
+            Controls.Add(pnlYonetim);
             Controls.Add(label1);
             Controls.Add(btnCikis);
             Controls.Add(btnSiparisYonetim);
@@ -116,6 +128,7 @@
             Controls.Add(btnMakineYonetim);
             Controls.Add(btnDesenYonetimi);
             Controls.Add(btnMüsteriYonetim);
+            IsMdiContainer = true;
             Name = "FRMGiris";
             Text = "Form1";
             Load += Form1_Load;
@@ -132,5 +145,6 @@
         private Button btnCikis;
         private Button btnMakineYonetim;
         private Label label1;
+        private Panel pnlYonetim;
     }
 }

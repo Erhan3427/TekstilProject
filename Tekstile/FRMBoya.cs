@@ -8,26 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tekstile.BLL.Interfaces;
+using Tekstile.BLL.Services;
 using Tekstile.Context;
 using Tekstile.Data;
 using Tekstile.Entities.Data;
 using Tekstile.UI.Helpers.FRMBoya;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Tekstile
 {
     public partial class FRMBoya : Form
     {
         MyDbContext _db;
-        IBoyaService _boyaService;
-        IStokService _stokService;
+        BoyaService _boyaService;
+        BoyaStoguService _stokService;
         FRMBoyaStogu _boyaStogu;
-        public FRMBoya(FRMBoyaStogu boyaStogu,MyDbContext context, IBoyaService boyaService,IStokService stokService)
+        public FRMBoya()
         {
+            _db = new MyDbContext();
+            _boyaService = new BoyaService();
+            _stokService = new BoyaStoguService();
             InitializeComponent();
-            _boyaStogu = boyaStogu;
-            _db = context;
-            _boyaService = boyaService;
-            _stokService = stokService;
         }
 
 
@@ -36,7 +37,7 @@ namespace Tekstile
             dgvBoyalar.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvBoyalar.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvBoyalar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            CmbRenkler.Items.AddRange(new[] {"Kırmızı", "Mavi", "Yeşil", "Sarı", "Turuncu","Mor", "Pembe", "Lacivert", "Kahverengi", "Siyah", "Beyaz", "Gri", "Füme", "Bej", "Altın","Gümüş", "Açık Mavi", "Koyu Yeşil", "Açık Pembe", "Bordo", "Haki", "Krem", "Hardal", "Mint", "Lila"});
+            CmbRenkler.Items.AddRange(new[] { "Kırmızı", "Mavi", "Yeşil", "Sarı", "Turuncu", "Mor", "Pembe", "Lacivert", "Kahverengi", "Siyah", "Beyaz", "Gri", "Füme", "Bej", "Altın", "Gümüş", "Açık Mavi", "Koyu Yeşil", "Açık Pembe", "Bordo", "Haki", "Krem", "Hardal", "Mint", "Lila" });
             cmbKovaDurum.Items.AddRange(new[] { "Gelen", "Açılan", "Biten" });
             cmbBoyaTipi.Items.AddRange(new string[] { "Normal", "Şeffaf", "Tiner", "Yapışkan" });
             BoyaListeHelper.Listele(dgvBoyalar, _db);
@@ -191,12 +192,12 @@ namespace Tekstile
         private void btnSil_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dgvBoyalar.CurrentRow.Cells[0].Value);
-            
-                _boyaService.Sil(id);
-                MessageBox.Show("Silindi");
-                BoyaListeHelper.Listele(dgvBoyalar, _db);
-                FormTemizleyici.Temizle(txtBoyaKod, txtBoyaAdi, nudKovaAdet, nudFiyat, cmbBoyaTipi, cmbKovaDurum);
-          
+
+            _boyaService.Sil(id);
+            MessageBox.Show("Silindi");
+            BoyaListeHelper.Listele(dgvBoyalar, _db);
+            FormTemizleyici.Temizle(txtBoyaKod, txtBoyaAdi, nudKovaAdet, nudFiyat, cmbBoyaTipi, cmbKovaDurum);
+
 
         }
 
@@ -221,9 +222,22 @@ namespace Tekstile
 
         private void button1_Click(object sender, EventArgs e)
         {
+            FRMBoyaStogu _boyaStogu = new FRMBoyaStogu();
             _boyaStogu.Show();
 
         }
 
+        private void CmbRenkler_DropDown(object sender, EventArgs e)
+        {
+            int newHeight = Math.Min(20 + (CmbRenkler.Items.Count * 20), 200);
+            CmbRenkler.Height = newHeight;
+            CmbRenkler.Width = 100;
+        }
+
+        private void CmbRenkler_DropDownClosed(object sender, EventArgs e)
+        {
+            CmbRenkler.Width = 20;
+            txtBoyaAdi.Text = CmbRenkler.SelectedItem.ToString();
+        }
     }
 }

@@ -40,7 +40,6 @@
             btnSil = new Button();
             btnGuncell = new Button();
             mtbTelefon = new MaskedTextBox();
-            btnCikis = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvMüsteriler).BeginInit();
             SuspendLayout();
             // 
@@ -72,7 +71,7 @@
             dgvMüsteriler.Location = new Point(20, 259);
             dgvMüsteriler.Name = "dgvMüsteriler";
             dgvMüsteriler.RowHeadersWidth = 51;
-            dgvMüsteriler.Size = new Size(967, 188);
+            dgvMüsteriler.Size = new Size(1295, 188);
             dgvMüsteriler.TabIndex = 2;
             // 
             // label1
@@ -149,22 +148,11 @@
             mtbTelefon.Size = new Size(166, 27);
             mtbTelefon.TabIndex = 5;
             // 
-            // btnCikis
-            // 
-            btnCikis.Location = new Point(863, 12);
-            btnCikis.Name = "btnCikis";
-            btnCikis.Size = new Size(124, 45);
-            btnCikis.TabIndex = 6;
-            btnCikis.Text = "Çıkış";
-            btnCikis.UseVisualStyleBackColor = true;
-            btnCikis.Click += btnCikis_Click;
-            // 
             // FRMMusteri
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(999, 459);
-            Controls.Add(btnCikis);
+            ClientSize = new Size(1327, 453);
             Controls.Add(mtbTelefon);
             Controls.Add(btnGuncell);
             Controls.Add(btnSil);
@@ -199,6 +187,5 @@
         private Button btnSil;
         private Button btnGuncell;
         private MaskedTextBox mtbTelefon;
-        private Button btnCikis;
     }
 }

@@ -13,9 +13,9 @@ namespace Tekstile.BLL.MusteriService
     public class MusteriService:IMusteriService
     {
         MyDbContext _db;
-        public MusteriService(MyDbContext context)
+        public MusteriService()
         {
-            _db = context;
+            _db = new MyDbContext();
         }
         public List<Musteriler> MusteriListele()
         {

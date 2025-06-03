@@ -55,17 +55,19 @@
             // 
             // cmbBoyalar
             // 
+            cmbBoyalar.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbBoyalar.Enabled = false;
             cmbBoyalar.FormattingEnabled = true;
-            cmbBoyalar.Location = new Point(944, 23);
+            cmbBoyalar.Location = new Point(1014, 72);
             cmbBoyalar.Name = "cmbBoyalar";
             cmbBoyalar.Size = new Size(151, 28);
             cmbBoyalar.TabIndex = 0;
             // 
             // cmbMusteri
             // 
+            cmbMusteri.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbMusteri.FormattingEnabled = true;
-            cmbMusteri.Location = new Point(545, 84);
+            cmbMusteri.Location = new Point(555, 83);
             cmbMusteri.Name = "cmbMusteri";
             cmbMusteri.Size = new Size(151, 28);
             cmbMusteri.TabIndex = 0;
@@ -76,7 +78,7 @@
             nudGram.DecimalPlaces = 2;
             nudGram.Enabled = false;
             nudGram.Increment = new decimal(new int[] { 5, 0, 0, 65536 });
-            nudGram.Location = new Point(945, 72);
+            nudGram.Location = new Point(1015, 121);
             nudGram.Name = "nudGram";
             nudGram.Size = new Size(150, 27);
             nudGram.TabIndex = 1;
@@ -84,7 +86,7 @@
             // btnKaydet
             // 
             btnKaydet.Enabled = false;
-            btnKaydet.Location = new Point(706, 199);
+            btnKaydet.Location = new Point(728, 95);
             btnKaydet.Name = "btnKaydet";
             btnKaydet.Size = new Size(126, 49);
             btnKaydet.TabIndex = 2;
@@ -120,7 +122,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(853, 31);
+            label3.Location = new Point(923, 80);
             label3.Name = "label3";
             label3.Size = new Size(59, 20);
             label3.TabIndex = 4;
@@ -129,7 +131,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(455, 92);
+            label4.Location = new Point(465, 91);
             label4.Name = "label4";
             label4.Size = new Size(58, 20);
             label4.TabIndex = 4;
@@ -146,6 +148,7 @@
             // 
             // pbDesen
             // 
+            pbDesen.BackColor = SystemColors.ButtonHighlight;
             pbDesen.Location = new Point(96, 84);
             pbDesen.Name = "pbDesen";
             pbDesen.Size = new Size(257, 193);
@@ -163,7 +166,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(867, 75);
+            label7.Location = new Point(937, 124);
             label7.Name = "label7";
             label7.Size = new Size(45, 20);
             label7.TabIndex = 4;
@@ -171,7 +174,7 @@
             // 
             // nudBoyaSayisi
             // 
-            nudBoyaSayisi.Location = new Point(545, 118);
+            nudBoyaSayisi.Location = new Point(555, 117);
             nudBoyaSayisi.Name = "nudBoyaSayisi";
             nudBoyaSayisi.Size = new Size(150, 27);
             nudBoyaSayisi.TabIndex = 1;
@@ -180,7 +183,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(455, 125);
+            label6.Location = new Point(465, 124);
             label6.Name = "label6";
             label6.Size = new Size(83, 20);
             label6.TabIndex = 4;
@@ -189,10 +192,10 @@
             // dgvDesenler
             // 
             dgvDesenler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDesenler.Location = new Point(452, 272);
+            dgvDesenler.Location = new Point(452, 228);
             dgvDesenler.Name = "dgvDesenler";
             dgvDesenler.RowHeadersWidth = 51;
-            dgvDesenler.Size = new Size(643, 166);
+            dgvDesenler.Size = new Size(863, 210);
             dgvDesenler.TabIndex = 7;
             // 
             // btnDesenEkle
@@ -207,7 +210,7 @@
             // 
             // btnBoyaEkle
             // 
-            btnBoyaEkle.Location = new Point(1121, 45);
+            btnBoyaEkle.Location = new Point(1191, 94);
             btnBoyaEkle.Name = "btnBoyaEkle";
             btnBoyaEkle.Size = new Size(94, 54);
             btnBoyaEkle.TabIndex = 9;
@@ -219,7 +222,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1227, 450);
+            ClientSize = new Size(1327, 453);
             Controls.Add(btnBoyaEkle);
             Controls.Add(btnDesenEkle);
             Controls.Add(dgvDesenler);

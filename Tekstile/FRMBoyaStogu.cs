@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tekstile.BLL.Interfaces;
+using Tekstile.BLL.Services;
 using Tekstile.Context;
 
 namespace Tekstile.Data
@@ -16,11 +17,9 @@ namespace Tekstile.Data
     public partial class FRMBoyaStogu : Form
     {
         MyDbContext _db = new MyDbContext();
-        IStokService _stokService;
-        public FRMBoyaStogu(MyDbContext context,IStokService stokService)
+        BoyaStoguService _stokService = new BoyaStoguService();
+        public FRMBoyaStogu()
         {
-            _db = context;
-            _stokService = stokService;
 
             InitializeComponent();
         }
@@ -29,6 +28,10 @@ namespace Tekstile.Data
 
         private void BoyaStoğu_Load(object sender, EventArgs e)
         {
+            dgvBoyaStok.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvBoyaStok.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvBoyaStok.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
             listele();
             cmbİslemler.Items.AddRange(new[] { "Gelen", "Açılan", "Biten", "Hepsi" });
 
@@ -36,15 +39,15 @@ namespace Tekstile.Data
 
         private void listele()
         {
-            dgvBoyaStok.DataSource = _stokService.StokListele().Select(selector => new
+            dgvBoyaStok.DataSource = _stokService.StokListele().Select(s => new
             {
-                selector.Id,
-                selector.BoyaId,
-                selector.Boya.RenkAdi,
-                selector.IslemTarihi,
-                selector.IslemTuru,
-                selector.Adet,
-                selector.Aciklama
+                s.Id,
+                s.BoyaId,
+                s.Boya.RenkAdi,
+                s.IslemTarihi,
+                s.IslemTuru,
+                s.Adet,
+                s.Aciklama
             }).ToList();
 
             dgvBoyaStok.Columns[0].Visible = false;

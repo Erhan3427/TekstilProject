@@ -13,9 +13,9 @@ namespace Tekstile.BLL.Services
     public class BoyaService:IBoyaService
     {
         MyDbContext _db;
-        public BoyaService(MyDbContext db)
+        public BoyaService()
         {
-            _db = db;
+            _db = new MyDbContext();
         }
         public void Ekle(Boyalar boya)
         {
