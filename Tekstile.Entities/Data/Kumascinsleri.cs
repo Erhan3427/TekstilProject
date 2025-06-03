@@ -11,7 +11,7 @@ public partial class Kumascinsleri
 
     public string KumasAdi { get; set; } = null!;
 
-    public int? Gramaj { get; set; }
+    public double? Gramaj { get; set; }
 
     public string? IplikTipi { get; set; }
 

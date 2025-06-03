@@ -19,6 +19,9 @@ public partial class Siparisler
     public int? Adet { get; set; }
 
     public decimal? BaskiFiyat { get; set; }
+    public decimal? ToplamFiyat { get; set; }
+    public string? Durum { get; set; }
+
 
     public DateTime? SiparisTarihi { get; set; }
 
