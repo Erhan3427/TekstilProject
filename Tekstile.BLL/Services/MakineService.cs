@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 using Tekstile.Context;
@@ -11,10 +13,11 @@ namespace Tekstile.BLL.Services
     public class MakineService
     {
         MyDbContext _db;
-        public MakineService(MyDbContext context)
+        public MakineService()
         {
-            _db = context;
+            _db = new MyDbContext();
         }
+        public List<Makineler> MakineleriListele() => _db.Makineler.ToList();
         public void Ekle(Makineler makine)
         {
             _db.Makineler.Add(makine);

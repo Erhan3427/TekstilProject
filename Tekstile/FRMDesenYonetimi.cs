@@ -27,6 +27,11 @@ namespace Tekstile
 
         private void FRMDesenYonetimi_Load(object sender, EventArgs e)
         {
+
+            dgvDesenler.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvDesenler.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvDesenler.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
             cmbBoyalar.DataSource = _db.Boyalar.ToList();
             cmbBoyalar.DisplayMember = "RenkAdi";
             cmbBoyalar.ValueMember = "Id";

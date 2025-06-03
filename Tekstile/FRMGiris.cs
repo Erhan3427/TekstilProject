@@ -1,4 +1,5 @@
 using Tekstile.Context;
+using Tekstile.UI;
 
 namespace Tekstile
 {
@@ -9,13 +10,7 @@ namespace Tekstile
         FRMBoya boyaForm;
         FRMDesenYonetimi desenYonetimiForm;
 
-        public FRMGiris(FRMMusteri frmMusteri,FRMBoya frmBoya,FRMDesenYonetimi frmDesen)
-        {
-            InitializeComponent();
-            musteriForm = frmMusteri;
-            boyaForm = frmBoya;
-            desenYonetimiForm = frmDesen;
-        }
+
         public FRMGiris()
         {
             InitializeComponent();
@@ -25,24 +20,54 @@ namespace Tekstile
         {
 
         }
+        public void FormGetir(Form form)
+        {
+            pnlYonetim.Controls.Clear();
+            form.MdiParent = this; //this form(içinde bulunduðumuz form), ana formdur. parametreden aldýðýmýz form, ana formun alt formudur.
+            form.FormBorderStyle = FormBorderStyle.None; //hareket etmesini engelledik
+            pnlYonetim.Controls.Add(form);  //Çaðýrdýðýmýz formu pnlIcerik adýndaki panele ekledik.
+            form.Show(); //Çaðýrdýðýmýz formu göster dedik.
+        }
 
         private void btnMüsteriYonetim_Click(object sender, EventArgs e)
         {
-            musteriForm.ShowDialog();
-            this.Hide();
+            FRMMusteri musteriForm = new();
+            FormGetir(musteriForm);
+
         }
 
         private void btnBoyaYonetim_Click(object sender, EventArgs e)
         {
-            boyaForm.ShowDialog();
-            this.Hide();
+            FRMBoya boyaForm = new FRMBoya();
+            FormGetir(boyaForm);
 
         }
 
         private void btnDesenYonetimi_Click(object sender, EventArgs e)
         {
-            desenYonetimiForm.ShowDialog();
-            this.Hide();
+            FRMDesenYonetimi desenYonetimiForm = new FRMDesenYonetimi();
+            FormGetir(desenYonetimiForm);
+        }
+
+        private void btnMakineYonetim_Click(object sender, EventArgs e)
+        {
+          FRMMakineYonetim fRMMakineYonetim = new FRMMakineYonetim();
+            FormGetir(fRMMakineYonetim);
+
+        }
+
+        private void btnSiparisYonetim_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCikis_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Çýkmak istediðinize emin misiniz?", "Uyarý", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                Application.Exit(); //Uygulamadan çýkýþ yapar.
+
+            }
         }
     }
 }

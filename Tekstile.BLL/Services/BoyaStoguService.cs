@@ -13,9 +13,9 @@ namespace Tekstile.BLL.Services
     public class BoyaStoguService : IStokService
     {
         MyDbContext _db;
-        public BoyaStoguService(MyDbContext db)
+        public BoyaStoguService()
         {
-            _db = db;
+            _db = new MyDbContext();
         }
         public List<StokHareket> StokListele()
         {

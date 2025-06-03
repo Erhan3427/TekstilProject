@@ -47,6 +47,7 @@
             // 
             // cmbİslemler
             // 
+            cmbİslemler.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbİslemler.FormattingEnabled = true;
             cmbİslemler.Location = new Point(285, 14);
             cmbİslemler.Name = "cmbİslemler";

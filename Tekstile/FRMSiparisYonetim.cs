@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Tekstile.UI
 {
-    public partial class FRMMakineYonetimi : Form
+    public partial class FRMSiparisYonetim : Form
     {
-        public FRMMakineYonetimi()
+        public FRMSiparisYonetim()
         {
             InitializeComponent();
         }
