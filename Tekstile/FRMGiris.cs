@@ -23,10 +23,15 @@ namespace Tekstile
         public void FormGetir(Form form)
         {
             pnlYonetim.Controls.Clear();
-            form.MdiParent = this; //this form(içinde bulunduðumuz form), ana formdur. parametreden aldýðýmýz form, ana formun alt formudur.
-            form.FormBorderStyle = FormBorderStyle.None; //hareket etmesini engelledik
-            pnlYonetim.Controls.Add(form);  //Çaðýrdýðýmýz formu pnlIcerik adýndaki panele ekledik.
-            form.Show(); //Çaðýrdýðýmýz formu göster dedik.
+
+            form.TopLevel = false; // ÖNEMLÝ: Form'un top-level olmadýðýný belirtiyoruz
+            form.FormBorderStyle = FormBorderStyle.None;
+
+            pnlYonetim.Controls.Add(form);
+            pnlYonetim.Tag = form; // Form referansýný sakla
+
+            form.Show();
+            pnlYonetim.Dock = DockStyle.Fill;
         }
 
         private void btnMüsteriYonetim_Click(object sender, EventArgs e)
@@ -51,14 +56,15 @@ namespace Tekstile
 
         private void btnMakineYonetim_Click(object sender, EventArgs e)
         {
-          FRMMakineYonetim fRMMakineYonetim = new FRMMakineYonetim();
+          FRMMakineYonetimi fRMMakineYonetim = new();
             FormGetir(fRMMakineYonetim);
 
         }
 
         private void btnSiparisYonetim_Click(object sender, EventArgs e)
         {
-
+            FRMSiparisYonetimi fRMSiparisYonetimi = new ();
+            FormGetir(fRMSiparisYonetimi);
         }
 
         private void btnCikis_Click(object sender, EventArgs e)

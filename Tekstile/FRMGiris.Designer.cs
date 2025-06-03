@@ -112,14 +112,14 @@
             // 
             pnlYonetim.Location = new Point(152, 9);
             pnlYonetim.Name = "pnlYonetim";
-            pnlYonetim.Size = new Size(1317, 500);
+            pnlYonetim.Size = new Size(1350, 500);
             pnlYonetim.TabIndex = 2;
             // 
             // FRMGiris
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1481, 516);
+            ClientSize = new Size(1512, 516);
             Controls.Add(pnlYonetim);
             Controls.Add(label1);
             Controls.Add(btnCikis);
