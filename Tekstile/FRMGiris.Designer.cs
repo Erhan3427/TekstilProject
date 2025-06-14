@@ -34,8 +34,8 @@
             btnBoyaYonetim = new Button();
             btnCikis = new Button();
             btnMakineYonetim = new Button();
-            label1 = new Label();
             pnlYonetim = new Panel();
+            btnLoglar = new Button();
             SuspendLayout();
             // 
             // btnMüsteriYonetim
@@ -98,30 +98,31 @@
             btnMakineYonetim.UseVisualStyleBackColor = true;
             btnMakineYonetim.Click += btnMakineYonetim_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 17F);
-            label1.Location = new Point(152, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(266, 40);
-            label1.TabIndex = 1;
-            label1.Text = "Tekstil Takip Sistemi";
-            // 
             // pnlYonetim
             // 
             pnlYonetim.Location = new Point(152, 9);
             pnlYonetim.Name = "pnlYonetim";
             pnlYonetim.Size = new Size(1350, 500);
             pnlYonetim.TabIndex = 2;
+            pnlYonetim.Paint += pnlYonetim_Paint;
+            // 
+            // btnLoglar
+            // 
+            btnLoglar.Location = new Point(12, 12);
+            btnLoglar.Name = "btnLoglar";
+            btnLoglar.Size = new Size(134, 56);
+            btnLoglar.TabIndex = 4;
+            btnLoglar.Text = "Loglar";
+            btnLoglar.UseVisualStyleBackColor = true;
+            btnLoglar.Click += button1_Click;
             // 
             // FRMGiris
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1512, 516);
+            Controls.Add(btnLoglar);
             Controls.Add(pnlYonetim);
-            Controls.Add(label1);
             Controls.Add(btnCikis);
             Controls.Add(btnSiparisYonetim);
             Controls.Add(btnBoyaYonetim);
@@ -133,7 +134,6 @@
             Text = "Form1";
             Load += Form1_Load;
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -144,7 +144,7 @@
         private Button btnBoyaYonetim;
         private Button btnCikis;
         private Button btnMakineYonetim;
-        private Label label1;
         private Panel pnlYonetim;
+        private Button btnLoglar;
     }
 }

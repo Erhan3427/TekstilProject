@@ -4,6 +4,7 @@ using Tekstile.BLL.MusteriService;
 using Tekstile.BLL.Services;
 using Tekstile.Context;
 using Tekstile.Data;
+using Tekstile.UI;
 
 namespace Tekstile
 {
@@ -20,7 +21,7 @@ namespace Tekstile
             ApplicationConfiguration.Initialize();
 
             // Instantiate the FRMGiris form before passing it to Application.Run  
-            Application.Run(new FRMGiris());
+            Application.Run(new AnaGiris());
         }
     }
 }

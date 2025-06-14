@@ -38,10 +38,13 @@
             // 
             // dgvBoyaStok
             // 
+            dgvBoyaStok.AllowUserToAddRows = false;
             dgvBoyaStok.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvBoyaStok.Location = new Point(12, 87);
             dgvBoyaStok.Name = "dgvBoyaStok";
+            dgvBoyaStok.ReadOnly = true;
             dgvBoyaStok.RowHeadersWidth = 51;
+            dgvBoyaStok.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvBoyaStok.Size = new Size(776, 351);
             dgvBoyaStok.TabIndex = 0;
             // 

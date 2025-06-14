@@ -27,7 +27,9 @@ namespace Tekstile.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-          
+            modelBuilder.Entity<Musteriler>().HasIndex(k => k.Kod).IsUnique();
+            modelBuilder.Entity<Boyalar>().HasIndex(k => k.BoyaKodu).IsUnique();
+
 
 
         }

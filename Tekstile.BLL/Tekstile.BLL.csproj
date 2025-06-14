@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Tekstile.Core\Tekstile.Core.csproj" />
+    <ProjectReference Include="..\Tekstile.Core\Tekstile.DAL.csproj" />
     <ProjectReference Include="..\Tekstile.Entities\Tekstile.Entities.csproj" />
   </ItemGroup>
 

@@ -40,6 +40,8 @@
             btnSil = new Button();
             btnGuncell = new Button();
             mtbTelefon = new MaskedTextBox();
+            txtMusteriKod = new TextBox();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvMüsteriler).BeginInit();
             SuspendLayout();
             // 
@@ -67,12 +69,16 @@
             // 
             // dgvMüsteriler
             // 
+            dgvMüsteriler.AllowUserToAddRows = false;
             dgvMüsteriler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMüsteriler.Location = new Point(20, 259);
             dgvMüsteriler.Name = "dgvMüsteriler";
+            dgvMüsteriler.ReadOnly = true;
             dgvMüsteriler.RowHeadersWidth = 51;
+            dgvMüsteriler.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvMüsteriler.Size = new Size(1295, 188);
             dgvMüsteriler.TabIndex = 2;
+            dgvMüsteriler.CellClick += dgvMüsteriler_CellClick;
             // 
             // label1
             // 
@@ -148,17 +154,35 @@
             mtbTelefon.Size = new Size(166, 27);
             mtbTelefon.TabIndex = 5;
             // 
+            // txtMusteriKod
+            // 
+            txtMusteriKod.Location = new Point(572, 34);
+            txtMusteriKod.Name = "txtMusteriKod";
+            txtMusteriKod.Size = new Size(125, 27);
+            txtMusteriKod.TabIndex = 6;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(469, 41);
+            label5.Name = "label5";
+            label5.Size = new Size(97, 20);
+            label5.TabIndex = 3;
+            label5.Text = "Müşteri Kodu";
+            // 
             // FRMMusteri
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1327, 453);
+            Controls.Add(txtMusteriKod);
             Controls.Add(mtbTelefon);
             Controls.Add(btnGuncell);
             Controls.Add(btnSil);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
+            Controls.Add(label5);
             Controls.Add(label1);
             Controls.Add(dgvMüsteriler);
             Controls.Add(button1);
@@ -187,5 +211,7 @@
         private Button btnSil;
         private Button btnGuncell;
         private MaskedTextBox mtbTelefon;
+        private TextBox txtMusteriKod;
+        private Label label5;
     }
 }

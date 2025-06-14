@@ -39,16 +39,7 @@ namespace Tekstile.Data
 
         private void listele()
         {
-            dgvBoyaStok.DataSource = _stokService.StokListele().Select(s => new
-            {
-                s.Id,
-                s.BoyaId,
-                s.Boya.RenkAdi,
-                s.IslemTarihi,
-                s.IslemTuru,
-                s.Adet,
-                s.Aciklama
-            }).ToList();
+            dgvBoyaStok.DataSource = _stokService.StokListele().ToList();
 
             dgvBoyaStok.Columns[0].Visible = false;
 

@@ -31,7 +31,6 @@ namespace Tekstile
             pnlYonetim.Tag = form; // Form referansýný sakla
 
             form.Show();
-            pnlYonetim.Dock = DockStyle.Fill;
         }
 
         private void btnMüsteriYonetim_Click(object sender, EventArgs e)
@@ -56,14 +55,14 @@ namespace Tekstile
 
         private void btnMakineYonetim_Click(object sender, EventArgs e)
         {
-          FRMMakineYonetimi fRMMakineYonetim = new();
+            FRMMakineYonetimi fRMMakineYonetim = new();
             FormGetir(fRMMakineYonetim);
 
         }
 
         private void btnSiparisYonetim_Click(object sender, EventArgs e)
         {
-            FRMSiparisYonetimi fRMSiparisYonetimi = new ();
+            FRMSiparisYonetimi fRMSiparisYonetimi = new();
             FormGetir(fRMSiparisYonetimi);
         }
 
@@ -71,9 +70,26 @@ namespace Tekstile
         {
             if (MessageBox.Show("Çýkmak istediðinize emin misiniz?", "Uyarý", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                Application.Exit(); //Uygulamadan çýkýþ yapar.
+                AnaGiris anaGiris = new AnaGiris();
+                anaGiris.Show(); //Ana giriþ formunu gösterir.
+                this.Hide(); //Mevcut formu gizler.
+
+
 
             }
+        }
+
+        private void pnlYonetim_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FRMLogKayitlari fRMLogKayitlari = new FRMLogKayitlari();
+            fRMLogKayitlari.ShowDialog(); // Log kayýtlarý formunu modal olarak açar.
+            this.Hide(); // Mevcut formu gizler.
+
         }
     }
 }

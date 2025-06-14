@@ -15,6 +15,7 @@ public partial class Musteriler
     public string? Telefon { get; set; }
 
     public string? Adres { get; set; }
+    public string Kod { get; set; }
 
     public virtual List<Desenler> Desenlers { get; set; } 
 
