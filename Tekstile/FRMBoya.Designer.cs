@@ -98,9 +98,11 @@
             // 
             // dgvBoyalar
             // 
+            dgvBoyalar.AllowUserToAddRows = false;
             dgvBoyalar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvBoyalar.Location = new Point(10, 262);
             dgvBoyalar.Name = "dgvBoyalar";
+            dgvBoyalar.ReadOnly = true;
             dgvBoyalar.RowHeadersWidth = 51;
             dgvBoyalar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvBoyalar.Size = new Size(1304, 185);

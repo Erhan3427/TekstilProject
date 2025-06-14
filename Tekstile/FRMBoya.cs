@@ -12,207 +12,202 @@ using Tekstile.BLL.Services;
 using Tekstile.Context;
 using Tekstile.Data;
 using Tekstile.Entities.Data;
-using Tekstile.UI.Helpers.FRMBoya;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Tekstile
 {
     public partial class FRMBoya : Form
     {
-        MyDbContext _db;
-        BoyaService _boyaService;
-        BoyaStoguService _stokService;
-        FRMBoyaStogu _boyaStogu;
+        private MyDbContext _db;
+        private BoyaService _boyaService;
+        private BoyaStoguService _stokService;
+        private FRMBoyaStogu _boyaStogu;
+
         public FRMBoya()
         {
+            InitializeComponent();
             _db = new MyDbContext();
             _boyaService = new BoyaService();
             _stokService = new BoyaStoguService();
-            InitializeComponent();
         }
-
 
         private void FormBoya_Load(object sender, EventArgs e)
         {
+            // DataGridView ayarları
             dgvBoyalar.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvBoyalar.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvBoyalar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Renk listesi
             CmbRenkler.Items.AddRange(new[] { "Kırmızı", "Mavi", "Yeşil", "Sarı", "Turuncu", "Mor", "Pembe", "Lacivert", "Kahverengi", "Siyah", "Beyaz", "Gri", "Füme", "Bej", "Altın", "Gümüş", "Açık Mavi", "Koyu Yeşil", "Açık Pembe", "Bordo", "Haki", "Krem", "Hardal", "Mint", "Lila" });
-            cmbKovaDurum.Items.AddRange(new[] { "Gelen", "Açılan", "Biten" });
+            
+            // Boya tipi listesi
             cmbBoyaTipi.Items.AddRange(new string[] { "Normal", "Şeffaf", "Tiner", "Yapışkan" });
-            BoyaListeHelper.Listele(dgvBoyalar, _db);
+
+            // Sadece eklenen boyaları listele
+            ListeleEklenenBoyalar();
         }
 
+        private void ListeleEklenenBoyalar()
+        {
+            var boyalar = _db.Boyalar
+                .Where(b => b.KovaAdedi > 0)
+                .Select(b => new
+                {
+                    b.Id,
+                    b.BoyaKodu,
+                    b.RenkAdi,
+                    b.BoyaTipi,
+                    b.KovaAdedi,
+                    b.BoyaFiyat,
+                    b.ToplamFiyat,
+                    b.StokDurum
+                })
+                .ToList();
 
-
+            dgvBoyalar.DataSource = boyalar;
+            dgvBoyalar.Columns["Id"].Visible = false;
+        }
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {
-            if (!BoyaValidator.BoyaVerisiGecerliMi(txtBoyaKod.Text, txtBoyaAdi.Text, nudKovaAdet.Text, nudFiyat.Text, cmbBoyaTipi.SelectedItem, cmbKovaDurum.SelectedItem))
+            if (string.IsNullOrEmpty(txtBoyaKod.Text) || string.IsNullOrEmpty(txtBoyaAdi.Text))
+            {
+                MessageBox.Show("Lütfen boya kodu ve adını giriniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
 
+            if (nudKovaAdet.Value <= 0)
+            {
+                MessageBox.Show("Lütfen geçerli bir kova adedi giriniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            var Boyalar = new Boyalar
+            var boya = new Boyalar
             {
                 BoyaKodu = txtBoyaKod.Text,
                 RenkAdi = txtBoyaAdi.Text,
-                BoyaTipi = cmbBoyaTipi.SelectedItem.ToString(),
-                BoyaFiyat = Convert.ToDecimal(nudFiyat.Text),
-
+                BoyaTipi = cmbBoyaTipi.SelectedItem?.ToString(),
+                BoyaFiyat = nudFiyat.Value,
+                KovaAdedi = (int)nudKovaAdet.Value,
+                StokDurum = "Gelen", // Otomatik olarak Gelen olarak ayarla
+                GelenAdet = (int)nudKovaAdet.Value,
+                ToplamFiyat = nudFiyat.Value * nudKovaAdet.Value
             };
 
-            // Önce Boyalar nesnesini kaydet
-            _boyaService.Ekle(Boyalar);
+            // Boya kaydını ekle
+            _boyaService.Ekle(boya);
 
             // Stok hareketi oluştur
-            StokHareket stokHareket = new StokHareket
+            var stokHareket = new StokHareket
             {
-                BoyaId = Boyalar.Id,
+                BoyaId = boya.Id,
                 IslemTarihi = DateTime.Now,
-                IslemTuru = cmbKovaDurum.SelectedItem.ToString(),
-                Adet = Convert.ToInt32(nudKovaAdet.Text),
+                IslemTuru = "Gelen",
+                Adet = (int)nudKovaAdet.Value,
                 Aciklama = txtAciklama.Text
             };
 
-            // Stok durumunu güncelle
-            int adet = Convert.ToInt32(nudKovaAdet.Text);
-            if (cmbKovaDurum.SelectedItem.ToString() == "Gelen")
-            {
-                Boyalar.GelenAdet = adet;
-                Boyalar.KovaAdedi = adet;
-            }
-            else if (cmbKovaDurum.SelectedItem.ToString() == "Biten")
-            {
-                if (Boyalar.KovaAdedi < adet)
-                {
-                    MessageBox.Show("Yeterli stok yok!");
-                    _db.Boyalar.Remove(Boyalar);
-                    _db.SaveChanges();
-                    return;
-                }
-                Boyalar.BitenAdet = adet;
-                Boyalar.KovaAdedi -= adet;
-            }
-            else if (cmbKovaDurum.SelectedItem.ToString() == "Açılan")
-            {
-                if (Boyalar.KovaAdedi < adet)
-                {
-                    MessageBox.Show("Yeterli stok yok!");
-                    _db.Boyalar.Remove(Boyalar);
-                    _db.SaveChanges();
-                    return;
-                }
-                Boyalar.AcilanAdet = adet;
-                Boyalar.KovaAdedi -= adet;
-            }
-
-            Boyalar.ToplamFiyat = Boyalar.BoyaFiyat * Boyalar.KovaAdedi;
-
             // Stok hareketini kaydet
             _stokService.Ekle(stokHareket);
-            MessageBox.Show("Boyanız eklenmiştir");
-            BoyaListeHelper.Listele(dgvBoyalar, _db);
-            FormTemizleyici.Temizle(txtBoyaKod, txtBoyaAdi, nudKovaAdet, nudFiyat, cmbBoyaTipi, cmbKovaDurum);
+
+            MessageBox.Show("Boya başarıyla eklendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ListeleEklenenBoyalar();
+            FormTemizle();
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(dgvBoyalar.CurrentRow.Cells[0].Value);
-            var boyalar = _db.Boyalar.Find(id);
-            if (boyalar == null)
+            if (dgvBoyalar.CurrentRow == null)
             {
-                MessageBox.Show("Güncellenecek kayıt bulunamadı.");
+                MessageBox.Show("Lütfen güncellenecek bir boya seçiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (!BoyaValidator.BoyaVerisiGecerliMi(txtBoyaKod.Text, txtBoyaAdi.Text, nudKovaAdet.Text, nudFiyat.Text, cmbBoyaTipi.SelectedItem, cmbKovaDurum.SelectedItem))
-                return;
 
+            int id = Convert.ToInt32(dgvBoyalar.CurrentRow.Cells["Id"].Value);
+            var boya = _db.Boyalar.Find(id);
+
+            if (boya == null)
+            {
+                MessageBox.Show("Güncellenecek boya bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             // Eski değerleri sakla
-            var eskiKovaAdedi = boyalar.KovaAdedi;
-            string eskiDurum = boyalar.StokDurum;
+            var eskiKovaAdedi = boya.KovaAdedi;
+            var yeniKovaAdedi = (int)nudKovaAdet.Value;
 
-            // Yeni değerleri ata
-            boyalar.BoyaKodu = txtBoyaKod.Text;
-            boyalar.RenkAdi = txtBoyaAdi.Text;
-            boyalar.BoyaTipi = cmbBoyaTipi.SelectedItem.ToString();
-            boyalar.BoyaFiyat = Convert.ToDecimal(nudFiyat.Text);
-            boyalar.StokDurum = cmbKovaDurum.SelectedItem.ToString();
+            // Boya bilgilerini güncelle
+            boya.BoyaKodu = txtBoyaKod.Text;
+            boya.RenkAdi = txtBoyaAdi.Text;
+            boya.BoyaTipi = cmbBoyaTipi.SelectedItem?.ToString();
+            boya.BoyaFiyat = nudFiyat.Value;
+            boya.KovaAdedi = yeniKovaAdedi;
+            boya.ToplamFiyat = nudFiyat.Value * yeniKovaAdedi;
 
-            int yeniAdet = Convert.ToInt32(nudKovaAdet.Text);
             // Stok hareketi oluştur
-            if (eskiDurum != cmbKovaDurum.SelectedItem.ToString() || eskiKovaAdedi != yeniAdet)
+            if (eskiKovaAdedi != yeniKovaAdedi)
             {
-                StokHareket stokHareket = new StokHareket
+                var stokHareket = new StokHareket
                 {
-                    BoyaId = boyalar.Id,
+                    BoyaId = boya.Id,
                     IslemTarihi = DateTime.Now,
-                    IslemTuru = cmbKovaDurum.SelectedItem.ToString(),
-                    Adet = yeniAdet,
+                    IslemTuru = yeniKovaAdedi > eskiKovaAdedi ? "Gelen" : "Açılan",
+                    Adet = Math.Abs((int)(yeniKovaAdedi - eskiKovaAdedi)),
+                    Aciklama = txtAciklama.Text
                 };
 
-                // Stok durumunu güncelle
-                if (cmbKovaDurum.SelectedItem.ToString() == "Gelen")
-                {
-                    boyalar.GelenAdet = yeniAdet;
-                    boyalar.KovaAdedi = yeniAdet;
-                }
-                else if (cmbKovaDurum.SelectedItem.ToString() == "Biten")
-                {
-                    if (boyalar.KovaAdedi < yeniAdet)
-                    {
-                        MessageBox.Show("Yeterli stok yok!");
-                        return;
-                    }
-                    boyalar.BitenAdet = yeniAdet;
-                    boyalar.KovaAdedi -= yeniAdet;
-                }
-                else if (cmbKovaDurum.SelectedItem.ToString() == "Açılan")
-                {
-                    if (boyalar.KovaAdedi < yeniAdet)
-                    {
-                        MessageBox.Show("Yeterli stok yok!");
-                        return;
-                    }
-                    boyalar.AcilanAdet = yeniAdet;
-                    boyalar.KovaAdedi -= yeniAdet;
-                }
-
-                _db.StokHareket.Add(stokHareket);
+                _stokService.Ekle(stokHareket);
             }
 
-            boyalar.ToplamFiyat = boyalar.BoyaFiyat * boyalar.KovaAdedi;
-
             _db.SaveChanges();
-            MessageBox.Show("Güncellendi");
-            BoyaListeHelper.Listele(dgvBoyalar, _db);
-            FormTemizleyici.Temizle(txtBoyaKod, txtBoyaAdi, nudKovaAdet, nudFiyat, cmbBoyaTipi, cmbKovaDurum);
+            MessageBox.Show("Boya başarıyla güncellendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ListeleEklenenBoyalar();
+            FormTemizle();
         }
 
         private void btnSil_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(dgvBoyalar.CurrentRow.Cells[0].Value);
+            if (dgvBoyalar.CurrentRow == null)
+            {
+                MessageBox.Show("Lütfen silinecek bir boya seçiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            _boyaService.Sil(id);
-            MessageBox.Show("Silindi");
-            BoyaListeHelper.Listele(dgvBoyalar, _db);
-            FormTemizleyici.Temizle(txtBoyaKod, txtBoyaAdi, nudKovaAdet, nudFiyat, cmbBoyaTipi, cmbKovaDurum);
+            if (MessageBox.Show("Seçili boyayı silmek istediğinize emin misiniz?", "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                int id = Convert.ToInt32(dgvBoyalar.CurrentRow.Cells["Id"].Value);
+                _boyaService.Sil(id);
+                MessageBox.Show("Boya başarıyla silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ListeleEklenenBoyalar();
+                FormTemizle();
+            }
+        }
 
-
+        private void FormTemizle()
+        {
+            txtBoyaKod.Clear();
+            txtBoyaAdi.Clear();
+            txtAciklama.Clear();
+            nudKovaAdet.Value = 0;
+            nudFiyat.Value = 0;
+            cmbBoyaTipi.SelectedIndex = -1;
+            CmbRenkler.SelectedIndex = -1;
         }
 
         private void dgvBoyalar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvBoyalar.CurrentRow != null)
+            if (e.RowIndex >= 0)
             {
-                txtBoyaKod.Text = dgvBoyalar.CurrentRow.Cells[1].Value.ToString();
-                txtBoyaAdi.Text = dgvBoyalar.CurrentRow.Cells[2].Value.ToString();
-                cmbBoyaTipi.SelectedItem = dgvBoyalar.CurrentRow.Cells[3].Value.ToString();
-                nudKovaAdet.Text = dgvBoyalar.CurrentRow.Cells[4].Value.ToString();
-                nudFiyat.Text = dgvBoyalar.CurrentRow.Cells[5].Value.ToString();
-                cmbKovaDurum.SelectedItem = dgvBoyalar.CurrentRow.Cells[6].Value.ToString();
+                var row = dgvBoyalar.Rows[e.RowIndex];
+                txtBoyaKod.Text = row.Cells["BoyaKodu"].Value.ToString();
+                txtBoyaAdi.Text = row.Cells["RenkAdi"].Value.ToString();
+                cmbBoyaTipi.SelectedItem = row.Cells["BoyaTipi"].Value.ToString();
+                nudKovaAdet.Value = Convert.ToDecimal(row.Cells["KovaAdedi"].Value);
+                nudFiyat.Value = Convert.ToDecimal(row.Cells["BoyaFiyat"].Value);
             }
         }
+
         private void txtFiltrele_TextChanged(object sender, EventArgs e)
         {
             string arama = txtFiltrele.Text.ToLower();
@@ -224,7 +219,6 @@ namespace Tekstile
         {
             FRMBoyaStogu _boyaStogu = new FRMBoyaStogu();
             _boyaStogu.Show();
-
         }
 
         private void CmbRenkler_DropDown(object sender, EventArgs e)

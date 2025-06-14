@@ -16,7 +16,7 @@ namespace Tekstile
 {
     public partial class FRMMusteri : Form
     {
-         MyDbContext _db;
+        MyDbContext _db;
         MusteriService _musteriService = new MusteriService();
         public FRMMusteri()
         {
@@ -60,7 +60,8 @@ namespace Tekstile
                 FirmaAdi = txtFirmaAdi.Text,
                 YetkiliAdSoyad = txtFirmaYetkili.Text,
                 Telefon = mtbTelefon.Text,
-                Adres = txtIsAdresi.Text
+                Adres = txtIsAdresi.Text,
+                Kod = txtMusteriKod.Text
 
             };
             _musteriService.MusteriEkle(musteri);
@@ -80,6 +81,7 @@ namespace Tekstile
             musteriler.YetkiliAdSoyad = txtFirmaYetkili.Text;
             musteriler.Telefon = mtbTelefon.Text;
             musteriler.Adres = txtIsAdresi.Text;
+            musteriler.Kod = txtMusteriKod.Text;
             _db.SaveChanges();
             MessageBox.Show("Güncellendi");
             Listele();
@@ -99,6 +101,18 @@ namespace Tekstile
 
         }
 
-      
+        private void dgvMüsteriler_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvMüsteriler.CurrentRow != null)
+            {
+                txtFirmaAdi.Text = dgvMüsteriler.CurrentRow.Cells["FirmaAdi"].Value.ToString();
+                txtFirmaYetkili.Text = dgvMüsteriler.CurrentRow.Cells["YetkiliAdSoyad"].Value.ToString();
+                mtbTelefon.Text = dgvMüsteriler.CurrentRow.Cells["Telefon"].Value.ToString();
+                txtIsAdresi.Text = dgvMüsteriler.CurrentRow.Cells["Adres"].Value.ToString();
+                txtMusteriKod.Text = dgvMüsteriler.CurrentRow.Cells["Kod"].Value.ToString();
+
+
+            }
+        }
     }
 }

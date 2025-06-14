@@ -5,12 +5,13 @@ using System.Linq;
 using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
+using Tekstile.BLL.Interfaces;
 using Tekstile.Context;
 using Tekstile.Entities.Data;
 
 namespace Tekstile.BLL.Services
 {
-    public class MakineService
+    public class MakineService:IMakineService
     {
         MyDbContext _db;
         public MakineService()
@@ -24,7 +25,7 @@ namespace Tekstile.BLL.Services
             _db.SaveChanges();
 
         }
-        public void sil(int id)
+        public void Sil(int id)
         {
             var makine = _db.Makineler.Find(id);
             _db.Makineler.Remove(makine);

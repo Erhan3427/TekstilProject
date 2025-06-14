@@ -111,6 +111,7 @@ namespace Tekstile
             dgvMakineler.ReadOnly = true;
             dgvMakineler.RowHeadersWidth = 51;
             dgvMakineler.RowTemplate.Height = 25;
+            dgvMakineler.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvMakineler.Size = new Size(670, 242);
             dgvMakineler.TabIndex = 0;
             dgvMakineler.CellClick += dgvMakineler_CellClick;
@@ -228,6 +229,7 @@ namespace Tekstile
             dgvKumaslar.ReadOnly = true;
             dgvKumaslar.RowHeadersWidth = 51;
             dgvKumaslar.RowTemplate.Height = 25;
+            dgvKumaslar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvKumaslar.Size = new Size(666, 242);
             dgvKumaslar.TabIndex = 0;
             dgvKumaslar.CellClick += dgvKumaslar_CellClick;

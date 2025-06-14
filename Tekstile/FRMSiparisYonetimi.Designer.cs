@@ -143,6 +143,7 @@ namespace Tekstile
             dgvSiparisler.ReadOnly = true;
             dgvSiparisler.RowHeadersWidth = 51;
             dgvSiparisler.RowTemplate.Height = 25;
+            dgvSiparisler.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvSiparisler.Size = new Size(908, 439);
             dgvSiparisler.TabIndex = 8;
             // 

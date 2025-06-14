@@ -5,7 +5,7 @@ VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tekstile.UI", "Tekstile\Tekstile.UI.csproj", "{277B680F-8738-47AA-BAFC-33FD9E5E0B70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tekstile.Core", "Tekstile.Core\Tekstile.Core.csproj", "{B2C41F89-0998-4505-A369-E916C39043EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tekstile.DAL", "Tekstile.Core\Tekstile.DAL.csproj", "{B2C41F89-0998-4505-A369-E916C39043EE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tekstile.Entities", "Tekstile.Entities\Tekstile.Entities.csproj", "{A7A14D4C-A353-43F3-94E3-77BD60133E1C}"
 EndProject
