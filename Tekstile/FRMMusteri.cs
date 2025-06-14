@@ -104,7 +104,7 @@ namespace Tekstile
                 return;
             }
             _musteriService.MusteriSil(id);
-            LogKayit.LogEkle("Admin", "Müşteri Silme", $"Müşteri Silindi: {id}");
+            LogKayit.LogEkle("Admin", "Müşteri Silme", $"Müşteri Silindi: {txtFirmaAdi.Text}");
             MessageBox.Show("Silindi");
             Listele();
 
