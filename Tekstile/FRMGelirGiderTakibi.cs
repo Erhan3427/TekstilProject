@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tekstile.Context;
 using Tekstile.Entities.Data;
+using Tekstile.Helpers;
 
 namespace Tekstile
 {
@@ -72,6 +73,7 @@ namespace Tekstile
 
             //_db.Giderler.Add(yeniGider);
             _db.SaveChanges();
+            LogKayit.LogEkle("admin", "GiderEkle", $"Gider eklendi: {yeniGider.GiderTuru} - {yeniGider.Tutar:C2} - {yeniGider.Aciklama}");
 
             MessageBox.Show("Gider başarıyla kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             GelirGiderListele();

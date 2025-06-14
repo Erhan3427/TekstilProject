@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tekstile.Context;
 using Tekstile.Entities.Data;
+using Tekstile.Helpers;
 
 namespace Tekstile
 {
@@ -80,7 +81,7 @@ namespace Tekstile
 
             _db.Makineler.Add(makine);
             _db.SaveChanges();
-
+            LogKayit.LogEkle("Admin", "Makine Ekleme", $"Makine Eklendi: {makine.MakineAdi}");
             MessageBox.Show("Makine başarıyla eklendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             MakineleriListele();
             MakineFormuTemizle();
@@ -110,7 +111,7 @@ namespace Tekstile
 
             _db.Kumascinsleri.Add(kumas);
             _db.SaveChanges();
-
+            LogKayit.LogEkle("Admin", "Kumas Ekleme ",$"Kumaş Eklendi: {kumas.KumasAdi}");
             MessageBox.Show("Kumaş başarıyla eklendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             KumaslariListele();
             KumasFormuTemizle();
@@ -129,6 +130,7 @@ namespace Tekstile
             {
                 makine.MakineAdi = txtMakineAdi.Text;
                 _db.SaveChanges();
+                LogKayit.LogEkle("Admin","Makine Güncelleme",$"Makine Güncellendi: {makine.MakineAdi}");
                 MessageBox.Show("Makine başarıyla güncellendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MakineleriListele();
                 MakineFormuTemizle();
@@ -149,6 +151,7 @@ namespace Tekstile
                 kumas.KumasAdi = txtKumasAdi.Text;
                 kumas.Gramaj = (double)nudGramaj.Value;
                 _db.SaveChanges();
+                LogKayit.LogEkle("Admin", "Kumaş Güncelle", $"Kumaş Güncellendi: {kumas.KumasAdi}");
                 MessageBox.Show("Kumaş başarıyla güncellendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 KumaslariListele();
                 KumasFormuTemizle();
@@ -170,6 +173,7 @@ namespace Tekstile
                 {
                     _db.Makineler.Remove(makine);
                     _db.SaveChanges();
+                    LogKayit.LogEkle("Admin","Makine Silme", $"Makine Silindi: {makine.MakineAdi}");
                     MessageBox.Show("Makine başarıyla silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     MakineleriListele();
                     MakineFormuTemizle();
@@ -192,6 +196,7 @@ namespace Tekstile
                 {
                     _db.Kumascinsleri.Remove(kumas);
                     _db.SaveChanges();
+                    LogKayit.LogEkle("Admin","Kumaş Silme", $"Kumaş Silindi: {kumas.KumasAdi}");
                     MessageBox.Show("Kumaş başarıyla silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     KumaslariListele();
                     KumasFormuTemizle();

@@ -79,17 +79,12 @@ namespace Tekstile
             }
         }
 
-        private void pnlYonetim_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+       
 
         private void button1_Click(object sender, EventArgs e)
         {
             FRMLogKayitlari fRMLogKayitlari = new FRMLogKayitlari();
-            fRMLogKayitlari.ShowDialog(); // Log kayýtlarý formunu modal olarak açar.
-            this.Hide(); // Mevcut formu gizler.
-
+           FormGetir(fRMLogKayitlari);
         }
     }
 }

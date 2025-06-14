@@ -19,7 +19,7 @@ namespace Tekstile.BLL.Services
         }
         public List<StokHareket> StokListele()
         {
-            var list = _db.StokHareket.ToList();
+            var list = _db.StokHareket.Include(b=>b.Boya).ToList();
                 
             return list;    
         }

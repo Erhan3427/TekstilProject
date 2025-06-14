@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tekstile.Context;
 using Tekstile.Entities.Data;
+using Tekstile.Helpers;
 
 namespace Tekstile
 {
@@ -37,8 +38,10 @@ namespace Tekstile
             cmbDesen.DisplayMember = "DesenAdi";
             cmbDesen.ValueMember = "Id";
 
-            cmbKumas.DataSource = _db.Kumascinsleri.ToList();
-            cmbKumas.DisplayMember = "KumasAdi";
+            cmbKumas.DataSource = _db.Kumascinsleri.Select(s=>new { s.Id,
+            Kumas = s.KumasAdi + " - " + s.IplikTipi, 
+            }).ToList();
+            cmbKumas.DisplayMember = "Kumas";
             cmbKumas.ValueMember = "Id";
 
             cmbMakine.DataSource = _db.Makineler.ToList();
@@ -60,7 +63,7 @@ namespace Tekstile
                     s.Id,
                     s.Musteri.FirmaAdi,
                     s.Desen.DesenAdi,
-                    s.Kumas.KumasAdi,
+                    Kumas =s.Kumas.KumasAdi+" "+s.Kumas.IplikTipi,
                     s.Makine.MakineAdi,
                     s.Adet,
                     s.BaskiFiyat,
@@ -68,6 +71,7 @@ namespace Tekstile
                     s.SiparisTarihi,
                     s.Durum
                 }).ToList();
+            dgvSiparisler.Columns["Id"].Visible = false;
         }
 
         private void btnSiparisKaydet_Click(object sender, EventArgs e)
@@ -90,6 +94,7 @@ namespace Tekstile
 
             _db.Siparisler.Add(siparis);
             _db.SaveChanges();
+            LogKayit.LogEkle("Admin", "Sipariş Ekleme", $"Sipariş Eklendi: {siparis.Musteri.FirmaAdi} - {siparis.Desen.DesenAdi}");
 
             MessageBox.Show("Sipariş başarıyla kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             SiparisleriListele();

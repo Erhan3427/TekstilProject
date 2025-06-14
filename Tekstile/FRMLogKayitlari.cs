@@ -22,13 +22,46 @@ namespace Tekstile
             dgvLoglar.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvLoglar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+            // İşlem Türü Combobox'ı
+            var islemTurleri = _db.LogKayitlari.Select(l => l.IslemTuru).Distinct().ToList();
+            islemTurleri.Insert(0, "Tümü");
+            cmbIslemTuru.DataSource = islemTurleri;
+
+            var kullanicilar = _db.LogKayitlari.Select(l => l.KullaniciAdi).Distinct().ToList();
+            kullanicilar.Insert(0, "Tümü");
+            cmbKullanici.DataSource = kullanicilar;
+
+
+
+
+
 
             LoglariListele();
         }
 
         private void LoglariListele()
         {
-           
+            var baslangicTarihi = dtpBaslangic.Value.Date;
+            var bitisTarihi = dtpBitis.Value.Date.AddDays(1).AddSeconds(-1);
+            var kullaniciAdi = cmbKullanici.SelectedItem as string;
+            var islemTuru = cmbIslemTuru.SelectedItem as string;
+
+            var loglar = _db.LogKayitlari
+                .Where(l => l.IslemTarihi >= baslangicTarihi && l.IslemTarihi <= bitisTarihi)
+                .Where(l => kullaniciAdi == "Tümü" || l.KullaniciAdi == kullaniciAdi)
+                .Where(l => islemTuru == "Tümü" || l.IslemTuru == islemTuru)
+                .Select(l => new
+                {
+                    l.Id,
+                    l.KullaniciAdi,
+                    l.IslemTuru,
+                    l.IslemTarihi,
+                    l.IslemDetayi
+                })
+                .ToList();
+            dgvLoglar.DataSource = loglar;
+
+
         }
 
         private void btnFiltrele_Click(object sender, EventArgs e)
@@ -44,5 +77,7 @@ namespace Tekstile
             cmbIslemTuru.SelectedIndex = 0;
             LoglariListele();
         }
+
+       
     }
 } 
