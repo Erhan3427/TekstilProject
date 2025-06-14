@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Microsoft.IdentityModel.Logging;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Tekstile.BLL.Interfaces;
 using Tekstile.BLL.Services;
 using Tekstile.Context;
 using Tekstile.Data;
 using Tekstile.Entities.Data;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Tekstile.Helpers;
 
 namespace Tekstile
 {
@@ -22,7 +14,7 @@ namespace Tekstile
         private BoyaService _boyaService;
         private BoyaStoguService _stokService;
         private FRMBoyaStogu _boyaStogu;
-
+        
         public FRMBoya()
         {
             InitializeComponent();
@@ -82,6 +74,11 @@ namespace Tekstile
                 MessageBox.Show("Lütfen geçerli bir kova adedi giriniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if ( _db.Boyalar.Any(b=>b.BoyaKodu==txtBoyaKod.Text)) {
+                MessageBox.Show("Bu boyakodu daha önce tanımlanmış");
+                return;
+
+            }
 
             var boya = new Boyalar
             {
@@ -110,7 +107,7 @@ namespace Tekstile
 
             // Stok hareketini kaydet
             _stokService.Ekle(stokHareket);
-
+            LogKayit.LogEkle("admin", "BoyaEkle", $"Boya eklendi: {boya.BoyaKodu}");
             MessageBox.Show("Boya başarıyla eklendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ListeleEklenenBoyalar();
             FormTemizle();
@@ -122,6 +119,12 @@ namespace Tekstile
             {
                 MessageBox.Show("Lütfen güncellenecek bir boya seçiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+            if (_db.Boyalar.Any(b => b.BoyaKodu == txtBoyaKod.Text))
+            {
+                MessageBox.Show("Bu boyakodu daha önce tanımlanmış");
+                return;
+
             }
 
             int id = Convert.ToInt32(dgvBoyalar.CurrentRow.Cells["Id"].Value);
@@ -160,7 +163,9 @@ namespace Tekstile
                 _stokService.Ekle(stokHareket);
             }
 
+        
             _db.SaveChanges();
+            LogKayit.LogEkle("admin", "BoyaGuncelle", $"Boya güncellendi: {boya.BoyaKodu}");
             MessageBox.Show("Boya başarıyla güncellendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ListeleEklenenBoyalar();
             FormTemizle();
@@ -178,6 +183,7 @@ namespace Tekstile
             {
                 int id = Convert.ToInt32(dgvBoyalar.CurrentRow.Cells["Id"].Value);
                 _boyaService.Sil(id);
+                LogKayit.LogEkle("admin", "BoyaSil", $"Boya silindi: {id}");
                 MessageBox.Show("Boya başarıyla silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ListeleEklenenBoyalar();
                 FormTemizle();

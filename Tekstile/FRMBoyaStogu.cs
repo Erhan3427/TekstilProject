@@ -24,7 +24,7 @@ namespace Tekstile.Data
             InitializeComponent();
         }
 
-       
+
 
         private void BoyaStoğu_Load(object sender, EventArgs e)
         {
@@ -39,9 +39,17 @@ namespace Tekstile.Data
 
         private void listele()
         {
-            dgvBoyaStok.DataSource = _stokService.StokListele().ToList();
+            dgvBoyaStok.DataSource = _stokService.StokListele().Select(s => new
+            {
+                s.Id,
+                s.Boya.RenkAdi,
+                KovaAdedi = s.Adet,
+                s.IslemTuru,
+                s.IslemTarihi,
+                s.Aciklama
+            }).ToList();
 
-            dgvBoyaStok.Columns[0].Visible = false;
+            dgvBoyaStok.Columns["ID"].Visible = false;
 
 
         }
@@ -51,13 +59,21 @@ namespace Tekstile.Data
             var Baslangictarihi = dtpBaslangic.Value;
             var Bitistarihi = dtpBitis.Value;
             var filtreli = _db.StokHareket
-                .Where(x => x.IslemTarihi >= Baslangictarihi.AddDays(-1) && x.IslemTarihi <= Bitistarihi).Include(x =>x.Boya).ToList();
+                .Where(x => x.IslemTarihi >= Baslangictarihi.AddDays(-1) && x.IslemTarihi <= Bitistarihi).Include(x => x.Boya).Select(s => new
+                {
+                    s.Id,
+                    s.Boya.RenkAdi,
+                    KovaAdedi = s.Adet,
+                    s.IslemTuru,
+                    s.IslemTarihi,
+                    s.Aciklama
+                }).ToList();
 
             if (cmbİslemler.SelectedItem != null && cmbİslemler.SelectedItem.ToString() != "Hepsi")
             {
                 filtreli = filtreli
                     .Where(s => s.IslemTuru == cmbİslemler.SelectedItem.ToString())
-                    .ToList(); 
+                    .ToList();
             }
             else if (cmbİslemler.SelectedItem == "Hepsi")
             {
@@ -65,6 +81,28 @@ namespace Tekstile.Data
                 return;
             }
 
+            dgvBoyaStok.DataSource = filtreli;
+            dgvBoyaStok.Columns["ID"].Visible = false;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            var Baslangictarihi = dtpBaslangic.Value;
+            var Bitistarihi = dtpBitis.Value;
+            string arama = txtFiltreleStok.Text.ToLower();
+            var filtreli = _db.StokHareket
+                .Where(x => x.IslemTarihi >= Baslangictarihi.AddDays(-1) && x.IslemTarihi <= Bitistarihi)
+                .Where(x => x.Boya.RenkAdi.ToLower().Contains(arama))
+                .Include(x => x.Boya)
+                .Select(s => new
+                {
+                    s.Id,
+                    s.Boya.RenkAdi,
+                    KovaAdedi = s.Adet,
+                    s.IslemTuru,
+                    s.IslemTarihi,
+                    s.Aciklama
+                }).ToList();
             dgvBoyaStok.DataSource = filtreli;
         }
     }

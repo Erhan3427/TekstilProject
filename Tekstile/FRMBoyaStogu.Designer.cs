@@ -33,6 +33,8 @@
             btnFiltrele = new Button();
             dtpBaslangic = new DateTimePicker();
             dtpBitis = new DateTimePicker();
+            txtFiltreleStok = new TextBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvBoyaStok).BeginInit();
             SuspendLayout();
             // 
@@ -81,11 +83,30 @@
             dtpBitis.Size = new Size(250, 27);
             dtpBitis.TabIndex = 3;
             // 
+            // txtFiltreleStok
+            // 
+            txtFiltreleStok.Location = new Point(657, 12);
+            txtFiltreleStok.Name = "txtFiltreleStok";
+            txtFiltreleStok.Size = new Size(131, 27);
+            txtFiltreleStok.TabIndex = 4;
+            txtFiltreleStok.TextChanged += textBox1_TextChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(588, 14);
+            label1.Name = "label1";
+            label1.Size = new Size(57, 20);
+            label1.TabIndex = 5;
+            label1.Text = "Filtrele:";
+            // 
             // FRMBoyaStogu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
+            Controls.Add(txtFiltreleStok);
             Controls.Add(dtpBitis);
             Controls.Add(dtpBaslangic);
             Controls.Add(btnFiltrele);
@@ -96,6 +117,7 @@
             Load += BoyaStoğu_Load;
             ((System.ComponentModel.ISupportInitialize)dgvBoyaStok).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -105,5 +127,7 @@
         private Button btnFiltrele;
         private DateTimePicker dtpBaslangic;
         private DateTimePicker dtpBitis;
+        private TextBox txtFiltreleStok;
+        private Label label1;
     }
 }

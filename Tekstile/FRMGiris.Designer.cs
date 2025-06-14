@@ -94,7 +94,7 @@
             btnMakineYonetim.Name = "btnMakineYonetim";
             btnMakineYonetim.Size = new Size(134, 63);
             btnMakineYonetim.TabIndex = 0;
-            btnMakineYonetim.Text = "Makine Yönetimi";
+            btnMakineYonetim.Text = "Makine ve Kumas Yönetimi";
             btnMakineYonetim.UseVisualStyleBackColor = true;
             btnMakineYonetim.Click += btnMakineYonetim_Click;
             // 
@@ -104,7 +104,6 @@
             pnlYonetim.Name = "pnlYonetim";
             pnlYonetim.Size = new Size(1350, 500);
             pnlYonetim.TabIndex = 2;
-            pnlYonetim.Paint += pnlYonetim_Paint;
             // 
             // btnLoglar
             // 

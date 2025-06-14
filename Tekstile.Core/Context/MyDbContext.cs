@@ -20,6 +20,7 @@ namespace Tekstile.Context
         public DbSet<DesenBoyalar> DesenBoyalari { get; set; }
         public DbSet<Boyalar> Boyalar { get; set; }
         public DbSet<StokHareket> StokHareket { get; set; }
+        public DbSet<LogKayitlari> LogKayitlari  { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=ERHANLAPTOP\\SQLEXPRESS;Database=TekstileDB;TrustServerCertificate=True;Trusted_Connection=True;");

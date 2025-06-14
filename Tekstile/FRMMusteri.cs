@@ -11,6 +11,7 @@ using Tekstile.BLL.Interfaces;
 using Tekstile.BLL.MusteriService;
 using Tekstile.Context;
 using Tekstile.Entities.Data;
+using Tekstile.Helpers;
 
 namespace Tekstile
 {
@@ -40,6 +41,10 @@ namespace Tekstile
                 MessageBox.Show("Lütfen tüm alanları doldurunuz.");
                 return false;
             }
+            if(_db.Musteriler.Any(m=>m.Kod == txtMusteriKod.Text)) { 
+                MessageBox.Show("Bu kod zaten var. Lütfen farklı bir kod giriniz.");
+                return false;
+            }
             return true;
         }
         private void Listele()
@@ -65,8 +70,10 @@ namespace Tekstile
 
             };
             _musteriService.MusteriEkle(musteri);
-            Listele();
+            LogKayit.LogEkle("Admin", "Müşteri Ekleme", $"Müşteri Eklendi: {musteri.FirmaAdi}");
+
             MessageBox.Show("Müşteri Eklendi");
+            Listele();
         }
 
         private void btnGuncell_Click(object sender, EventArgs e)
@@ -83,6 +90,7 @@ namespace Tekstile
             musteriler.Adres = txtIsAdresi.Text;
             musteriler.Kod = txtMusteriKod.Text;
             _db.SaveChanges();
+            LogKayit.LogEkle("Admin", "Müşteri Güncelleme", $"Müşteri Güncellendi: {musteriler.FirmaAdi}");
             MessageBox.Show("Güncellendi");
             Listele();
         }
@@ -96,6 +104,7 @@ namespace Tekstile
                 return;
             }
             _musteriService.MusteriSil(id);
+            LogKayit.LogEkle("Admin", "Müşteri Silme", $"Müşteri Silindi: {id}");
             MessageBox.Show("Silindi");
             Listele();
 

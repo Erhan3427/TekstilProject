@@ -78,6 +78,7 @@ namespace Tekstile
             var siparisler = _db.Siparisler.Where(s => musteriId == s.MusteriId).Select(s => new
             {
                 s.Id,
+                s.Musteri.FirmaAdi,
                 s.Desen.DesenAdi,
                 s.SiparisTarihi,
                 s.ToplamFiyat,

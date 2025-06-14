@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
 using Tekstile.Context;
 using Tekstile.Entities.Data;
-using Tekstile.UI.Helpers.FRMDesenYonetim;
+using Tekstile.Helpers;
 
 namespace Tekstile
 {
@@ -58,6 +50,7 @@ namespace Tekstile
                     s.Gram
                 })
                 .ToList();
+            dgvDesenler.Columns["Id"].Visible = false; // Id sütununu gizle
         }
 
         private void nudBoyaSayisi_ValueChanged(object sender, EventArgs e)
@@ -208,6 +201,7 @@ namespace Tekstile
             }
 
             _db.SaveChanges();
+            LogKayit.LogEkle("admin", "DesenEkle", $"Desen eklendi: {desen.DesenAdi}");
             MessageBox.Show("Desen ve boyalar başarıyla kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             FormuTemizle();
@@ -220,7 +214,7 @@ namespace Tekstile
             txtAciklama.Clear();
             pbDesen.Image = null;
             cmbMusteri.SelectedIndex = -1;
-            nudBoyaSayisi.Value = 0; // Bu da ValueChanged olayını tetikleyecektir
+            nudBoyaSayisi.Value = 0; 
             boyaListesi.Clear();
             hedefBoyaSayisi = 0;
             eklenenBoyaSayisi = 0; // Temizleme sırasında eklenen boya sayacını da sıfırla
