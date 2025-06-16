@@ -11,14 +11,14 @@ using Tekstile.Entities.Data;
 
 namespace Tekstile.BLL.Services
 {
-    public class MakineService:IMakineService
+    public class MakineService:IMakineRepo
     {
         MyDbContext _db;
         public MakineService()
         {
             _db = new MyDbContext();
         }
-        public List<Makineler> MakineleriListele() => _db.Makineler.ToList();
+        public List<Makineler> Listele() => _db.Makineler.ToList();
         public void Ekle(Makineler makine)
         {
             _db.Makineler.Add(makine);
@@ -28,9 +28,17 @@ namespace Tekstile.BLL.Services
         public void Sil(int id)
         {
             var makine = _db.Makineler.Find(id);
-            _db.Makineler.Remove(makine);
-            _db.SaveChanges();
+            if (makine != null)
+            {
+                _db.Makineler.Remove(makine);
+                _db.SaveChanges();
+            }
         }
 
+        public void Guncelle(Makineler makine)
+        {
+            _db.Makineler.Update(makine);
+            _db.SaveChanges();
+        }
     }
 }

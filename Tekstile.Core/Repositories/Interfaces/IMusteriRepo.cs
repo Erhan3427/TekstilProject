@@ -7,11 +7,12 @@ using Tekstile.Entities.Data;
 
 namespace Tekstile.BLL.Interfaces
 {
-    public interface IMusteriService
+    public interface IMusteriRepo
     {
-        List<Musteriler> MusteriListele();
+        List<Musteriler> Listele();
         void MusteriEkle(Musteriler musteri);
         void MusteriSil(int id);
+        void guncelle(Musteriler musteri);
 
 
     }

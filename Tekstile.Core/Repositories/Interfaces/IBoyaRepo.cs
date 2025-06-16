@@ -8,11 +8,12 @@ using Tekstile.Entities.Data;
 namespace Tekstile.BLL.Interfaces
 {
 
-    public interface IBoyaService
+    public interface IBoyaRepo
     {
-        List<Boyalar> BoyaListele();
+        List<Boyalar> Listele();
         void Ekle(Boyalar boya);
         void Sil(int id);
+        void guncelle(Boyalar boya);
     }
 
 }

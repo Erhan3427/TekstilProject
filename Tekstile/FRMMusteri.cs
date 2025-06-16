@@ -50,7 +50,7 @@ namespace Tekstile
         private void Listele()
         {
 
-            dgvMüsteriler.DataSource = _musteriService.MusteriListele();
+            dgvMüsteriler.DataSource = _db.Musteriler.ToList();
             dgvMüsteriler.Columns[0].Visible = false;
         }
 
