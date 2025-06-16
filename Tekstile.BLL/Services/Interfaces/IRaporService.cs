@@ -5,12 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Tekstile.Entities.Data;
 
-namespace Tekstile.BLL.Interfaces
+namespace Tekstile.BLL.Services.Interfaces
 {
-    public interface IStokService
+    public interface IRaporService
     {
-        List<StokHareket> StokListele();
-        void Ekle(StokHareket hareket);
-
+        
     }
 }

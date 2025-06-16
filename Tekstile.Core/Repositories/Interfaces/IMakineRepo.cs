@@ -8,11 +8,12 @@ using Tekstile.Entities.Data;
 
 namespace Tekstile.BLL.Interfaces
 {
-    public interface IMakineService
+    public interface IMakineRepo
     {
-        List<Makineler> MakineleriListele();
+        List<Makineler> Listele();
         void Ekle(Makineler makine);
         void Sil(int id);
+        void Guncelle(Makineler makine);
     }
 }
 

@@ -10,14 +10,14 @@ using Tekstile.Entities.Data;
 
 namespace Tekstile.BLL.Services
 {
-    public class BoyaStoguService : IStokService
+    public class BoyaStoguService : IStokRepo
     {
         MyDbContext _db;
         public BoyaStoguService()
         {
             _db = new MyDbContext();
         }
-        public List<StokHareket> StokListele()
+        public List<StokHareket> Listele()
         {
             var list = _db.StokHareket.Include(b=>b.Boya).ToList();
                 

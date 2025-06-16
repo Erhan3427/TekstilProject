@@ -10,7 +10,7 @@ using Tekstile.Entities.Data;
 
 namespace Tekstile.BLL.Services
 {
-    public class BoyaService:IBoyaService
+    public class BoyaService:IBoyaRepo
     {
         MyDbContext _db;
         public BoyaService()
@@ -31,9 +31,15 @@ namespace Tekstile.BLL.Services
              _db.SaveChanges();
         }
 
-        public List<Boyalar> BoyaListele()
+        public List<Boyalar> Listele()
         {
             return _db.Boyalar.ToList();
+        }
+
+        public void guncelle(Boyalar boya)
+        {
+            _db.Boyalar.Update(boya);
+            _db.SaveChanges();
         }
     }
 }

@@ -39,7 +39,7 @@ namespace Tekstile.Data
 
         private void listele()
         {
-            dgvBoyaStok.DataSource = _stokService.StokListele().Select(s => new
+            dgvBoyaStok.DataSource = _db.StokHareket.Select(s => new
             {
                 s.Id,
                 s.Boya.RenkAdi,
