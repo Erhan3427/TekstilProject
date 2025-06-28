@@ -66,6 +66,7 @@ namespace Tekstile
             // 
             // splitContainer1
             // 
+            splitContainer1.BackColor = Color.Transparent;
             splitContainer1.Dock = DockStyle.Fill;
             splitContainer1.Location = new Point(0, 0);
             splitContainer1.Margin = new Padding(3, 4, 3, 4);
@@ -80,20 +81,21 @@ namespace Tekstile
             // 
             splitContainer1.Panel2.Controls.Add(groupBox3);
             splitContainer1.Panel2.Controls.Add(groupBox4);
-            splitContainer1.Size = new Size(1353, 453);
-            splitContainer1.SplitterDistance = 676;
+            splitContainer1.Size = new Size(1352, 516);
+            splitContainer1.SplitterDistance = 675;
             splitContainer1.SplitterWidth = 5;
             splitContainer1.TabIndex = 0;
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = Color.Transparent;
             groupBox1.Controls.Add(dgvMakineler);
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(0, 0);
             groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 4, 3, 4);
-            groupBox1.Size = new Size(676, 270);
+            groupBox1.Size = new Size(675, 333);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Makine Listesi";
@@ -112,12 +114,13 @@ namespace Tekstile
             dgvMakineler.RowHeadersWidth = 51;
             dgvMakineler.RowTemplate.Height = 25;
             dgvMakineler.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMakineler.Size = new Size(670, 242);
+            dgvMakineler.Size = new Size(669, 305);
             dgvMakineler.TabIndex = 0;
             dgvMakineler.CellClick += dgvMakineler_CellClick;
             // 
             // groupBox2
             // 
+            groupBox2.BackColor = Color.Transparent;
             groupBox2.Controls.Add(btnMakineSil);
             groupBox2.Controls.Add(btnMakineGuncelle);
             groupBox2.Controls.Add(btnMakineEkle);
@@ -126,46 +129,55 @@ namespace Tekstile
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(label1);
             groupBox2.Dock = DockStyle.Bottom;
-            groupBox2.Location = new Point(0, 270);
+            groupBox2.Location = new Point(0, 333);
             groupBox2.Margin = new Padding(3, 4, 3, 4);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 4, 3, 4);
-            groupBox2.Size = new Size(676, 183);
+            groupBox2.Size = new Size(675, 183);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Makine İşlemleri";
             // 
             // btnMakineSil
             // 
+            btnMakineSil.BackColor = Color.IndianRed;
+            btnMakineSil.FlatStyle = FlatStyle.Flat;
+            btnMakineSil.ForeColor = SystemColors.Window;
             btnMakineSil.Location = new Point(441, 79);
             btnMakineSil.Margin = new Padding(3, 4, 3, 4);
             btnMakineSil.Name = "btnMakineSil";
             btnMakineSil.Size = new Size(230, 40);
             btnMakineSil.TabIndex = 4;
             btnMakineSil.Text = "Sil";
-            btnMakineSil.UseVisualStyleBackColor = true;
+            btnMakineSil.UseVisualStyleBackColor = false;
             btnMakineSil.Click += btnMakineSil_Click;
             // 
             // btnMakineGuncelle
             // 
+            btnMakineGuncelle.BackColor = Color.SteelBlue;
+            btnMakineGuncelle.FlatStyle = FlatStyle.Flat;
+            btnMakineGuncelle.ForeColor = SystemColors.Window;
             btnMakineGuncelle.Location = new Point(441, 31);
             btnMakineGuncelle.Margin = new Padding(3, 4, 3, 4);
             btnMakineGuncelle.Name = "btnMakineGuncelle";
             btnMakineGuncelle.Size = new Size(230, 40);
             btnMakineGuncelle.TabIndex = 3;
             btnMakineGuncelle.Text = "Güncelle";
-            btnMakineGuncelle.UseVisualStyleBackColor = true;
+            btnMakineGuncelle.UseVisualStyleBackColor = false;
             btnMakineGuncelle.Click += btnMakineGuncelle_Click;
             // 
             // btnMakineEkle
             // 
+            btnMakineEkle.BackColor = Color.MediumSeaGreen;
+            btnMakineEkle.FlatStyle = FlatStyle.Flat;
+            btnMakineEkle.ForeColor = SystemColors.Window;
             btnMakineEkle.Location = new Point(137, 111);
             btnMakineEkle.Margin = new Padding(3, 4, 3, 4);
             btnMakineEkle.Name = "btnMakineEkle";
             btnMakineEkle.Size = new Size(229, 40);
             btnMakineEkle.TabIndex = 2;
             btnMakineEkle.Text = "Ekle";
-            btnMakineEkle.UseVisualStyleBackColor = true;
+            btnMakineEkle.UseVisualStyleBackColor = false;
             btnMakineEkle.Click += btnMakineEkle_Click;
             // 
             // txtMakineAciklama
@@ -188,6 +200,7 @@ namespace Tekstile
             // label4
             // 
             label4.AutoSize = true;
+            label4.BackColor = Color.White;
             label4.Location = new Point(23, 61);
             label4.Name = "label4";
             label4.Size = new Size(73, 20);
@@ -197,6 +210,7 @@ namespace Tekstile
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.White;
             label1.Location = new Point(23, 31);
             label1.Name = "label1";
             label1.Size = new Size(87, 20);
@@ -205,13 +219,14 @@ namespace Tekstile
             // 
             // groupBox3
             // 
+            groupBox3.BackColor = Color.Transparent;
             groupBox3.Controls.Add(dgvKumaslar);
             groupBox3.Dock = DockStyle.Fill;
             groupBox3.Location = new Point(0, 0);
             groupBox3.Margin = new Padding(3, 4, 3, 4);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(3, 4, 3, 4);
-            groupBox3.Size = new Size(672, 270);
+            groupBox3.Size = new Size(672, 333);
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
             groupBox3.Text = "Kumaş Listesi";
@@ -230,12 +245,13 @@ namespace Tekstile
             dgvKumaslar.RowHeadersWidth = 51;
             dgvKumaslar.RowTemplate.Height = 25;
             dgvKumaslar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvKumaslar.Size = new Size(666, 242);
+            dgvKumaslar.Size = new Size(666, 305);
             dgvKumaslar.TabIndex = 0;
             dgvKumaslar.CellClick += dgvKumaslar_CellClick;
             // 
             // groupBox4
             // 
+            groupBox4.BackColor = Color.Transparent;
             groupBox4.Controls.Add(btnKumasSil);
             groupBox4.Controls.Add(btnKumasGuncelle);
             groupBox4.Controls.Add(btnKumasEkle);
@@ -246,7 +262,7 @@ namespace Tekstile
             groupBox4.Controls.Add(label3);
             groupBox4.Controls.Add(label2);
             groupBox4.Dock = DockStyle.Bottom;
-            groupBox4.Location = new Point(0, 270);
+            groupBox4.Location = new Point(0, 333);
             groupBox4.Margin = new Padding(3, 4, 3, 4);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(3, 4, 3, 4);
@@ -257,35 +273,44 @@ namespace Tekstile
             // 
             // btnKumasSil
             // 
+            btnKumasSil.BackColor = Color.IndianRed;
+            btnKumasSil.FlatStyle = FlatStyle.Flat;
+            btnKumasSil.ForeColor = SystemColors.Window;
             btnKumasSil.Location = new Point(436, 75);
             btnKumasSil.Margin = new Padding(3, 4, 3, 4);
             btnKumasSil.Name = "btnKumasSil";
             btnKumasSil.Size = new Size(230, 40);
             btnKumasSil.TabIndex = 6;
             btnKumasSil.Text = "Sil";
-            btnKumasSil.UseVisualStyleBackColor = true;
+            btnKumasSil.UseVisualStyleBackColor = false;
             btnKumasSil.Click += btnKumasSil_Click;
             // 
             // btnKumasGuncelle
             // 
+            btnKumasGuncelle.BackColor = Color.SteelBlue;
+            btnKumasGuncelle.FlatStyle = FlatStyle.Flat;
+            btnKumasGuncelle.ForeColor = SystemColors.Window;
             btnKumasGuncelle.Location = new Point(436, 27);
             btnKumasGuncelle.Margin = new Padding(3, 4, 3, 4);
             btnKumasGuncelle.Name = "btnKumasGuncelle";
             btnKumasGuncelle.Size = new Size(230, 40);
             btnKumasGuncelle.TabIndex = 5;
             btnKumasGuncelle.Text = "Güncelle";
-            btnKumasGuncelle.UseVisualStyleBackColor = true;
+            btnKumasGuncelle.UseVisualStyleBackColor = false;
             btnKumasGuncelle.Click += btnKumasGuncelle_Click;
             // 
             // btnKumasEkle
             // 
+            btnKumasEkle.BackColor = Color.MediumSeaGreen;
+            btnKumasEkle.FlatStyle = FlatStyle.Flat;
+            btnKumasEkle.ForeColor = SystemColors.Window;
             btnKumasEkle.Location = new Point(136, 125);
             btnKumasEkle.Margin = new Padding(3, 4, 3, 4);
             btnKumasEkle.Name = "btnKumasEkle";
             btnKumasEkle.Size = new Size(229, 40);
             btnKumasEkle.TabIndex = 4;
             btnKumasEkle.Text = "Ekle";
-            btnKumasEkle.UseVisualStyleBackColor = true;
+            btnKumasEkle.UseVisualStyleBackColor = false;
             btnKumasEkle.Click += btnKumasEkle_Click;
             // 
             // nudGramaj
@@ -317,6 +342,7 @@ namespace Tekstile
             // label5
             // 
             label5.AutoSize = true;
+            label5.BackColor = Color.White;
             label5.Location = new Point(23, 99);
             label5.Name = "label5";
             label5.Size = new Size(69, 20);
@@ -326,6 +352,7 @@ namespace Tekstile
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = Color.White;
             label3.Location = new Point(23, 69);
             label3.Name = "label3";
             label3.Size = new Size(60, 20);
@@ -335,6 +362,7 @@ namespace Tekstile
             // label2
             // 
             label2.AutoSize = true;
+            label2.BackColor = Color.White;
             label2.Location = new Point(23, 31);
             label2.Name = "label2";
             label2.Size = new Size(83, 20);
@@ -345,7 +373,8 @@ namespace Tekstile
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1353, 453);
+            BackgroundImage = UI.Properties.Resources._20250627_2214_Daha_Fazla_Renk_remix_01jyscvh8hf6frkn3zz6kwgf9e;
+            ClientSize = new Size(1352, 516);
             Controls.Add(splitContainer1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "FRMMakineYonetimi";

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tekstile.BLL.Interfaces;
 using Tekstile.BLL.MusteriService;
+using Tekstile.BLL.Services.Interfaces;
 using Tekstile.Context;
 using Tekstile.Entities.Data;
 using Tekstile.Helpers;
@@ -17,13 +18,13 @@ namespace Tekstile
 {
     public partial class FRMMusteri : Form
     {
-        MyDbContext _db;
-        MusteriService _musteriService = new MusteriService();
-        public FRMMusteri()
-        {
-            _db = new MyDbContext();
+        IMusteriService _db;
+     
 
+        public FRMMusteri(IMusteriService db)
+        {
             InitializeComponent();
+            _db = db;
             Listele();
         }
 
@@ -41,16 +42,13 @@ namespace Tekstile
                 MessageBox.Show("Lütfen tüm alanları doldurunuz.");
                 return false;
             }
-            if(_db.Musteriler.Any(m=>m.Kod == txtMusteriKod.Text)) { 
-                MessageBox.Show("Bu kod zaten var. Lütfen farklı bir kod giriniz.");
-                return false;
-            }
+           
             return true;
         }
         private void Listele()
         {
 
-            dgvMüsteriler.DataSource = _db.Musteriler.ToList();
+            dgvMüsteriler.DataSource = _db.HepsiniGetir();
             dgvMüsteriler.Columns[0].Visible = false;
         }
 
@@ -59,6 +57,11 @@ namespace Tekstile
             if (!KontrolEt())
             {
                 return;
+            }
+            if (_db.HepsiniGetir().Any(m => m.Kod == txtMusteriKod.Text))
+            {
+                MessageBox.Show("Bu kod zaten var. Lütfen farklı bir kod giriniz.");
+                return ;
             }
             Musteriler musteri = new Musteriler()
             {
@@ -69,7 +72,7 @@ namespace Tekstile
                 Kod = txtMusteriKod.Text
 
             };
-            _musteriService.MusteriEkle(musteri);
+            _db.Ekle(musteri);
             LogKayit.LogEkle("Admin", "Müşteri Ekleme", $"Müşteri Eklendi: {musteri.FirmaAdi}");
 
             MessageBox.Show("Müşteri Eklendi");
@@ -82,14 +85,14 @@ namespace Tekstile
                 return;
 
             int id = Convert.ToInt32(dgvMüsteriler.CurrentRow.Cells[0].Value);
-            var musteriler = _db.Musteriler.Find(id);
+            var musteriler = _db.GetById(id);
 
             musteriler.FirmaAdi = txtFirmaAdi.Text;
             musteriler.YetkiliAdSoyad = txtFirmaYetkili.Text;
             musteriler.Telefon = mtbTelefon.Text;
             musteriler.Adres = txtIsAdresi.Text;
             musteriler.Kod = txtMusteriKod.Text;
-            _db.SaveChanges();
+            _db.Guncelle(musteriler);
             LogKayit.LogEkle("Admin", "Müşteri Güncelleme", $"Müşteri Güncellendi: {musteriler.FirmaAdi}");
             MessageBox.Show("Güncellendi");
             Listele();
@@ -103,7 +106,7 @@ namespace Tekstile
                 MessageBox.Show("Müşteri yok");
                 return;
             }
-            _musteriService.MusteriSil(id);
+            _db.Sil(id);
             LogKayit.LogEkle("Admin", "Müşteri Silme", $"Müşteri Silindi: {txtFirmaAdi.Text}");
             MessageBox.Show("Silindi");
             Listele();
@@ -125,3 +128,4 @@ namespace Tekstile
         }
     }
 }
+

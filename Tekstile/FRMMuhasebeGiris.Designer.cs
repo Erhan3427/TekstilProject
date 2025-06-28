@@ -30,15 +30,16 @@
         {
             pnlYonetim = new Panel();
             btnCikis = new Button();
-            btnSiparisYonetim = new Button();
+            btnGider = new Button();
             btnRaporlama = new Button();
-            btnMakineYonetim = new Button();
+            btnKasaDurum = new Button();
             btnCalisanlar = new Button();
-            btnGelirGider = new Button();
+            btnGelir = new Button();
             SuspendLayout();
             // 
             // pnlYonetim
             // 
+            pnlYonetim.BackColor = Color.Transparent;
             pnlYonetim.Location = new Point(150, 4);
             pnlYonetim.Name = "pnlYonetim";
             pnlYonetim.Size = new Size(1350, 500);
@@ -46,6 +47,7 @@
             // 
             // btnCikis
             // 
+            btnCikis.FlatStyle = FlatStyle.Flat;
             btnCikis.Location = new Point(10, 419);
             btnCikis.Name = "btnCikis";
             btnCikis.Size = new Size(134, 63);
@@ -54,18 +56,21 @@
             btnCikis.UseVisualStyleBackColor = true;
             btnCikis.Click += btnCikis_Click;
             // 
-            // btnSiparisYonetim
+            // btnGider
             // 
-            btnSiparisYonetim.Location = new Point(10, 328);
-            btnSiparisYonetim.Name = "btnSiparisYonetim";
-            btnSiparisYonetim.Size = new Size(134, 63);
-            btnSiparisYonetim.TabIndex = 4;
-            btnSiparisYonetim.Text = "Sipariş Yönetimi";
-            btnSiparisYonetim.UseVisualStyleBackColor = true;
+            btnGider.FlatStyle = FlatStyle.Flat;
+            btnGider.Location = new Point(10, 121);
+            btnGider.Name = "btnGider";
+            btnGider.Size = new Size(134, 63);
+            btnGider.TabIndex = 4;
+            btnGider.Text = "Gider";
+            btnGider.UseVisualStyleBackColor = true;
+            btnGider.Click += btnGider_Click;
             // 
             // btnRaporlama
             // 
-            btnRaporlama.Location = new Point(10, 121);
+            btnRaporlama.FlatStyle = FlatStyle.Flat;
+            btnRaporlama.Location = new Point(10, 328);
             btnRaporlama.Name = "btnRaporlama";
             btnRaporlama.Size = new Size(134, 63);
             btnRaporlama.TabIndex = 5;
@@ -73,46 +78,52 @@
             btnRaporlama.UseVisualStyleBackColor = true;
             btnRaporlama.Click += btnRaporlama_Click;
             // 
-            // btnMakineYonetim
+            // btnKasaDurum
             // 
-            btnMakineYonetim.Location = new Point(10, 259);
-            btnMakineYonetim.Name = "btnMakineYonetim";
-            btnMakineYonetim.Size = new Size(134, 63);
-            btnMakineYonetim.TabIndex = 6;
-            btnMakineYonetim.Text = "Makine Yönetimi";
-            btnMakineYonetim.UseVisualStyleBackColor = true;
+            btnKasaDurum.FlatStyle = FlatStyle.Flat;
+            btnKasaDurum.Location = new Point(10, 259);
+            btnKasaDurum.Name = "btnKasaDurum";
+            btnKasaDurum.Size = new Size(134, 63);
+            btnKasaDurum.TabIndex = 6;
+            btnKasaDurum.Text = "Kasa Durumu";
+            btnKasaDurum.UseVisualStyleBackColor = true;
+            btnKasaDurum.Click += btnKasaDurum_Click;
             // 
             // btnCalisanlar
             // 
+            btnCalisanlar.FlatStyle = FlatStyle.Flat;
             btnCalisanlar.Location = new Point(10, 190);
             btnCalisanlar.Name = "btnCalisanlar";
             btnCalisanlar.Size = new Size(134, 63);
             btnCalisanlar.TabIndex = 7;
             btnCalisanlar.Text = "Çalışanlar";
             btnCalisanlar.UseVisualStyleBackColor = true;
+            btnCalisanlar.Click += btnCalisanlar_Click;
             // 
-            // btnGelirGider
+            // btnGelir
             // 
-            btnGelirGider.Location = new Point(10, 52);
-            btnGelirGider.Name = "btnGelirGider";
-            btnGelirGider.Size = new Size(134, 63);
-            btnGelirGider.TabIndex = 8;
-            btnGelirGider.Text = "GelirGider";
-            btnGelirGider.UseVisualStyleBackColor = true;
-            btnGelirGider.Click += btnGelirGider_Click;
+            btnGelir.FlatStyle = FlatStyle.Flat;
+            btnGelir.Location = new Point(10, 52);
+            btnGelir.Name = "btnGelir";
+            btnGelir.Size = new Size(134, 63);
+            btnGelir.TabIndex = 8;
+            btnGelir.Text = "Gelir";
+            btnGelir.UseVisualStyleBackColor = true;
+            btnGelir.Click += btnGelir_Click;
             // 
             // FRMMuhasebeGiris
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources._20250627_2211_Soyut_Renkler_remix_01jyscpdczesgsfaqrdnwr42j4;
             ClientSize = new Size(1512, 516);
             Controls.Add(pnlYonetim);
             Controls.Add(btnCikis);
-            Controls.Add(btnSiparisYonetim);
+            Controls.Add(btnGider);
             Controls.Add(btnRaporlama);
-            Controls.Add(btnMakineYonetim);
+            Controls.Add(btnKasaDurum);
             Controls.Add(btnCalisanlar);
-            Controls.Add(btnGelirGider);
+            Controls.Add(btnGelir);
             Name = "FRMMuhasebeGiris";
             Text = "FRMMuhasebeGiris";
             ResumeLayout(false);
@@ -122,10 +133,10 @@
 
         private Panel pnlYonetim;
         private Button btnCikis;
-        private Button btnSiparisYonetim;
+        private Button btnGider;
         private Button btnRaporlama;
-        private Button btnMakineYonetim;
+        private Button btnKasaDurum;
         private Button btnCalisanlar;
-        private Button btnGelirGider;
+        private Button btnGelir;
     }
 }

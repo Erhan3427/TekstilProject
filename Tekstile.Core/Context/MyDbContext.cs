@@ -22,10 +22,13 @@ namespace Tekstile.Context
         public DbSet<StokHareket> StokHareket { get; set; }
         public DbSet<LogKayitlari> LogKayitlari  { get; set; }
         public DbSet<Giderler> Giderler { get; set; }
+        public DbSet<Calisan> Calisanlar { get; set; }
+        public DbSet<MaasOdeme> MaasOdemeleri { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=ERHANLAPTOP\\SQLEXPRESS;Database=TekstileDB;TrustServerCertificate=True;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=TekstileDB;TrustServerCertificate=True;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

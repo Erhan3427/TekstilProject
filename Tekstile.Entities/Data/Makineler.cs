@@ -12,5 +12,5 @@ public partial class Makineler
 
     public string? Aciklama { get; set; }
 
-    public virtual List<Siparisler> Siparislers { get; set; } 
+    public  List<Siparisler> Siparislers { get; set; } 
 }

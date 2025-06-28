@@ -11,40 +11,36 @@ namespace Tekstile.BLL.Services.CRUD
 {
     internal class DesenYonetimService : IDesenYonetimService
     {
-        IDesenYonetimiRepo _dYR;
+        IDesenYonetimiRepo _dyr;
         public DesenYonetimService(IDesenYonetimiRepo desenYonetimiRepo)
         {
-            _dYR = desenYonetimiRepo;
+            _dyr = desenYonetimiRepo;
             
         }
         public void Ekle(DesenBoyalar boya)
         {
-            _dYR.Ekle(boya);
+            _dyr.Ekle(boya);
 
         }
 
-        public Desenler GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public DesenBoyalar GetById(int id) => _dyr.GetById(id);
 
-      
+
 
         public void Guncelle(DesenBoyalar desenBoya)
         {
-            _dYR.guncelle(desenBoya);
+            _dyr.Guncelle(desenBoya);
         }
 
         public List<DesenBoyalar> HepsiniGetir()
         {
-            return _dYR.Listele();
+            return _dyr.Listele();
         }
 
-       
 
         public void Sil(int id)
         {
-            _dYR.Sil(id);
+            _dyr.Sil(id);
         }
     }
 }

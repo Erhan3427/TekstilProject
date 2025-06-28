@@ -12,6 +12,7 @@ namespace Tekstile.DAL.Repositories.Interfaces
         List<Siparisler> Listele();
         void Ekle(Siparisler boya);
         void Sil(int id);
-        void guncelle(Siparisler boya);
+        void Guncelle(Siparisler boya);
+        Siparisler GetById(int id);
     }
 }

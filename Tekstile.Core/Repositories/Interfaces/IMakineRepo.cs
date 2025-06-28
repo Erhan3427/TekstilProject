@@ -14,6 +14,7 @@ namespace Tekstile.BLL.Interfaces
         void Ekle(Makineler makine);
         void Sil(int id);
         void Guncelle(Makineler makine);
+        Makineler GetById(int id);
     }
 }
 

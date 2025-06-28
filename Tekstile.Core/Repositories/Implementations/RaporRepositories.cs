@@ -9,10 +9,10 @@ using Tekstile.Entities.Data;
 
 namespace Tekstile.DAL.Repositories.Services
 {
-    public class RaporService : IRaporRepo
+    public class RaporRepositories : IRaporRepo
     {
         MyDbContext _db;
-        public RaporService(MyDbContext context)
+        public RaporRepositories(MyDbContext context)
         {
             _db = context;
             

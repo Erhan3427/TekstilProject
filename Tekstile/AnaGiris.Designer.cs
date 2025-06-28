@@ -28,39 +28,62 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnaGiris));
             btnSiparisYonetim = new Button();
             btnMuhasebe = new Button();
+            pbAnaGiris = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pbAnaGiris).BeginInit();
             SuspendLayout();
             // 
             // btnSiparisYonetim
             // 
-            btnSiparisYonetim.Location = new Point(71, 97);
+            btnSiparisYonetim.BackColor = Color.MidnightBlue;
+            btnSiparisYonetim.FlatStyle = FlatStyle.Flat;
+            btnSiparisYonetim.ForeColor = SystemColors.ButtonHighlight;
+            btnSiparisYonetim.Location = new Point(2, 324);
             btnSiparisYonetim.Name = "btnSiparisYonetim";
-            btnSiparisYonetim.Size = new Size(308, 250);
+            btnSiparisYonetim.Size = new Size(395, 130);
             btnSiparisYonetim.TabIndex = 0;
             btnSiparisYonetim.Text = "Sipariş Yönetim";
-            btnSiparisYonetim.UseVisualStyleBackColor = true;
+            btnSiparisYonetim.UseVisualStyleBackColor = false;
             btnSiparisYonetim.Click += btnSiparisYonetim_Click;
             // 
             // btnMuhasebe
             // 
-            btnMuhasebe.Location = new Point(385, 97);
+            btnMuhasebe.BackColor = Color.Crimson;
+            btnMuhasebe.FlatStyle = FlatStyle.Flat;
+            btnMuhasebe.ForeColor = SystemColors.ControlLightLight;
+            btnMuhasebe.Location = new Point(402, 324);
             btnMuhasebe.Name = "btnMuhasebe";
-            btnMuhasebe.Size = new Size(308, 250);
+            btnMuhasebe.Size = new Size(395, 130);
             btnMuhasebe.TabIndex = 0;
             btnMuhasebe.Text = "Muhasebe";
-            btnMuhasebe.UseVisualStyleBackColor = true;
+            btnMuhasebe.UseVisualStyleBackColor = false;
             btnMuhasebe.Click += btnMuhasebe_Click;
+            // 
+            // pbAnaGiris
+            // 
+            pbAnaGiris.BackColor = Color.Transparent;
+            pbAnaGiris.Image = (Image)resources.GetObject("pbAnaGiris.Image");
+            pbAnaGiris.Location = new Point(1, -11);
+            pbAnaGiris.Name = "pbAnaGiris";
+            pbAnaGiris.Size = new Size(805, 345);
+            pbAnaGiris.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbAnaGiris.TabIndex = 1;
+            pbAnaGiris.TabStop = false;
             // 
             // AnaGiris
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Snow;
             ClientSize = new Size(800, 450);
             Controls.Add(btnMuhasebe);
             Controls.Add(btnSiparisYonetim);
+            Controls.Add(pbAnaGiris);
             Name = "AnaGiris";
             Text = "AnaGiris";
+            ((System.ComponentModel.ISupportInitialize)pbAnaGiris).EndInit();
             ResumeLayout(false);
         }
 
@@ -68,5 +91,6 @@
 
         private Button btnSiparisYonetim;
         private Button btnMuhasebe;
+        private PictureBox pbAnaGiris;
     }
 }

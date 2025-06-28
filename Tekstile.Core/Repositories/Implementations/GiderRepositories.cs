@@ -9,10 +9,10 @@ using Tekstile.Entities.Data;
 
 namespace Tekstile.DAL.Repositories.Services
 {
-    public class GiderService : IGiderRepo
+    public class GiderRepositories : IGiderRepo
     {
         MyDbContext _db;
-        public GiderService(MyDbContext context)
+        public GiderRepositories(MyDbContext context)
         {
             _db = context;
 
@@ -26,11 +26,13 @@ namespace Tekstile.DAL.Repositories.Services
         public void Ekle(Giderler boya)
         {
             _db.Giderler.Add(boya);
+            _db.SaveChanges();
         }
 
-        public void guncelle(Giderler boya)
+        public void Guncelle(Giderler boya)
         {
             _db.Giderler.Update(boya);
+            _db.SaveChanges();
         }
 
         public void Sil(int id)
@@ -41,6 +43,11 @@ namespace Tekstile.DAL.Repositories.Services
                 _db.Giderler.Remove(GiderId);
                 _db.SaveChanges();
             }
+        }
+        public Giderler GetById(int id)
+        {
+            var GiderId = _db.Giderler.Find(id);
+            return GiderId;
         }
     }
 }

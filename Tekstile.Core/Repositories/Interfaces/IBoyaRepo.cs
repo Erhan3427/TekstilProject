@@ -13,7 +13,8 @@ namespace Tekstile.BLL.Interfaces
         List<Boyalar> Listele();
         void Ekle(Boyalar boya);
         void Sil(int id);
-        void guncelle(Boyalar boya);
+        void Guncelle(Boyalar boya);
+        Boyalar GetById(int id);
     }
 
 }

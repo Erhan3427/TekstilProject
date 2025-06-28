@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using Tekstile.BLL.Services.Interfaces;
 using Tekstile.Context;
 using Tekstile.Entities.Data;
 using Tekstile.Helpers;
@@ -7,16 +8,29 @@ namespace Tekstile
 {
     public partial class FRMDesenYonetimi : Form
     {
-        private MyDbContext _db = new MyDbContext();
-        private List<DesenBoyalar> boyaListesi = new List<DesenBoyalar>();
+
+
+        private List<DesenBoyalar> boyaListesi = new();
         private int hedefBoyaSayisi = 0;
-        private int eklenenBoyaSayisi = 0; // Yeni: Kaç boya eklendiğini takip etmek için
+        private int eklenenBoyaSayisi = 0;
         private bool boyaEklemeModu = false;
 
-        public FRMDesenYonetimi()
+        private readonly IDesenBoyaService _db;
+        private readonly IBoyaService _boyaService;
+        private readonly IMusteriService _musteriService;
+        private readonly IDesenService _desenService;
+
+        public FRMDesenYonetimi(IDesenBoyaService desenBoyaService, IBoyaService boyaService, IMusteriService musteriService,IDesenService desenService)
         {
             InitializeComponent();
+            _db = desenBoyaService;
+            _boyaService = boyaService;
+            _musteriService = musteriService;
+            _desenService = desenService;
         }
+
+
+
 
         private void FRMDesenYonetimi_Load(object sender, EventArgs e)
         {
@@ -24,11 +38,11 @@ namespace Tekstile
             dgvDesenler.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvDesenler.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            cmbBoyalar.DataSource = _db.Boyalar.ToList();
+            cmbBoyalar.DataSource = _boyaService.HepsiniGetir().ToList();
             cmbBoyalar.DisplayMember = "RenkAdi";
             cmbBoyalar.ValueMember = "Id";
 
-            cmbMusteri.DataSource = _db.Musteriler.ToList();
+            cmbMusteri.DataSource = _musteriService.HepsiniGetir().ToList();
             cmbMusteri.DisplayMember = "FirmaAdi";
             cmbMusteri.ValueMember = "Id";
 
@@ -39,14 +53,14 @@ namespace Tekstile
 
         private void DesenleriListele()
         {
-            dgvDesenler.DataSource = _db.DesenBoyalari
+            dgvDesenler.DataSource = _db.HepsiniGetir()
                 .Select(s => new
                 {
                     s.Id,
                     s.Desen.DesenAdi,
                     s.Musteri.FirmaAdi,
                     s.Boya.RenkAdi,
-                    s.BoyaSayisi, // Burada "BoyaSayisi" yerine "BoyaAdedi" gibi bir şey daha mantıklı olabilir
+                    s.BoyaSayisi, 
                     s.Gram
                 })
                 .ToList();
@@ -189,18 +203,18 @@ namespace Tekstile
                 Aciklama = txtAciklama.Text
             };
 
-            _db.Desenler.Add(desen);
-            _db.SaveChanges(); // Desen kaydedildikten sonra Id'si oluşur
+            // Desen kaydını ekle
+            _desenService.Ekle(desen);
+
 
             foreach (var boya in boyaListesi)
             {
                 boya.DesenId = desen.Id;
                 boya.MusteriId = (int)cmbMusteri.SelectedValue;
                 boya.BoyaSayisi = hedefBoyaSayisi; // Her bir DesenBoyalar kaydına toplam hedef boya sayısını atayabiliriz
-                _db.DesenBoyalari.Add(boya);
+                _db.Ekle(boya); // DesenBoyalar kaydını ekle
             }
 
-            _db.SaveChanges();
             LogKayit.LogEkle("admin", "DesenEkle", $"Desen eklendi: {desen.DesenAdi}");
             MessageBox.Show("Desen ve boyalar başarıyla kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -212,12 +226,12 @@ namespace Tekstile
         {
             txtDesenAdi.Clear();
             txtAciklama.Clear();
+            eklenenBoyaSayisi = 0; // Temizleme sırasında eklenen boya sayacını da sıfırla
             pbDesen.Image = null;
             cmbMusteri.SelectedIndex = -1;
-            nudBoyaSayisi.Value = 0; 
             boyaListesi.Clear();
             hedefBoyaSayisi = 0;
-            eklenenBoyaSayisi = 0; // Temizleme sırasında eklenen boya sayacını da sıfırla
+            nudBoyaSayisi.Value = 0; 
             BoyaEklemeModunuAyarla(false);
         }
 
@@ -250,7 +264,7 @@ namespace Tekstile
             if (cmbMusteri.SelectedItem != null)
             {
                 var seciliMusteri = cmbMusteri.SelectedItem as Musteriler;
-                dgvDesenler.DataSource = _db.DesenBoyalari
+                dgvDesenler.DataSource = _db.HepsiniGetir()
                     .Where(s => s.MusteriId == seciliMusteri.Id)
                     .Select(s => new
                     {

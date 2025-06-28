@@ -1,30 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Tekstile.BLL.Interfaces;
-using Tekstile.BLL.Services;
-using Tekstile.Context;
+﻿using System.Data;
+using Tekstile.BLL.Services.Interfaces;
+
 
 namespace Tekstile.Data
 {
     public partial class FRMBoyaStogu : Form
     {
-        MyDbContext _db = new MyDbContext();
-        BoyaStoguService _stokService = new BoyaStoguService();
-        public FRMBoyaStogu()
+        IStokService _db;
+
+        public FRMBoyaStogu(IStokService db)
         {
-
             InitializeComponent();
+            _db = db;
         }
-
-
 
         private void BoyaStoğu_Load(object sender, EventArgs e)
         {
@@ -39,7 +27,7 @@ namespace Tekstile.Data
 
         private void listele()
         {
-            dgvBoyaStok.DataSource = _db.StokHareket.Select(s => new
+            dgvBoyaStok.DataSource = _db.HepsiniGetir().Select(s => new
             {
                 s.Id,
                 s.Boya.RenkAdi,
@@ -58,8 +46,9 @@ namespace Tekstile.Data
         {
             var Baslangictarihi = dtpBaslangic.Value;
             var Bitistarihi = dtpBitis.Value;
-            var filtreli = _db.StokHareket
-                .Where(x => x.IslemTarihi >= Baslangictarihi.AddDays(-1) && x.IslemTarihi <= Bitistarihi).Include(x => x.Boya).Select(s => new
+            var filtreli = _db.HepsiniGetir()
+                .Where(x => x.IslemTarihi >= Baslangictarihi.AddDays(-1) && x.IslemTarihi <= Bitistarihi)
+                .Select(s => new
                 {
                     s.Id,
                     s.Boya.RenkAdi,
@@ -90,10 +79,9 @@ namespace Tekstile.Data
             var Baslangictarihi = dtpBaslangic.Value;
             var Bitistarihi = dtpBitis.Value;
             string arama = txtFiltreleStok.Text.ToLower();
-            var filtreli = _db.StokHareket
+            var filtreli = _db.HepsiniGetir()
                 .Where(x => x.IslemTarihi >= Baslangictarihi.AddDays(-1) && x.IslemTarihi <= Bitistarihi)
                 .Where(x => x.Boya.RenkAdi.ToLower().Contains(arama))
-                .Include(x => x.Boya)
                 .Select(s => new
                 {
                     s.Id,

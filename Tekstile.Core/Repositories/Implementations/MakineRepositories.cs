@@ -11,10 +11,10 @@ using Tekstile.Entities.Data;
 
 namespace Tekstile.BLL.Services
 {
-    public class MakineService:IMakineRepo
+    public class MakineRepositories : IMakineRepo
     {
         MyDbContext _db;
-        public MakineService()
+        public MakineRepositories()
         {
             _db = new MyDbContext();
         }
@@ -39,6 +39,10 @@ namespace Tekstile.BLL.Services
         {
             _db.Makineler.Update(makine);
             _db.SaveChanges();
+        }
+        public Makineler GetById(int id)
+        {
+            return _db.Makineler.Find(id);
         }
     }
 }

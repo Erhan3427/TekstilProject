@@ -10,10 +10,10 @@ using Tekstile.Entities.Data;
 namespace Tekstile.BLL.MusteriService
 {
     
-    public class MusteriService:IMusteriRepo
+    public class MusteriRepositories:IMusteriRepo
     {
         MyDbContext _db;
-        public MusteriService()
+        public MusteriRepositories()
         {
             _db = new MyDbContext();
         }
@@ -38,10 +38,14 @@ namespace Tekstile.BLL.MusteriService
 
         }
 
-        public void guncelle(Musteriler musteri)
+        public void Guncelle(Musteriler musteri)
         {
             _db.Musteriler.Update(musteri);
             _db.SaveChanges();
+        }
+        public Musteriler GetById(int id)
+        {
+            return _db.Musteriler.Find(id);
         }
     }
 }

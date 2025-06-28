@@ -15,5 +15,5 @@ public partial class Kumascinsleri
 
     public string? IplikTipi { get; set; }
 
-    public virtual List<Siparisler> Siparislers { get; set; }
+    public  List<Siparisler> Siparislers { get; set; }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,18 +10,22 @@ using Tekstile.Entities.Data;
 
 namespace Tekstile.DAL.Repositories.Services
 {
-    public class SiparisYonetimiService : ISiparisYonetimiRepo
+    public class SiparisYonetimiRepositories : ISiparisYonetimiRepo
     {
         MyDbContext _db;
-        public SiparisYonetimiService(MyDbContext context)
+        public SiparisYonetimiRepositories(MyDbContext context)
         {
             _db = context;
-            
+
         }
         public List<Siparisler> Listele()
         {
-            var list = _db.Siparisler.ToList();
-            return list;    
+            return _db.Siparisler
+                    .Include(s => s.Musteri)
+                    .Include(s => s.Desen)
+                    .Include(s => s.Kumas)
+                    .Include(s => s.Makine)
+                    .ToList();
         }
 
         public void Ekle(Siparisler boya)
@@ -29,7 +34,7 @@ namespace Tekstile.DAL.Repositories.Services
             _db.SaveChanges();
         }
 
-        public void guncelle(Siparisler boya)
+        public void Guncelle(Siparisler boya)
         {
             _db.Siparisler.Update(boya);
             _db.SaveChanges();
@@ -43,6 +48,10 @@ namespace Tekstile.DAL.Repositories.Services
                 _db.Siparisler.Remove(SiparisID);
                 _db.SaveChanges();
             }
+        }
+        public Siparisler GetById(int id)
+        {
+            return _db.Siparisler.Find(id);
         }
     }
 }

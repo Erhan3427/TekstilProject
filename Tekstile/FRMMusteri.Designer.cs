@@ -118,32 +118,41 @@
             // 
             // button1
             // 
-            button1.Location = new Point(483, 203);
+            button1.BackColor = Color.MediumSeaGreen;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = SystemColors.Window;
+            button1.Location = new Point(515, 203);
             button1.Name = "button1";
             button1.Size = new Size(153, 50);
             button1.TabIndex = 1;
             button1.Text = "Kaydet";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // btnSil
             // 
-            btnSil.Location = new Point(799, 203);
+            btnSil.BackColor = Color.IndianRed;
+            btnSil.FlatStyle = FlatStyle.Flat;
+            btnSil.ForeColor = SystemColors.Window;
+            btnSil.Location = new Point(831, 203);
             btnSil.Name = "btnSil";
             btnSil.Size = new Size(143, 50);
             btnSil.TabIndex = 4;
             btnSil.Text = "Sil";
-            btnSil.UseVisualStyleBackColor = true;
+            btnSil.UseVisualStyleBackColor = false;
             btnSil.Click += btnSil_Click;
             // 
             // btnGuncell
             // 
-            btnGuncell.Location = new Point(642, 203);
+            btnGuncell.BackColor = Color.SteelBlue;
+            btnGuncell.FlatStyle = FlatStyle.Flat;
+            btnGuncell.ForeColor = SystemColors.Window;
+            btnGuncell.Location = new Point(674, 203);
             btnGuncell.Name = "btnGuncell";
             btnGuncell.Size = new Size(151, 50);
             btnGuncell.TabIndex = 4;
             btnGuncell.Text = "Güncelle";
-            btnGuncell.UseVisualStyleBackColor = true;
+            btnGuncell.UseVisualStyleBackColor = false;
             btnGuncell.Click += btnGuncell_Click;
             // 
             // mtbTelefon
@@ -174,7 +183,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1327, 453);
+            BackgroundImage = UI.Properties.Resources._20250627_2211_Soyut_Renkler_remix_01jyscpdczesgsfaqrdnwr42j4;
+            ClientSize = new Size(1512, 516);
             Controls.Add(txtMusteriKod);
             Controls.Add(mtbTelefon);
             Controls.Add(btnGuncell);

@@ -25,11 +25,11 @@ public partial class Siparisler
 
     public DateTime? SiparisTarihi { get; set; }
 
-    public virtual Desenler Desen { get; set; } = null!;
+    public  Desenler Desen { get; set; } = null!;
 
-    public virtual Kumascinsleri Kumas { get; set; } = null!;
+    public Kumascinsleri Kumas { get; set; } = null!;
 
-    public virtual Makineler Makine { get; set; } = null!;
+    public  Makineler Makine { get; set; } = null!;
 
-    public virtual Musteriler Musteri { get; set; } = null!;
+    public  Musteriler Musteri { get; set; } = null!;
 }

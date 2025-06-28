@@ -17,7 +17,7 @@ namespace Tekstile.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.5")
+                .HasAnnotation("ProductVersion", "9.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -67,6 +67,33 @@ namespace Tekstile.Migrations
                         .IsUnique();
 
                     b.ToTable("Boyalar");
+                });
+
+            modelBuilder.Entity("Tekstile.Entities.Data.Calisan", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AdSoyad")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("AktifMi")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Departman")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Maas")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Calisanlar");
                 });
 
             modelBuilder.Entity("Tekstile.Entities.Data.DesenBoyalar", b =>
@@ -155,7 +182,7 @@ namespace Tekstile.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Giderlers");
+                    b.ToTable("Giderler");
                 });
 
             modelBuilder.Entity("Tekstile.Entities.Data.Kumascinsleri", b =>
@@ -207,6 +234,30 @@ namespace Tekstile.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("LogKayitlari");
+                });
+
+            modelBuilder.Entity("Tekstile.Entities.Data.MaasOdeme", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CalisanId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("OdemeTarihi")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Tutar")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CalisanId");
+
+                    b.ToTable("MaasOdemeleri");
                 });
 
             modelBuilder.Entity("Tekstile.Entities.Data.Makineler", b =>
@@ -375,6 +426,17 @@ namespace Tekstile.Migrations
                         .HasForeignKey("MusterilerId");
                 });
 
+            modelBuilder.Entity("Tekstile.Entities.Data.MaasOdeme", b =>
+                {
+                    b.HasOne("Tekstile.Entities.Data.Calisan", "Calisan")
+                        .WithMany("MaasOdemeleri")
+                        .HasForeignKey("CalisanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Calisan");
+                });
+
             modelBuilder.Entity("Tekstile.Entities.Data.Siparisler", b =>
                 {
                     b.HasOne("Tekstile.Entities.Data.Desenler", "Desen")
@@ -424,6 +486,11 @@ namespace Tekstile.Migrations
             modelBuilder.Entity("Tekstile.Entities.Data.Boyalar", b =>
                 {
                     b.Navigation("DesenBoyalars");
+                });
+
+            modelBuilder.Entity("Tekstile.Entities.Data.Calisan", b =>
+                {
+                    b.Navigation("MaasOdemeleri");
                 });
 
             modelBuilder.Entity("Tekstile.Entities.Data.Desenler", b =>

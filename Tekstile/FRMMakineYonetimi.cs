@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tekstile.BLL.Services.Interfaces;
 using Tekstile.Context;
 using Tekstile.Entities.Data;
 using Tekstile.Helpers;
@@ -15,13 +16,18 @@ namespace Tekstile
 {
     public partial class FRMMakineYonetimi : Form
     {
-        private MyDbContext _db = new MyDbContext();
+        IMakineService _db;
+        IKumasService _kumasService;
         private int seciliMakineId = 0;
         private int seciliKumasId = 0;
 
-        public FRMMakineYonetimi()
+      
+
+        public FRMMakineYonetimi(IMakineService db, IKumasService kumasService)
         {
             InitializeComponent();
+            _db = db;
+            _kumasService = kumasService;
         }
 
         private void FRMMakineYonetimi_Load(object sender, EventArgs e)
@@ -41,7 +47,7 @@ namespace Tekstile
 
         private void MakineleriListele()
         {
-            dgvMakineler.DataSource = _db.Makineler.Select(m => new
+            dgvMakineler.DataSource = _db.HepsiniGetir().Select(m => new
             {
                 m.Id,
                 m.MakineAdi,
@@ -53,7 +59,7 @@ namespace Tekstile
 
         private void KumaslariListele()
         {
-            dgvKumaslar.DataSource = _db.Kumascinsleri.Select(k => new
+            dgvKumaslar.DataSource = _kumasService.HepsiniGetir().Select(k => new
             {
                 k.Id,
                 k.KumasAdi,
@@ -79,8 +85,7 @@ namespace Tekstile
 
             };
 
-            _db.Makineler.Add(makine);
-            _db.SaveChanges();
+            _db.Ekle(makine);
             LogKayit.LogEkle("Admin", "Makine Ekleme", $"Makine Eklendi: {makine.MakineAdi}");
             MessageBox.Show("Makine başarıyla eklendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             MakineleriListele();
@@ -109,8 +114,7 @@ namespace Tekstile
 
             };
 
-            _db.Kumascinsleri.Add(kumas);
-            _db.SaveChanges();
+            _kumasService.Ekle(kumas);
             LogKayit.LogEkle("Admin", "Kumas Ekleme ",$"Kumaş Eklendi: {kumas.KumasAdi}");
             MessageBox.Show("Kumaş başarıyla eklendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             KumaslariListele();
@@ -125,11 +129,12 @@ namespace Tekstile
                 return;
             }
 
-            var makine = _db.Makineler.Find(seciliMakineId);
+            var makine = _db.GetById(seciliMakineId);
             if (makine != null)
             {
                 makine.MakineAdi = txtMakineAdi.Text;
-                _db.SaveChanges();
+                makine.Aciklama = txtMakineAciklama.Text;
+                _db.Guncelle(makine);
                 LogKayit.LogEkle("Admin","Makine Güncelleme",$"Makine Güncellendi: {makine.MakineAdi}");
                 MessageBox.Show("Makine başarıyla güncellendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MakineleriListele();
@@ -145,12 +150,14 @@ namespace Tekstile
                 return;
             }
 
-            var kumas = _db.Kumascinsleri.Find(seciliKumasId);
+            var kumas = _kumasService.GetById(seciliKumasId);
             if (kumas != null)
             {
                 kumas.KumasAdi = txtKumasAdi.Text;
                 kumas.Gramaj = (double)nudGramaj.Value;
-                _db.SaveChanges();
+                kumas.IplikTipi = txtiplikTipi.Text;
+
+                _kumasService.Guncelle(kumas);
                 LogKayit.LogEkle("Admin", "Kumaş Güncelle", $"Kumaş Güncellendi: {kumas.KumasAdi}");
                 MessageBox.Show("Kumaş başarıyla güncellendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 KumaslariListele();
@@ -168,12 +175,11 @@ namespace Tekstile
 
             if (MessageBox.Show("Seçili makineyi silmek istediğinize emin misiniz?", "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                var makine = _db.Makineler.Find(seciliMakineId);
+                var makine = _db.GetById(seciliMakineId);
                 if (makine != null)
                 {
-                    _db.Makineler.Remove(makine);
-                    _db.SaveChanges();
-                    LogKayit.LogEkle("Admin","Makine Silme", $"Makine Silindi: {makine.MakineAdi}");
+                    _db.Sil(seciliMakineId); // Use the 'Sil' method from IMakineService to delete the machine  
+                    LogKayit.LogEkle("Admin", "Makine Silme", $"Makine Silindi: {makine.MakineAdi}");
                     MessageBox.Show("Makine başarıyla silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     MakineleriListele();
                     MakineFormuTemizle();
@@ -191,12 +197,11 @@ namespace Tekstile
 
             if (MessageBox.Show("Seçili kumaşı silmek istediğinize emin misiniz?", "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                var kumas = _db.Kumascinsleri.Find(seciliKumasId);
+                var kumas = _kumasService.GetById(seciliKumasId);
                 if (kumas != null)
                 {
-                    _db.Kumascinsleri.Remove(kumas);
-                    _db.SaveChanges();
-                    LogKayit.LogEkle("Admin","Kumaş Silme", $"Kumaş Silindi: {kumas.KumasAdi}");
+                    _kumasService.Sil(seciliKumasId);
+                    LogKayit.LogEkle("Admin", "Kumaş Silme", $"Kumaş Silindi: {kumas.KumasAdi}");
                     MessageBox.Show("Kumaş başarıyla silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     KumaslariListele();
                     KumasFormuTemizle();
@@ -208,12 +213,14 @@ namespace Tekstile
         private void MakineFormuTemizle()
         {
             txtMakineAdi.Clear();
+            txtMakineAciklama.Clear();
             seciliMakineId = 0;
         }
 
         private void KumasFormuTemizle()
         {
             txtKumasAdi.Clear();
+            txtiplikTipi.Clear();
             nudGramaj.Value = 0;
             seciliKumasId = 0;
         }
