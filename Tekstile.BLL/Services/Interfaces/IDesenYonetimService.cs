@@ -10,7 +10,7 @@ namespace Tekstile.BLL.Services.Interfaces
     public interface IDesenYonetimService
     {
         List<DesenBoyalar> HepsiniGetir();
-        Desenler GetById(int id);
+        DesenBoyalar GetById(int id);
         void Ekle(DesenBoyalar desenBoya);
         void Guncelle(DesenBoyalar desenBoya);
         void Sil(int id);

@@ -24,7 +24,8 @@ namespace Tekstile.BLL.Services.CRUD
 
         public Makineler GetById(int id)
         {
-            throw new NotImplementedException();
+            return _mR.GetById(id);
+
         }
 
         public void Guncelle(Makineler makine)

@@ -10,10 +10,10 @@ using Tekstile.Entities.Data;
 
 namespace Tekstile.BLL.Services
 {
-    public class BoyaStoguService : IStokRepo
+    public class BoyaStoguRepositories : IStokRepo
     {
         MyDbContext _db;
-        public BoyaStoguService()
+        public BoyaStoguRepositories()
         {
             _db = new MyDbContext();
         }

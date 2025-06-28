@@ -121,13 +121,17 @@ namespace Tekstile
             // 
             // btnSiparisKaydet
             // 
-            btnSiparisKaydet.Location = new Point(137, 413);
+            btnSiparisKaydet.BackColor = Color.MediumSeaGreen;
+            btnSiparisKaydet.FlatAppearance.BorderColor = Color.White;
+            btnSiparisKaydet.FlatStyle = FlatStyle.Flat;
+            btnSiparisKaydet.ForeColor = SystemColors.ActiveCaptionText;
+            btnSiparisKaydet.Location = new Point(137, 408);
             btnSiparisKaydet.Margin = new Padding(3, 4, 3, 4);
             btnSiparisKaydet.Name = "btnSiparisKaydet";
-            btnSiparisKaydet.Size = new Size(229, 40);
+            btnSiparisKaydet.Size = new Size(229, 45);
             btnSiparisKaydet.TabIndex = 7;
             btnSiparisKaydet.Text = "Sipariş Kaydet";
-            btnSiparisKaydet.UseVisualStyleBackColor = true;
+            btnSiparisKaydet.UseVisualStyleBackColor = false;
             btnSiparisKaydet.Click += btnSiparisKaydet_Click;
             // 
             // dgvSiparisler
@@ -150,6 +154,8 @@ namespace Tekstile
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.White;
+            label1.ForeColor = Color.Black;
             label1.Location = new Point(23, 44);
             label1.Name = "label1";
             label1.Size = new Size(61, 20);
@@ -159,6 +165,8 @@ namespace Tekstile
             // label2
             // 
             label2.AutoSize = true;
+            label2.BackColor = Color.White;
+            label2.ForeColor = Color.Black;
             label2.Location = new Point(23, 97);
             label2.Name = "label2";
             label2.Size = new Size(53, 20);
@@ -168,6 +176,8 @@ namespace Tekstile
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = Color.White;
+            label3.ForeColor = Color.Black;
             label3.Location = new Point(23, 151);
             label3.Name = "label3";
             label3.Size = new Size(56, 20);
@@ -177,6 +187,8 @@ namespace Tekstile
             // label4
             // 
             label4.AutoSize = true;
+            label4.BackColor = Color.White;
+            label4.ForeColor = Color.Black;
             label4.Location = new Point(23, 204);
             label4.Name = "label4";
             label4.Size = new Size(60, 20);
@@ -186,6 +198,8 @@ namespace Tekstile
             // label5
             // 
             label5.AutoSize = true;
+            label5.BackColor = Color.White;
+            label5.ForeColor = Color.Black;
             label5.Location = new Point(23, 257);
             label5.Name = "label5";
             label5.Size = new Size(44, 20);
@@ -195,6 +209,8 @@ namespace Tekstile
             // label6
             // 
             label6.AutoSize = true;
+            label6.BackColor = Color.White;
+            label6.ForeColor = Color.Black;
             label6.Location = new Point(23, 311);
             label6.Name = "label6";
             label6.Size = new Size(85, 20);
@@ -204,6 +220,8 @@ namespace Tekstile
             // label7
             // 
             label7.AutoSize = true;
+            label7.BackColor = Color.White;
+            label7.ForeColor = Color.Black;
             label7.Location = new Point(23, 364);
             label7.Name = "label7";
             label7.Size = new Size(43, 20);
@@ -212,6 +230,7 @@ namespace Tekstile
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = Color.Transparent;
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(cmbMusteri);
@@ -227,6 +246,7 @@ namespace Tekstile
             groupBox1.Controls.Add(txtBaskiFiyat);
             groupBox1.Controls.Add(dtpTarih);
             groupBox1.Controls.Add(btnSiparisKaydet);
+            groupBox1.ForeColor = Color.White;
             groupBox1.Location = new Point(14, 16);
             groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
@@ -238,7 +258,9 @@ namespace Tekstile
             // 
             // groupBox2
             // 
+            groupBox2.BackColor = Color.Transparent;
             groupBox2.Controls.Add(dgvSiparisler);
+            groupBox2.ForeColor = Color.Black;
             groupBox2.Location = new Point(421, 16);
             groupBox2.Margin = new Padding(3, 4, 3, 4);
             groupBox2.Name = "groupBox2";
@@ -252,7 +274,8 @@ namespace Tekstile
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1352, 493);
+            BackgroundImage = UI.Properties.Resources._20250627_2214_Daha_Fazla_Renk_remix_01jyscvh8hf6frkn3zz6kwgf9e;
+            ClientSize = new Size(1352, 516);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Margin = new Padding(3, 4, 3, 4);

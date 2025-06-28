@@ -86,6 +86,7 @@
             // btnKaydet
             // 
             btnKaydet.Enabled = false;
+            btnKaydet.FlatStyle = FlatStyle.Flat;
             btnKaydet.Location = new Point(728, 95);
             btnKaydet.Name = "btnKaydet";
             btnKaydet.Size = new Size(126, 49);
@@ -203,9 +204,10 @@
             // 
             // btnDesenEkle
             // 
-            btnDesenEkle.Location = new Point(359, 228);
+            btnDesenEkle.FlatStyle = FlatStyle.Flat;
+            btnDesenEkle.Location = new Point(359, 220);
             btnDesenEkle.Name = "btnDesenEkle";
-            btnDesenEkle.Size = new Size(72, 49);
+            btnDesenEkle.Size = new Size(87, 57);
             btnDesenEkle.TabIndex = 8;
             btnDesenEkle.Text = "Desen Ekle";
             btnDesenEkle.UseVisualStyleBackColor = true;
@@ -213,6 +215,7 @@
             // 
             // btnBoyaEkle
             // 
+            btnBoyaEkle.FlatStyle = FlatStyle.Flat;
             btnBoyaEkle.Location = new Point(1191, 94);
             btnBoyaEkle.Name = "btnBoyaEkle";
             btnBoyaEkle.Size = new Size(94, 54);
@@ -225,7 +228,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1327, 453);
+            BackgroundImage = UI.Properties.Resources._20250627_2214_Daha_Fazla_Renk_remix_01jyscvh8hf6frkn3zz6kwgf9e;
+            ClientSize = new Size(1382, 516);
             Controls.Add(btnBoyaEkle);
             Controls.Add(btnDesenEkle);
             Controls.Add(dgvDesenler);

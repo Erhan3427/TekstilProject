@@ -1,0 +1,356 @@
+[
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "BoyaEkle",
+    "IslemDetayi": "Boya eklendi: 5",
+    "IslemTarihi": "2025-06-14T14:08:37.7589233+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Sipariş Ekleme",
+    "IslemDetayi": "Sipariş Eklendi: knlk - yeniH",
+    "IslemTarihi": "2025-06-14T15:20:47.1670303+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Müşteri Silme",
+    "IslemDetayi": "Müşteri Silindi: 10",
+    "IslemTarihi": "2025-06-14T15:22:34.4025219+03:00"
+  },
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "BoyaEkle",
+    "IslemDetayi": "Boya eklendi: 6",
+    "IslemTarihi": "2025-06-14 T15:31:25.2291652+03:00"
+  },
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "BoyaSil",
+    "IslemDetayi": "Boya silindi: 25",
+    "IslemTarihi": "2025-06-14T15:31:34.955221+03:00"
+  },
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "BoyaEkle",
+    "IslemDetayi": "Boya eklendi: 1",
+    "IslemTarihi": "2025-06-26T18:46:03.2605059+03:00"
+  },
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "BoyaEkle",
+    "IslemDetayi": "Boya eklendi: 2",
+    "IslemTarihi": "2025-06-26T18:46:25.6848319+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Müşteri Ekleme",
+    "IslemDetayi": "Müşteri Eklendi: Kınalıkar",
+    "IslemTarihi": "2025-06-27T01:11:35.4144774+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Müşteri Ekleme",
+    "IslemDetayi": "Müşteri Eklendi: Setal",
+    "IslemTarihi": "2025-06-27T01:12:10.3638317+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Müşteri Ekleme",
+    "IslemDetayi": "Müşteri Eklendi: asd",
+    "IslemTarihi": "2025-06-27T01:12:23.6361328+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Müşteri Silme",
+    "IslemDetayi": "Müşteri Silindi: asd",
+    "IslemTarihi": "2025-06-27T01:12:27.1463399+03:00"
+  },
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "DesenEkle",
+    "IslemDetayi": "Desen eklendi: arava",
+    "IslemTarihi": "2025-06-27T01:13:04.6563373+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Makine Ekleme",
+    "IslemDetayi": "Makine Eklendi: Setal",
+    "IslemTarihi": "2025-06-27T01:13:22.9782787+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Kumas Ekleme ",
+    "IslemDetayi": "Kumaş Eklendi: elyaf",
+    "IslemTarihi": "2025-06-27T01:13:34.2890476+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Sipariş Ekleme",
+    "IslemDetayi": "Sipariş Eklendi: Kınalıkar - arava",
+    "IslemTarihi": "2025-06-27T01:13:46.7575633+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Sipariş Ekleme",
+    "IslemDetayi": "Sipariş Eklendi: Kınalıkar - arava",
+    "IslemTarihi": "2025-06-27T01:29:59.0206372+03:00"
+  },
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "BoyaEkle",
+    "IslemDetayi": "Boya eklendi: 3",
+    "IslemTarihi": "2025-06-27T01:36:18.1608693+03:00"
+  },
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "BoyaGuncelle",
+    "IslemDetayi": "Boya güncellendi: 4",
+    "IslemTarihi": "2025-06-27T01:36:41.6402904+03:00"
+  },
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "BoyaSil",
+    "IslemDetayi": "Boya silindi: 3",
+    "IslemTarihi": "2025-06-27T01:36:46.2791358+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Müşteri Ekleme",
+    "IslemDetayi": "Müşteri Eklendi: dwdas",
+    "IslemTarihi": "2025-06-27T10:58:05.5306994+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Müşteri Güncelleme",
+    "IslemDetayi": "Müşteri Güncellendi: dwdas",
+    "IslemTarihi": "2025-06-27T10:58:19.2855997+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Müşteri Silme",
+    "IslemDetayi": "Müşteri Silindi: dwdas",
+    "IslemTarihi": "2025-06-27T10:58:30.8433497+03:00"
+  },
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "BoyaEkle",
+    "IslemDetayi": "Boya eklendi: 3",
+    "IslemTarihi": "2025-06-27T10:59:05.340219+03:00"
+  },
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "BoyaGuncelle",
+    "IslemDetayi": "Boya güncellendi: 4",
+    "IslemTarihi": "2025-06-27T10:59:22.1760003+03:00"
+  },
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "BoyaSil",
+    "IslemDetayi": "Boya silindi: 4",
+    "IslemTarihi": "2025-06-27T10:59:33.3762693+03:00"
+  },
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "DesenEkle",
+    "IslemDetayi": "Desen eklendi: Çiçek",
+    "IslemTarihi": "2025-06-27T11:00:13.669816+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Makine Güncelleme",
+    "IslemDetayi": "Makine Güncellendi: Setal",
+    "IslemTarihi": "2025-06-27T11:00:48.9356949+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Makine Güncelleme",
+    "IslemDetayi": "Makine Güncellendi: Setal",
+    "IslemTarihi": "2025-06-27T11:01:02.599342+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Makine Güncelleme",
+    "IslemDetayi": "Makine Güncellendi: Seta",
+    "IslemTarihi": "2025-06-27T11:01:11.7897737+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Makine Güncelleme",
+    "IslemDetayi": "Makine Güncellendi: Setal",
+    "IslemTarihi": "2025-06-27T11:01:23.5922049+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Makine Ekleme",
+    "IslemDetayi": "Makine Eklendi: hf",
+    "IslemTarihi": "2025-06-27T11:01:37.6295493+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Makine Silme",
+    "IslemDetayi": "Makine Silindi: hf",
+    "IslemTarihi": "2025-06-27T11:01:44.4305339+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Kumas Ekleme ",
+    "IslemDetayi": "Kumaş Eklendi: asdasda",
+    "IslemTarihi": "2025-06-27T11:01:53.3003848+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Kumaş Güncelle",
+    "IslemDetayi": "Kumaş Güncellendi: asdasdaasd",
+    "IslemTarihi": "2025-06-27T11:01:58.1901256+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Kumaş Güncelle",
+    "IslemDetayi": "Kumaş Güncellendi: asdasdaasd",
+    "IslemTarihi": "2025-06-27T11:02:04.6045537+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Kumaş Güncelle",
+    "IslemDetayi": "Kumaş Güncellendi: asdasdaasd",
+    "IslemTarihi": "2025-06-27T11:02:15.750285+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Kumaş Silme",
+    "IslemDetayi": "Kumaş Silindi: asdasdaasd",
+    "IslemTarihi": "2025-06-27T11:02:22.0991812+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Makine Güncelleme",
+    "IslemDetayi": "Makine Güncellendi: Logel",
+    "IslemTarihi": "2025-06-27T11:09:20.0499815+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Makine Ekleme",
+    "IslemDetayi": "Makine Eklendi: Sulfet",
+    "IslemTarihi": "2025-06-27T11:09:29.7955064+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Kumas Ekleme ",
+    "IslemDetayi": "Kumaş Eklendi: Kalın",
+    "IslemTarihi": "2025-06-27T11:10:03.390105+03:00"
+  },
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "BoyaSil",
+    "IslemDetayi": "Boya silindi: 2",
+    "IslemTarihi": "2025-06-27T11:11:48.525659+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Müşteri Silme",
+    "IslemDetayi": "Müşteri Silindi: ",
+    "IslemTarihi": "2025-06-27T11:12:19.5183125+03:00"
+  },
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "BoyaSil",
+    "IslemDetayi": "Boya silindi: 1",
+    "IslemTarihi": "2025-06-27T11:13:25.6246425+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Müşteri Ekleme",
+    "IslemDetayi": "Müşteri Eklendi: Kınalıkar",
+    "IslemTarihi": "2025-06-27T12:39:29.9291332+03:00"
+  },
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "BoyaEkle",
+    "IslemDetayi": "Boya eklendi: 1",
+    "IslemTarihi": "2025-06-27T12:40:17.5883253+03:00"
+  },
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "BoyaEkle",
+    "IslemDetayi": "Boya eklendi: 2",
+    "IslemTarihi": "2025-06-27T12:40:38.4744523+03:00"
+  },
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "DesenEkle",
+    "IslemDetayi": "Desen eklendi: Cicek",
+    "IslemTarihi": "2025-06-27T12:41:13.7107277+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Sipariş Ekleme",
+    "IslemDetayi": "Sipariş Eklendi: Setal - Çiçek",
+    "IslemTarihi": "2025-06-27T12:42:05.6381933+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Sipariş Ekleme",
+    "IslemDetayi": "Sipariş Eklendi: Kınalıkar - arava",
+    "IslemTarihi": "2025-06-28T08:11:20.3103404+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Makine Ekleme",
+    "IslemDetayi": "Makine Eklendi: Pano Sulfet",
+    "IslemTarihi": "2025-06-28T08:12:10.5427061+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Makine Güncelleme",
+    "IslemDetayi": "Makine Güncellendi: Pano Sulfet",
+    "IslemTarihi": "2025-06-28T08:12:18.0192801+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Kumaş Güncelle",
+    "IslemDetayi": "Kumaş Güncellendi: elyaf",
+    "IslemTarihi": "2025-06-28T08:12:38.2459049+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Sipariş Ekleme",
+    "IslemDetayi": "Sipariş Eklendi: Setal - arava",
+    "IslemTarihi": "2025-06-28T08:43:41.553078+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Makine Güncelleme",
+    "IslemDetayi": "Makine Güncellendi: Pano Sulfet",
+    "IslemTarihi": "2025-06-28T08:43:56.2903686+03:00"
+  },
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "DesenEkle",
+    "IslemDetayi": "Desen eklendi: Şirinler",
+    "IslemTarihi": "2025-06-28T08:44:27.6096863+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Müşteri Güncelleme",
+    "IslemDetayi": "Müşteri Güncellendi: Setal",
+    "IslemTarihi": "2025-06-28T08:46:09.6738732+03:00"
+  },
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "BoyaEkle",
+    "IslemDetayi": "Boya eklendi: 3",
+    "IslemTarihi": "2025-06-28T09:13:49.086262+03:00"
+  },
+  {
+    "KullaniciAdi": "admin",
+    "IslemTuru": "BoyaEkle",
+    "IslemDetayi": "Boya eklendi: 4",
+    "IslemTarihi": "2025-06-28T09:26:18.3783272+03:00"
+  },
+  {
+    "KullaniciAdi": "Admin",
+    "IslemTuru": "Gider Ekleme",
+    "IslemDetayi": "Gider Eklendi: Elektrik - 50000",
+    "IslemTarihi": "2025-06-28T09:46:27.7176933+03:00"
+  }
+]

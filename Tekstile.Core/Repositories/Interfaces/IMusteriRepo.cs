@@ -12,7 +12,8 @@ namespace Tekstile.BLL.Interfaces
         List<Musteriler> Listele();
         void MusteriEkle(Musteriler musteri);
         void MusteriSil(int id);
-        void guncelle(Musteriler musteri);
+        void Guncelle(Musteriler musteri);
+        Musteriler GetById(int id);
 
 
     }

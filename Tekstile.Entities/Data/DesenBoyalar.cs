@@ -16,8 +16,8 @@ public partial class DesenBoyalar
 
     public double Gram { get; set; }
     public int BoyaSayisi { get; set; }
-    public virtual Boyalar Boya { get; set; } = null!;
+    public Boyalar Boya { get; set; } = null!;
 
-    public virtual Desenler Desen { get; set; } = null!;
-    public virtual Musteriler Musteri { get; set; } = null!;
+    public  Desenler Desen { get; set; } = null!;
+    public Musteriler Musteri { get; set; } = null!;
 }

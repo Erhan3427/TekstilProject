@@ -10,7 +10,7 @@ namespace Tekstile.Helpers
         {
             MyDbContext _db = new MyDbContext();
             var projeDizini = AppDomain.CurrentDomain.BaseDirectory;
-            var hedefKlasor = Path.Combine(projeDizini, "..", "..", "..", "Logs");
+            var hedefKlasor = Path.Combine(projeDizini, "..", "..", "..", "Loglar");
 
             if (!Directory.Exists(hedefKlasor))
             {

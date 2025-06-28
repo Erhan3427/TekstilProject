@@ -17,7 +17,7 @@ public partial class Musteriler
     public string? Adres { get; set; }
     public string Kod { get; set; }
 
-    public virtual List<Desenler> Desenlers { get; set; } 
+    public  List<Desenler> Desenlers { get; set; } 
 
-    public virtual List<Siparisler> Siparislers { get; set; } 
+    public  List<Siparisler> Siparislers { get; set; } 
 }

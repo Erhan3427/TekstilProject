@@ -19,17 +19,18 @@ namespace Tekstile.BLL.Services.CRUD
         }
         public void Ekle(Boyalar boya)
         {
+
             _bR.Ekle(boya);
         }
 
         public Boyalar GetById(int id)
         {
-            throw new NotImplementedException();
+            return _bR.GetById(id);
         }
 
         public void Guncelle(Boyalar boya)
         {
-            _bR.guncelle(boya);
+            _bR.Guncelle(boya);
         }
 
         public List<Boyalar> HepsiniGetir()

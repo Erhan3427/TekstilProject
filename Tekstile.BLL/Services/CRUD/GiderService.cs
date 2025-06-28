@@ -23,12 +23,13 @@ namespace Tekstile.BLL.Services.CRUD
 
         public Giderler GetById(int id)
         {
-            throw new NotImplementedException();
+            return _gR.GetById(id);
+
         }
 
         public void Guncelle(Giderler gider)
         {
-            _gR.guncelle(gider);
+            _gR.Guncelle(gider);
         }
 
         public List<Giderler> HepsiniGetir()

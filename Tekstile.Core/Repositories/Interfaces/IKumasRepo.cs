@@ -12,6 +12,7 @@ namespace Tekstile.DAL.Repositories.Interfaces
         List<Kumascinsleri> Listele();
         void Ekle(Kumascinsleri boya);
         void Sil(int id);
-        void guncelle(Kumascinsleri boya);
+        void Guncelle(Kumascinsleri boya);
+        Kumascinsleri GetById(int id);
     }
 }

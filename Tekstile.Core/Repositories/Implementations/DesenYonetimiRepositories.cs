@@ -9,13 +9,13 @@ using Tekstile.Entities.Data;
 
 namespace Tekstile.DAL.Repositories.Services
 {
-    public class DesenYonetimiService : IDesenYonetimiRepo
+    public class DesenYonetimiRepositories : IDesenYonetimiRepo
     {
         MyDbContext _db;
-        public DesenYonetimiService(MyDbContext context)
+        public DesenYonetimiRepositories(MyDbContext context)
         {
             _db = context;
-            
+
         }
         public List<DesenBoyalar> Listele()
         {
@@ -29,7 +29,7 @@ namespace Tekstile.DAL.Repositories.Services
             _db.SaveChanges();
         }
 
-        public void guncelle(DesenBoyalar boya)
+        public void Guncelle(DesenBoyalar boya)
         {
             _db.DesenBoyalari.Update(boya);
             _db.SaveChanges();
@@ -43,6 +43,10 @@ namespace Tekstile.DAL.Repositories.Services
                 _db.DesenBoyalari.Remove(DesenBoyaId);
                 _db.SaveChanges();
             }
+        }
+        public DesenBoyalar GetById(int id)
+        {
+            return _db.DesenBoyalari.Find(id);
         }
     }
 }

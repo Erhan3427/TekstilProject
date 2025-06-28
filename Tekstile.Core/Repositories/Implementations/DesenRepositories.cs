@@ -9,11 +9,11 @@ using Tekstile.Entities.Data;
 
 namespace Tekstile.DAL.Repositories.Services
 {
-    public class DesenService : IDesenRepo
+    public class DesenRepositories : IDesenRepo
     {
         MyDbContext _db;
 
-        public DesenService(MyDbContext context)
+        public DesenRepositories(MyDbContext context)
         {
             _db = context;
         }
@@ -40,10 +40,17 @@ namespace Tekstile.DAL.Repositories.Services
             }
         }
 
-        public void guncelle(Desenler boya)
+        public void Guncelle(Desenler boya)
         {
             _db.Desenler.Update(boya);
             _db.SaveChanges();
+        }
+
+        
+
+        public Desenler GetById(int id)
+        {
+            return _db.Desenler.Find(id);
         }
     }
 }

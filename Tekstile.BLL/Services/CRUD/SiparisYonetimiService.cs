@@ -24,12 +24,13 @@ namespace Tekstile.BLL.Services.CRUD
 
         public Siparisler GetById(int id)
         {
-            throw new NotImplementedException();
+            return _sYP.GetById(id);
+
         }
 
         public void Guncelle(Siparisler siparis)
         {
-            _sYP.guncelle(siparis);
+            _sYP.Guncelle(siparis);
         }
 
         public List<Siparisler> HepsiniListele()

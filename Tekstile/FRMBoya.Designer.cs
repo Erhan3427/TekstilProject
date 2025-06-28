@@ -100,23 +100,26 @@
             // 
             dgvBoyalar.AllowUserToAddRows = false;
             dgvBoyalar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvBoyalar.Location = new Point(10, 262);
+            dgvBoyalar.Location = new Point(3, 262);
             dgvBoyalar.Name = "dgvBoyalar";
             dgvBoyalar.ReadOnly = true;
             dgvBoyalar.RowHeadersWidth = 51;
             dgvBoyalar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvBoyalar.Size = new Size(1304, 185);
+            dgvBoyalar.Size = new Size(1311, 185);
             dgvBoyalar.TabIndex = 4;
             dgvBoyalar.CellClick += dgvBoyalar_CellClick;
             // 
             // btnSil
             // 
+            btnSil.BackColor = Color.IndianRed;
+            btnSil.FlatStyle = FlatStyle.Flat;
+            btnSil.ForeColor = Color.Snow;
             btnSil.Location = new Point(687, 207);
             btnSil.Name = "btnSil";
             btnSil.Size = new Size(136, 49);
             btnSil.TabIndex = 5;
             btnSil.Text = "Sil";
-            btnSil.UseVisualStyleBackColor = true;
+            btnSil.UseVisualStyleBackColor = false;
             btnSil.Click += btnSil_Click;
             // 
             // cmbBoyaTipi
@@ -157,22 +160,28 @@
             // 
             // btnGuncelle
             // 
+            btnGuncelle.BackColor = Color.SteelBlue;
+            btnGuncelle.FlatStyle = FlatStyle.Flat;
+            btnGuncelle.ForeColor = SystemColors.Window;
             btnGuncelle.Location = new Point(545, 207);
             btnGuncelle.Name = "btnGuncelle";
             btnGuncelle.Size = new Size(136, 49);
             btnGuncelle.TabIndex = 5;
             btnGuncelle.Text = "Guncelle";
-            btnGuncelle.UseVisualStyleBackColor = true;
+            btnGuncelle.UseVisualStyleBackColor = false;
             btnGuncelle.Click += btnGuncelle_Click;
             // 
             // btnKaydet
             // 
+            btnKaydet.BackColor = Color.MediumSeaGreen;
+            btnKaydet.FlatStyle = FlatStyle.Flat;
+            btnKaydet.ForeColor = SystemColors.Window;
             btnKaydet.Location = new Point(403, 207);
             btnKaydet.Name = "btnKaydet";
             btnKaydet.Size = new Size(136, 49);
             btnKaydet.TabIndex = 5;
             btnKaydet.Text = "Ekle";
-            btnKaydet.UseVisualStyleBackColor = true;
+            btnKaydet.UseVisualStyleBackColor = false;
             btnKaydet.Click += btnKaydet_Click;
             // 
             // cmbKovaDurum
@@ -211,7 +220,7 @@
             // 
             // txtFiltrele
             // 
-            txtFiltrele.Location = new Point(1189, 12);
+            txtFiltrele.Location = new Point(1189, 15);
             txtFiltrele.Name = "txtFiltrele";
             txtFiltrele.Size = new Size(125, 27);
             txtFiltrele.TabIndex = 12;
@@ -219,6 +228,7 @@
             // 
             // button1
             // 
+            button1.FlatStyle = FlatStyle.Flat;
             button1.Location = new Point(1189, 114);
             button1.Name = "button1";
             button1.Size = new Size(125, 44);
@@ -259,7 +269,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1327, 453);
+            BackgroundImage = UI.Properties.Resources._20250627_2214_Daha_Fazla_Renk_remix_01jyscvh8hf6frkn3zz6kwgf9e;
+            ClientSize = new Size(1512, 516);
             Controls.Add(CmbRenkler);
             Controls.Add(txtAciklama);
             Controls.Add(button1);

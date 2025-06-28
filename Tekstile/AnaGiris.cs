@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,20 +13,24 @@ namespace Tekstile.UI
 {
     public partial class AnaGiris : Form
     {
-        public AnaGiris()
+        private readonly IServiceProvider _serviceProvider;
+
+        public AnaGiris(IServiceProvider serviceProvider)
         {
             InitializeComponent();
+            _serviceProvider = serviceProvider;
         }
+
 
         private void btnSiparisYonetim_Click(object sender, EventArgs e)
         {
-            FRMGiris frmGiris = new FRMGiris();
-            frmGiris.Show();
+            var frmGiris = _serviceProvider.GetRequiredService<FRMGiris>();
+            frmGiris.ShowDialog();
         }
 
         private void btnMuhasebe_Click(object sender, EventArgs e)
         {
-            FRMMuhasebeGiris fRMMuhasebeGiris = new();
+            var fRMMuhasebeGiris = _serviceProvider.GetRequiredService<FRMMuhasebeGiris>();
             fRMMuhasebeGiris.Show();
             this.Hide();
         }

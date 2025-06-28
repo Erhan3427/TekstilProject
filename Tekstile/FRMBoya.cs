@@ -1,6 +1,8 @@
-﻿using Microsoft.IdentityModel.Logging;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Logging;
 using System.Data;
 using Tekstile.BLL.Services;
+using Tekstile.BLL.Services.Interfaces;
 using Tekstile.Context;
 using Tekstile.Data;
 using Tekstile.Entities.Data;
@@ -10,18 +12,22 @@ namespace Tekstile
 {
     public partial class FRMBoya : Form
     {
-        private MyDbContext _db;
-        private BoyaService _boyaService;
-        private BoyaStoguService _stokService;
-        private FRMBoyaStogu _boyaStogu;
-        
-        public FRMBoya()
+        IBoyaService _db;
+        IStokService _stokService;
+        IServiceProvider _serviceProvider;
+        IGiderService _giderService;
+
+        public FRMBoya(IBoyaService db, IStokService stokService, IServiceProvider serviceProvider, IGiderService giderService)
         {
-            InitializeComponent();
-            _db = new MyDbContext();
-            _boyaService = new BoyaService();
-            _stokService = new BoyaStoguService();
+            InitializeComponent(); // her zaman en başta çağır
+            _db = db;
+            _stokService = stokService;
+            _serviceProvider = serviceProvider;
+
+
+            _giderService = giderService;
         }
+      
 
         private void FormBoya_Load(object sender, EventArgs e)
         {
@@ -39,10 +45,15 @@ namespace Tekstile
             // Sadece eklenen boyaları listele
             ListeleEklenenBoyalar();
         }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var boyaStoguForm = _serviceProvider.GetRequiredService<FRMBoyaStogu>();
+            boyaStoguForm.ShowDialog();
+        }
 
         private void ListeleEklenenBoyalar()
         {
-            var boyalar = _db.Boyalar
+            var boyalar = _db.HepsiniGetir()
                 .Where(b => b.KovaAdedi > 0)
                 .Select(b => new
                 {
@@ -59,6 +70,8 @@ namespace Tekstile
 
             dgvBoyalar.DataSource = boyalar;
             dgvBoyalar.Columns["Id"].Visible = false;
+            dgvBoyalar.Columns["ToplamFiyat"].DefaultCellStyle.Format = "C2";
+            dgvBoyalar.Columns["BoyaFiyat"].DefaultCellStyle.Format = "C2";
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)
@@ -74,7 +87,7 @@ namespace Tekstile
                 MessageBox.Show("Lütfen geçerli bir kova adedi giriniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if ( _db.Boyalar.Any(b=>b.BoyaKodu==txtBoyaKod.Text)) {
+            if ( _db.HepsiniGetir().Any(b=>b.BoyaKodu==txtBoyaKod.Text)) {
                 MessageBox.Show("Bu boyakodu daha önce tanımlanmış");
                 return;
 
@@ -93,7 +106,7 @@ namespace Tekstile
             };
 
             // Boya kaydını ekle
-            _boyaService.Ekle(boya);
+            _db.Ekle(boya);
 
             // Stok hareketi oluştur
             var stokHareket = new StokHareket
@@ -107,8 +120,23 @@ namespace Tekstile
 
             // Stok hareketini kaydet
             _stokService.Ekle(stokHareket);
-            LogKayit.LogEkle("admin", "BoyaEkle", $"Boya eklendi: {boya.BoyaKodu}");
+
+            var gider = new Giderler
+            {
+                GiderTuru = boya.RenkAdi+" Boya Alımı",
+                Tutar = (decimal)boya.ToplamFiyat,
+                Tarih = DateTime.Now,
+                Aciklama = txtAciklama.Text
+
+
+            };
+            _giderService.Ekle(gider);
+
+
             MessageBox.Show("Boya başarıyla eklendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LogKayit.LogEkle("admin", "BoyaEkle", $"Boya eklendi: {boya.BoyaKodu}");
+
+
             ListeleEklenenBoyalar();
             FormTemizle();
         }
@@ -120,15 +148,10 @@ namespace Tekstile
                 MessageBox.Show("Lütfen güncellenecek bir boya seçiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (_db.Boyalar.Any(b => b.BoyaKodu == txtBoyaKod.Text))
-            {
-                MessageBox.Show("Bu boyakodu daha önce tanımlanmış");
-                return;
-
-            }
+       
 
             int id = Convert.ToInt32(dgvBoyalar.CurrentRow.Cells["Id"].Value);
-            var boya = _db.Boyalar.Find(id);
+            var boya = _db.GetById(id);
 
             if (boya == null)
             {
@@ -164,7 +187,7 @@ namespace Tekstile
             }
 
         
-            _db.SaveChanges();
+          
             LogKayit.LogEkle("admin", "BoyaGuncelle", $"Boya güncellendi: {boya.BoyaKodu}");
             MessageBox.Show("Boya başarıyla güncellendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ListeleEklenenBoyalar();
@@ -182,7 +205,7 @@ namespace Tekstile
             if (MessageBox.Show("Seçili boyayı silmek istediğinize emin misiniz?", "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 int id = Convert.ToInt32(dgvBoyalar.CurrentRow.Cells["Id"].Value);
-                _boyaService.Sil(id);
+                _db.Sil(id);
                 LogKayit.LogEkle("admin", "BoyaSil", $"Boya silindi: {id}");
                 MessageBox.Show("Boya başarıyla silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ListeleEklenenBoyalar();
@@ -217,15 +240,12 @@ namespace Tekstile
         private void txtFiltrele_TextChanged(object sender, EventArgs e)
         {
             string arama = txtFiltrele.Text.ToLower();
-            var filtreli = _db.Boyalar.Where(x => x.RenkAdi.Contains(arama) || x.BoyaKodu.Contains(arama)).ToList();
+            var filtreli = _db.HepsiniGetir().Where(x => x.RenkAdi.Contains(arama) || x.BoyaKodu.Contains(arama)).ToList();
             dgvBoyalar.DataSource = filtreli;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            FRMBoyaStogu _boyaStogu = new FRMBoyaStogu();
-            _boyaStogu.Show();
-        }
+      
+
 
         private void CmbRenkler_DropDown(object sender, EventArgs e)
         {
@@ -237,7 +257,7 @@ namespace Tekstile
         private void CmbRenkler_DropDownClosed(object sender, EventArgs e)
         {
             CmbRenkler.Width = 20;
-            txtBoyaAdi.Text = CmbRenkler.SelectedItem.ToString();
+            txtBoyaAdi.Text = CmbRenkler.SelectedItem?.ToString() ?? string.Empty;
         }
     }
 }

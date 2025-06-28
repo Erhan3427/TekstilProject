@@ -24,12 +24,13 @@ namespace Tekstile.BLL.Services.CRUD
 
         public Kumascinsleri GetById(int id)
         {
-            throw new NotImplementedException();
+            return _kR.GetById(id);
+
         }
 
         public void Guncelle(Kumascinsleri kumas)
         {
-            _kR.guncelle(kumas);
+            _kR.Guncelle(kumas);
         }
 
         public List<Kumascinsleri> HepsiniGetir()

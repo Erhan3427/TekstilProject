@@ -12,7 +12,7 @@ namespace Tekstile.DAL.Repositories.Interfaces
         List<Desenler> Listele();
         void Ekle(Desenler boya);
         void Sil(int id);
-        void guncelle(Desenler boya);
-
+        void Guncelle(Desenler boya);
+        Desenler GetById(int id);
     }
 }

@@ -24,12 +24,13 @@ namespace Tekstile.BLL.Services.CRUD
 
         public Musteriler GetById(int id)
         {
-            throw new NotImplementedException();
+            return _mR.GetById(id);
+
         }
 
         public void Guncelle(Musteriler musteri)
         {
-            _mR.guncelle(musteri);
+            _mR.Guncelle(musteri);
         }
 
         public List<Musteriler> HepsiniGetir()

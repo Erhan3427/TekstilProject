@@ -70,6 +70,7 @@ namespace Tekstile
             // 
             // btnTemizle
             // 
+            btnTemizle.FlatStyle = FlatStyle.Flat;
             btnTemizle.Location = new Point(1086, 133);
             btnTemizle.Margin = new Padding(3, 4, 3, 4);
             btnTemizle.Name = "btnTemizle";
@@ -81,6 +82,7 @@ namespace Tekstile
             // 
             // btnFiltrele
             // 
+            btnFiltrele.FlatStyle = FlatStyle.Flat;
             btnFiltrele.Location = new Point(1086, 80);
             btnFiltrele.Margin = new Padding(3, 4, 3, 4);
             btnFiltrele.Name = "btnFiltrele";
@@ -198,6 +200,7 @@ namespace Tekstile
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1353, 513);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);

@@ -1,3 +1,4 @@
+using Microsoft.Extensions.DependencyInjection;
 using Tekstile.Context;
 using Tekstile.UI;
 
@@ -5,21 +6,16 @@ namespace Tekstile
 {
     public partial class FRMGiris : Form
     {
-        MyDbContext _context;
-        FRMMusteri musteriForm;
-        FRMBoya boyaForm;
-        FRMDesenYonetimi desenYonetimiForm;
 
+        IServiceProvider _serviceProvider;
 
-        public FRMGiris()
+        public FRMGiris(IServiceProvider serviceProvider)
         {
             InitializeComponent();
+            _serviceProvider = serviceProvider;
 
         }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+        
         public void FormGetir(Form form)
         {
             pnlYonetim.Controls.Clear();
@@ -35,56 +31,53 @@ namespace Tekstile
 
         private void btnMüsteriYonetim_Click(object sender, EventArgs e)
         {
-            FRMMusteri musteriForm = new();
-            FormGetir(musteriForm);
 
+            var musteriForm = _serviceProvider.GetRequiredService<FRMMusteri>();
+            FormGetir(musteriForm);
         }
 
         private void btnBoyaYonetim_Click(object sender, EventArgs e)
         {
-            FRMBoya boyaForm = new FRMBoya();
+            var boyaForm = _serviceProvider.GetRequiredService<FRMBoya>();
             FormGetir(boyaForm);
 
         }
 
         private void btnDesenYonetimi_Click(object sender, EventArgs e)
         {
-            FRMDesenYonetimi desenYonetimiForm = new FRMDesenYonetimi();
+            var desenYonetimiForm = _serviceProvider.GetRequiredService<FRMDesenYonetimi>();
             FormGetir(desenYonetimiForm);
         }
 
         private void btnMakineYonetim_Click(object sender, EventArgs e)
         {
-            FRMMakineYonetimi fRMMakineYonetim = new();
+            var fRMMakineYonetim = _serviceProvider.GetRequiredService<FRMMakineYonetimi>();
             FormGetir(fRMMakineYonetim);
 
         }
 
         private void btnSiparisYonetim_Click(object sender, EventArgs e)
         {
-            FRMSiparisYonetimi fRMSiparisYonetimi = new();
+            var fRMSiparisYonetimi = _serviceProvider.GetRequiredService<FRMSiparisYonetimi>();
             FormGetir(fRMSiparisYonetimi);
         }
-
+ 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FRMLogKayitlari fRMLogKayitlari = new FRMLogKayitlari();
+           FormGetir(fRMLogKayitlari);
+        }
         private void btnCikis_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Çýkmak istediðinize emin misiniz?", "Uyarý", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                AnaGiris anaGiris = new AnaGiris();
+                var anaGiris = _serviceProvider.GetRequiredService<AnaGiris>();
                 anaGiris.Show(); //Ana giriþ formunu gösterir.
                 this.Hide(); //Mevcut formu gizler.
 
 
 
             }
-        }
-
-       
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            FRMLogKayitlari fRMLogKayitlari = new FRMLogKayitlari();
-           FormGetir(fRMLogKayitlari);
         }
     }
 }

@@ -61,6 +61,7 @@
             // 
             // btnFiltrele
             // 
+            btnFiltrele.FlatStyle = FlatStyle.Flat;
             btnFiltrele.Location = new Point(512, 45);
             btnFiltrele.Name = "btnFiltrele";
             btnFiltrele.Size = new Size(135, 36);
@@ -104,6 +105,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = UI.Properties.Resources._20250627_2211_Soyut_Renkler_remix_01jyscpdczesgsfaqrdnwr42j4;
             ClientSize = new Size(800, 450);
             Controls.Add(label1);
             Controls.Add(txtFiltreleStok);
